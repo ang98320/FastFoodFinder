@@ -43,10 +43,12 @@
 	width: 50;
 }
 
-/*.test {
+/*
+.test {
 	border-style: solid;
 	border-width: 1px;
-}*/
+}
+*/
 
 .bar1, .bar2, .bar3 {
   width: 30px;
@@ -56,6 +58,26 @@
   transition: 0.4s;
 }
 
+.pullOut a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.pullOut a:hover{
+	color: #FFFFFF;
+}
+
+.sidenav .closeButton {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
 
 /*Begin id stuff*/
 
@@ -80,6 +102,8 @@
   margin: 0 auto;
   text-align:center;
   font-size:24px;
+  cursor: pointer;
+  
 }
 
 #creatorImg {
@@ -111,7 +135,8 @@
 	padding-left: 1%;
 	display: inline-block;
 	float: left;
-	top: 50%;
+	font-size: 1.5em;
+	cursor: pointer;
 }
 
 #filterBar {
@@ -202,6 +227,25 @@
 	display: inline-block;
 	margin-left: auto;
 	font-size: 3em;
+}
+
+#pullOutMenu{
+	height: 100%;
+	max-width: 350px;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+#userImg{
+	border-radius: 50%;
+	width: 33%;
 }
 
 /* Begin specific type stuff */

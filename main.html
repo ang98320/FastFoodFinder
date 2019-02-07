@@ -1,21 +1,32 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
-<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="scripts/main.js"> </script>
+</head>
 
 <body id="background">
 
-
+<div id="pullOutMenu" class="pullOut">
+	<a href="javascript:void(0)" class="closeButton" onclick="closeNav()">&times;</a>
+	<img src="img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
+	<a href="profile.html"> Profile </a>
+	<a href="saved.html"> Saved </a>
+	<a href="#"> Something </a>
+</div>
+<div id="pushField">
 <a name="menuBars">
     <div class="container-fluid test" id="socialBar">
-		<div class="row test" id="menu" onclick="myFunction(this)">
+		<!--<div class="row test" id="menu" onclick="openNav()">
 		  <div class="bar1"></div>
 		  <div class="bar2"></div>
 		  <div class="bar3"></div>
-		  </div>
+		</div> -->
+		<span onclick="openNav()" class="row" id="menu">&#9776;</span>
 		<div class="test" id="filterBar">
 			<form autocomplete="off" action=()>
 				<input class="center" type="text" id="filter" placeholder="Filters">
@@ -60,5 +71,5 @@
 		<button id="oneRight" onClick=()> <i class="fas fa-arrow-right fa"></i> </button>
 	</div>
 </a>
-
+</div>
 </body>
