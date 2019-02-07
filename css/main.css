@@ -1,0 +1,231 @@
+/*Begin class stuff */
+.star-bright, hr.star-dark {
+  margin: 40px auto 30px;
+  padding: 0;
+  max-width: 512px;
+  border: 0;
+  border-top: solid 5px;
+  text-align: center;
+  color: #DE5A51;
+}
+
+.button {
+  color: #DE5A51;
+  border: solid 2px #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 48px;
+}
+
+.center {
+	width: 50%;
+}
+
+.fa {
+  font-size: 1.5em;
+}
+
+.descText {
+  max-width:960px;
+}
+
+.thirds {
+  display: inline-block;
+  width: 50%;
+  font-family: 'Raleway', sans-serif;
+}
+
+.img {
+	width: 50;
+}
+
+/*.test {
+	border-style: solid;
+	border-width: 1px;
+}*/
+
+.bar1, .bar2, .bar3 {
+  width: 30px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+
+/*Begin id stuff*/
+
+#nameline{
+  margin-top:-50px;
+  width: 50%;
+  color: #000;
+}
+
+#ML {
+  width: 100%;
+}
+
+#background{
+  background-color: #77585800;
+}
+
+#socialBar {
+  padding-top:10px;
+  padding-bottom:-10px;
+  color: #294052;
+  margin: 0 auto;
+  text-align:center;
+  font-size:24px;
+}
+
+#creatorImg {
+  border-radius: 50%;
+}
+
+#portID {
+  color:#000;
+}
+
+#portLineID {
+  color: #000;
+  padding-bottom:80px;
+  width: 10%;
+}
+
+#portLineIDCert {
+  color: #000;
+  padding-bottom:30px;
+  width: 40%;
+}
+
+#extraspace {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#menu {
+	padding-left: 1%;
+	display: inline-block;
+	float: left;
+	top: 50%;
+}
+
+#filterBar {
+	display:inline-block;
+	width: 50%;
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#locationBar {
+	display: inline-block;
+	text-align: right;
+	margin-right: 1%;
+	float:right;
+}
+
+#filter {
+	height: 100%;
+	font-size: 1.25em;
+	border-radius: 10px 10px 10px 10px;
+}
+
+#filterSubmit{
+	font-size: 1.25em;
+	background: transparent;
+	border: none;
+}
+
+#firstImage {
+	float: left;
+	font-size: 2em;
+	display: inline-block
+	margin-left: 1%;
+}
+
+#navigateMe {
+	display: inline-block;
+	margin-left: auto;
+	font-size: 2em;	
+	text-align: center;
+}
+
+#lastImage {
+	display: inline-block;
+	float: right;
+	font-size: 2em;
+	margin-right: 1%
+}
+
+#navigation{
+	text-align: center;
+	margin-top: 2%;
+}
+
+#mainImg{
+	background: 50% 50% no-repeat; 
+	width: 95%;
+	height: 95%;
+	max-width: 800px;
+	max-height: 800px;
+	margin: auto auto;
+	display: block;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+#mobility {
+	text-align: center;
+	padding-bottom: 5%;
+}
+
+#oneLeft {
+	float: left;
+	font-size: 2em;
+	display: inline-block
+	padding-left: 5%;
+}
+
+#oneRight {
+	display: inline-block;
+	float: right;
+	font-size: 2em;
+	margin-right: 1%
+}
+
+#save {
+	display: inline-block;
+	margin-left: auto;
+	font-size: 3em;
+}
+
+/* Begin specific type stuff */
+video {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 3em;
+}
+h2 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5em;
+}
+
+button {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+input {
+	text-align: center;
+	font-family: 'Raleway';
+}
