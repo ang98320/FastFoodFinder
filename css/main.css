@@ -79,6 +79,9 @@
   margin-left: 50px;
 }
 
+.button {
+	border-color: transparent;
+}
 /*Begin id stuff*/
 
 #nameline{
@@ -103,7 +106,11 @@
   text-align:center;
   font-size:24px;
   cursor: pointer;
-  
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #FFF;
+  height: 7%;
 }
 
 #creatorImg {
@@ -152,6 +159,8 @@
 	text-align: right;
 	margin-right: 1%;
 	float:right;
+	background: transparent;
+	border-color: transparent;
 }
 
 #filter {
@@ -191,23 +200,35 @@
 #navigation{
 	text-align: center;
 	margin-top: 2%;
+	height: 13%;
 }
 
 #mainImg{
 	background: 50% 50% no-repeat; 
-	width: 95%;
-	height: 95%;
+	width: 75%;
+	height: 75%;
 	max-width: 800px;
 	max-height: 800px;
 	margin: auto auto;
 	display: block;
 	margin-top: 5%;
 	margin-bottom: 5%;
+	border-style: solid;
+	
 }
 
 #mobility {
 	text-align: center;
 	padding-bottom: 5%;
+	height:10%;
+	position: fixed;
+    width: 100%;
+    bottom: 0;
+	background-color: #FFF;
+}
+
+#mobility button{
+	margin-top: 5%;
 }
 
 #oneLeft {
@@ -221,7 +242,7 @@
 	display: inline-block;
 	float: right;
 	font-size: 2em;
-	margin-right: 1%
+	margin-right: 2%
 }
 
 #save {
@@ -247,7 +268,18 @@
 #userImg{
 	border-radius: 50%;
 	width: 33%;
+	background-color: transparent;
 }
+
+#padding {
+	padding-top: 15%;
+}
+
+#foodImg {
+	height:70%;
+}
+
+
 
 /* Begin specific type stuff */
 video {
@@ -274,3 +306,44 @@ input {
 	text-align: center;
 	font-family: 'Raleway';
 }
+
+/* Media controls as needed */
+
+@media only screen and (max-height: 1200px) {
+	#mainImg{
+	max-width: 700px;
+	max-height: 700px;
+	margin: auto auto;
+	display: block;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	border-style: solid;
+}
+
+
+	#mobility {
+		padding-bottom: 2%;
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+	}
+}
+
+/*
+//small phones
+@media only screen and (max-height: 900px) {
+	#padding {
+		padding-top: 20%;
+	}
+	
+	#mainImg {
+		max-height: 600px;
+		max-width: 600px;
+}
+*/
+/*
+@media only screen and (min-width: 1080px) {
+	#mobility{
+		height: 5%;
+	}
+}*/
