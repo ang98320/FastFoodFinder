@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	getLocation();
-})
+});
 
 // INIT VARS 
 
@@ -31,16 +31,10 @@ function openNav() {
 }
 
 function openModal() {
-	/*modalOpener.onclick = function() {
-		modal.style.display = "block";
-	}*/
 	document.getElementById("moreInfoModal").style.display = "block";
 }
 
 function closeModal() {
-	/*modalCloser.onclick = function() {
-		modal.style.display = "none";
-	}*/
 	var modal = document.getElementById("moreInfoModal").style.display = "none";
 }
 
