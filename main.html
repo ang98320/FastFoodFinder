@@ -10,9 +10,54 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="scripts/main.js"> </script>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body id="background">
+
+<div id="moreInfoModal" class="moreInfoModal test">
+	
+	<div class="container-fluid test" id="moreInfoBar">
+		<div class="test" id="menu">
+				<a onclick=() class="button">
+					<i class="far fa-heart fa"></i>
+				</a>
+		</div>
+			<h4 id="moreName"> Replace Me </h4>
+		<div class="test" id="locationBar">
+				<a onclick="closeModal()" class="button" id="modalClose">
+					<i class="far fa-times-circle"></i>
+				</a>
+		</div>
+	</div>
+	
+	<div class="test" id="moreInformation">
+		<img src="img/placeholder.jpg" id="additionalImg">
+		<!--<div id="moreImg" class="test">
+			
+		</div>-->
+		<div id="moreContact" class="test">
+			<h3 class="contactClass"> Fill Name Here </h3>
+			<h3 class="contactClass"> Phone Number Here </h3>
+			<h3 class="contactClass"> ETA </h3>
+		</div>
+	</div>
+	<h4 id="moreBreaker"> Other Items from _____ </h4>
+	<table id="morePictures">
+		<tr>
+			<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+			<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+			<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+			<!-- Fill images here as needed -->
+		<tr>
+		<tr>
+			<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+			<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+			<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+			<!-- Fill images here as needed -->
+		<tr>
+	</table>
+</div>
 
 <div id="pullOutMenu" class="pullOut">
 	<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
@@ -25,11 +70,6 @@
 <div id="pushField">
 <a name="menuBars">
     <div class="container-fluid test" id="socialBar">
-		<!--<div class="row test" id="menu" onclick="openNav()">
-		  <div class="bar1"></div>
-		  <div class="bar2"></div>
-		  <div class="bar3"></div>
-		</div> -->
 		<span onclick="openNav()" class="row" id="menu">&#9776;</span>
 		<div class="test" id="filterBar">
 			<form autocomplete="off" action=()>
@@ -61,7 +101,7 @@
 <a name="mainImage">
 	<div class="" id="foodImg">
 		<!-- On click, generate div that has menu info -->	
-		<img src="img/placeholder.jpg" alt="Food Image Should Be Here! Contact Dev!" id="mainImg" class="test" onclick=()>
+		<img src="img/placeholder.jpg" alt="Food Image Should Be Here! Contact Dev!" id="mainImg" class="test" onclick="openModal()">
 	</div>
 </a>
 
@@ -75,5 +115,6 @@
 		<button id="oneRight" onClick=()> <i class="fas fa-arrow-right fa"></i> </button>
 	</div>
 </a>
+
 </div>
 </body>

@@ -9,10 +9,16 @@ var currLat;
 var currLong;
 var navState = 0;
 
+//var modal = document.getElementById("moreInfoModal");
+var modalOpener = document.getElementById("mainImg");
+var modalCloser = document.getElementById("modalClose");
+
+
+
 function openNav() {
 	if (navState == 0) {
-		document.getElementById("pullOutMenu").style.width = "20%";
-		document.getElementById("pushField").style.marginLeft = "20%";
+		document.getElementById("pullOutMenu").style.width = "33%";
+		document.getElementById("pushField").style.marginLeft = "33%";
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 		navState++;
 	}
@@ -24,8 +30,18 @@ function openNav() {
 	}
 }
 
-function closeNav() {
-	
+function openModal() {
+	/*modalOpener.onclick = function() {
+		modal.style.display = "block";
+	}*/
+	document.getElementById("moreInfoModal").style.display = "block";
+}
+
+function closeModal() {
+	/*modalCloser.onclick = function() {
+		modal.style.display = "none";
+	}*/
+	var modal = document.getElementById("moreInfoModal").style.display = "none";
 }
 
 
@@ -47,16 +63,17 @@ function showPosition(position) {
 function showError(error) {
   switch(error.code) {
     case error.PERMISSION_DENIED:
-      x.innerHTML = "User denied the request for Geolocation."
+      alert("User denied the request for Geolocation.");
       break;
     case error.POSITION_UNAVAILABLE:
-      x.innerHTML = "Location information is unavailable."
+      alert("Location information is unavailable.")
       break;
     case error.TIMEOUT:
-      x.innerHTML = "The request to get user location timed out."
+      alert("The request to get user location timed out.")
       break;
     case error.UNKNOWN_ERROR:
-      x.innerHTML = "An unknown error occurred."
+      alert("An unknown error occurred.")
       break;
   }
 }
+

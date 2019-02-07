@@ -47,8 +47,8 @@
 .test {
 	border-style: solid;
 	border-width: 1px;
-}
-*/
+}*/
+
 
 .bar1, .bar2, .bar3 {
   width: 30px;
@@ -82,6 +82,18 @@
 .button {
 	border-color: transparent;
 }
+
+.moreInfoModal {
+	display: none;
+	position:fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: #FFF;
+}
 /*Begin id stuff*/
 
 #nameline{
@@ -102,7 +114,6 @@
   padding-top:10px;
   padding-bottom:-10px;
   color: #294052;
-  margin: 0 auto;
   text-align:center;
   font-size:24px;
   cursor: pointer;
@@ -111,6 +122,21 @@
   width: 100%;
   background-color: #FFF;
   height: 7%;
+}
+
+#moreInfoBar {
+  padding-top:10px;
+  margin-bottom: 5%;
+  color: #294052;
+  margin: 0 auto;
+  text-align:center;
+  font-size:24px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 7%;
+  background-color: #FFF;
 }
 
 #creatorImg {
@@ -148,10 +174,16 @@
 
 #filterBar {
 	display:inline-block;
-	width: 50%;
+	width: 70%;
 	position: relative;
 	text-align: center;
 	margin: 0 auto;
+}
+
+#nameBar {
+	display:inline-block;
+	position: relative;
+	text-align: center;
 }
 
 #locationBar {
@@ -168,6 +200,7 @@
 	max-height: 100px;
 	font-size: 1.25em;
 	border-radius: 10px 10px 10px 10px;
+	width:80%;
 }
 
 #filterSubmit{
@@ -214,7 +247,7 @@
 	margin-top: 5%;
 	margin-bottom: 5%;
 	border-style: solid;
-	
+	cursor: pointer;
 }
 
 #mobility {
@@ -253,7 +286,7 @@
 
 #pullOutMenu{
 	height: 100%;
-	max-width: 350px;
+	//max-width: 350px;
 	width: 0;
 	position: fixed;
 	z-index: 1;
@@ -279,7 +312,60 @@
 	height:70%;
 }
 
+#additionalImg{
+	width: 20%;
+	height: 25%;
+	display: inline-block;
+	margin-top: 25%;
+	margin-left: 5%;
+	object-fit: cover;
+	margin-bottom: 5%;
+	border-style: solid;
+}
 
+#moreContact {
+	display: inline-block;
+	overflow: hidden;
+	height: 10%;
+	margin-bottom: 5%;
+	margin-left: 5%;
+	font-family: "Raleway";
+}
+
+#moreContact .h3 {
+	font-size: 1.2em;
+}
+
+#moreImg{
+	display:inline;
+	overflow: hidden;
+	background-size: cover;
+	width: 10%;
+	height: 10%;
+}
+
+#moreBreaker {
+	text-align: center;
+}
+
+#moreName {
+	display: inline-flex;
+	margin-top: 3%;
+	font-family: "Raleway";
+}
+
+#morePictures img {
+	max-width: 30%;
+	max-height: 30%;
+	border-style: solid;
+	display: inline;
+	
+}
+
+#morePictures th {
+	width: 33%;
+	min-width: 33%;
+}
 
 /* Begin specific type stuff */
 video {
@@ -306,10 +392,16 @@ input {
 	text-align: center;
 	font-family: 'Raleway';
 }
-
+th {
+	display: inline;
+	width: 200px;
+	height:200px;
+	zoom: 1;         /* for IE */
+	display*:inline; /* for IE */
+}
 /* Media controls as needed */
 
-@media only screen and (max-height: 1200px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {  
 	#mainImg{
 	max-width: 700px;
 	max-height: 700px;
@@ -320,6 +412,9 @@ input {
 	border-style: solid;
 }
 
+	#moreImg {
+		margin-top: 15%;
+	}
 
 	#mobility {
 		padding-bottom: 2%;
@@ -329,6 +424,18 @@ input {
 	}
 }
 
+@media only screen and (min-width : 1200px) {
+	#moreInformation {
+		margin-top: 5%;
+	}
+}
+/*
+
+@media only screen and (min-width: 1080px) {
+	#moreInformation {
+		margin-top: 5%;
+	}
+}*/
 /*
 //small phones
 @media only screen and (max-height: 900px) {
