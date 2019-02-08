@@ -11,6 +11,7 @@
 
 .button {
   color: #DE5A51;
+  /*
   border: solid 2px #FFF;
   border-radius: 50%;
   display: inline-block;
@@ -18,7 +19,7 @@
   height: 50px;
   text-align: center;
   font-size: 24px;
-  line-height: 48px;
+  line-height: 48px;*/
 }
 
 .center {
@@ -149,7 +150,9 @@
 	width: 70%;
 	position: relative;
 	text-align: center;
-	margin: 0 auto;
+	/*margin: 0 auto;*/
+	margin-top:2%;
+
 }
 
 #nameBar {
@@ -159,10 +162,11 @@
 }
 
 #locationBar {
+	color: #000;
 	display: inline-block;
 	text-align: right;
 	margin-right: 1%;
-	float:right;
+	/*float:right;*/
 	background: transparent;
 	border-color: transparent;
 }
@@ -172,7 +176,7 @@
 	max-height: 100px;
 	font-size: 1.25em;
 	border-radius: 10px 10px 10px 10px;
-	width:80%;
+	width:75%;
 }
 
 #filterSubmit{
@@ -247,7 +251,7 @@
 	display: inline-block;
 	float: right;
 	font-size: 2em;
-	margin-right: 2%
+	margin-right: 5%
 }
 
 #save {
