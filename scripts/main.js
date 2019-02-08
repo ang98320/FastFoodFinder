@@ -18,13 +18,13 @@ var modalCloser = document.getElementById("modalClose");
 function openNav() {
 	if (navState == 0) {
 		document.getElementById("pullOutMenu").style.width = "33%";
-		document.getElementById("pushField").style.marginLeft = "33%";
+		//document.getElementById("pushField").style.marginLeft = "33%";
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 		navState++;
 	}
 	else {
 		document.getElementById("pullOutMenu").style.width = "0";
-		document.getElementById("pushField").style.marginLeft = "0";
+		//document.getElementById("pushField").style.marginLeft = "0";
 		document.body.style.backgroundColor = "white";
 		navState--;
 	}
