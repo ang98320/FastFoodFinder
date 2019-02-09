@@ -18,19 +18,19 @@
 	<a name="foods">
 		<div id="pushField">
 		<div id="links">
-		    <a href="img/placeholder.jpg" title="Banana" data-gallery>
+		    <a href="img/placeholder.jpg" title="Banana">
 		    </a>
-		    <a href="img/placeholder.jpg" title="Apple" data-gallery>
+		    <a href="img/placeholder.jpg" title="Apple">
 		    </a>
-		    <a href="img/placeholder.jpg" title="Orange" data-gallery>
+		    <a href="img/placeholder.jpg" title="Orange">
 		    </a>
 		</div>
 		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
-	    <div class="slides"></div>
+	    <div class="slides" onclick="openModal()"></div>
 	    <a class="prev">‹</a>
 	    <a class="next">›</a>
-	    <a class="play-pause"></a>
-	    <ol class="indicator"></ol>
+	    <!--<a class="play-pause"></a>
+	    <ol class="indicator"></ol>-->
 			<div id="pullOutMenu" class="pullOut">
 				<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
 				<img src="img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
@@ -58,7 +58,7 @@
 					<!-- Go back one image -->
 					<button id="oneLeft" onClick=()> <i class="fas fa-arrow-left fa"></i> </button>
 					<!-- Save image to list -->
-					<button id="save" onclick="openModal()"> <i class="far fa-heart"></i> </button>
+					<button id="save" onclick="()"> <i class="far fa-heart"></i> </button>
 					<!-- Go to next image -->
 					<button id="oneRight" onClick=()> <i class="fas fa-arrow-right fa"></i> </button>
 				</div>
@@ -119,6 +119,8 @@ blueimp.Gallery(
         carousel: true,
 				startSlideshow: false,
 				fullScreen: false,
+				toggleControlsOnSlideClick: false,
+				toggleControlsOnSlideClick: false,
     }
 );
 </script>

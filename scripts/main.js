@@ -35,7 +35,8 @@ function openModal() {
 }
 
 function closeModal() {
-	var modal = document.getElementById("moreInfoModal").style.display = "none";
+	//var modal = document.getElementById("moreInfoModal").style.display = "none";
+	document.getElementById("moreInfoModal").style.display = "none";
 }
 
 
