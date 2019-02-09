@@ -2,7 +2,7 @@ $(document).ready(function() {
 	getLocation();
 });
 
-// INIT VARS 
+// INIT VARS
 
 var imgArray = [];
 var currLat;
@@ -17,8 +17,8 @@ var modalCloser = document.getElementById("modalClose");
 
 function openNav() {
 	if (navState == 0) {
-		document.getElementById("pullOutMenu").style.width = "33%";
-		document.getElementById("pushField").style.marginLeft = "33%";
+		document.getElementById("pullOutMenu").style.width = "65%";
+		document.getElementById("pushField").style.marginLeft = "65%";
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 		navState++;
 	}
@@ -44,7 +44,7 @@ function closeModal() {
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else { 
+  } else {
     alert("Geolocation is not supported by this browser.");
   }
 }
@@ -70,4 +70,3 @@ function showError(error) {
       break;
   }
 }
-

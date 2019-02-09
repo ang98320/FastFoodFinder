@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-
+<!-- https://github.com/blueimp/Gallery -->
 <head>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<title> FastEats. Food, faster. </title>
 	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/blueimp-gallery.min.css">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="scripts/main.js"> </script>
 	<meta charset="utf-8">
@@ -15,7 +16,7 @@
 <body id="background">
 
 <div id="moreInfoModal" class="moreInfoModal test">
-	
+
 	<div class="container-fluid test" id="moreInfoBar">
 		<div class="test" id="menu">
 				<a onclick=() class="button">
@@ -29,11 +30,11 @@
 				</a>
 		</div>
 	</div>
-	
+
 	<div class="test" id="moreInformation">
 		<img src="img/placeholder.jpg" id="additionalImg">
 		<!--<div id="moreImg" class="test">
-			
+
 		</div>-->
 		<div id="moreContact" class="test">
 			<h3 class="contactClass"> Fill Name Here </h3>
@@ -58,64 +59,75 @@
 	</table>
 </div>
 
-<div id="pullOutMenu" class="pullOut">
-	<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
-	<img src="img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
-	<a href="profile.html"> Profile </a>
-	<a href="saved.html"> Saved </a>
-	<a href="something.html"> Something </a>
-</div>
-<div id="padding"> </div>
-<div id="pushField">
-<a name="menuBars">
-    <div class="container-fluid test" id="socialBar">
-		<span onclick="openNav()" class="row" id="menu">&#9776;</span>
-		<div class="test" id="filterBar">
-			<form autocomplete="off" action=()>
-				<input class="center" type="text" id="filter" placeholder="Filters">
-				<button id="filterSubmit">
-				<a href="addfilter.html" class="button">
-					<i class="far fa-plus-square" ></i>
-				</a>
-				</button>
-			</form>
-		</div> 
-		<div class="test" id="locationBar">
-				<a href="location.html" class="button">
-					<i class="fas fa-map-marker-alt fa"></i>
-				</a>
+<!-- <div id="padding"> </div> -->
+<a name="foods">
+	<div id="pushField">
+	<div id="links">
+	    <a href="img/placeholder.jpg" title="Banana">
+	    </a>
+	    <a href="img/placeholder.jpg" title="Apple">
+	    </a>
+	    <a href="img/placeholder.jpg" title="Orange">
+	    </a>
+	</div>
+	<div id="blueimp-gallery-carousel" class="blueimp-gallery">
+    <div class="slides"></div>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+		<div id="pullOutMenu" class="pullOut">
+			<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
+			<img src="img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
+			<a href="profile.html"> Profile </a>
+			<a href="saved.html"> Saved </a>
+			<a href="something.html"> Something </a>
 		</div>
-	</div>
-</a>
-
-<a name="navBar">
-	<div class="container-fluid test" id="navigation">
-		<!-- On click take user to first image (add animations?) -->
-		<button id="firstImage" onClick=()> <i class="fas fa-caret-square-left fa"></i> </button>
-		<!-- On click, navigate user to location (potentially link user to auto populated G Maps) -->
-		<button id="navigateMe" onclick=()> <i class="far fa-map-marked-alt fa"></i> </button>
-		<!-- On click, take user to last viewed image -->
-		<button id="lastImage" onClick=()> <i class="fas fa-caret-square-right fa"></i> </button>
-	</div>
-</a>
-
-<a name="mainImage">
-	<div class="" id="foodImg">
-		<!-- On click, generate div that has menu info -->	
-		<img src="img/placeholder.jpg" alt="Food Image Should Be Here! Contact Dev!" id="mainImg" class="test" onclick="openModal()">
-	</div>
-</a>
-
-<a name="mobilitiyBar">
-	<div class=""container-fluid test" id="mobility">
-		<!-- Go back one image -->
-		<button id="oneLeft" onClick=()> <i class="fas fa-arrow-left fa"></i> </button>
-		<!-- Save image to list -->
-		<button id="save" onClick=()> <i class="far fa-heart"></i> </button>
-		<!-- Go to next image -->
-		<button id="oneRight" onClick=()> <i class="fas fa-arrow-right fa"></i> </button>
-	</div>
-</a>
-
+		<a name="menuBars">
+		    <div class="container-fluid test" id="socialBar">
+				<span onclick="openNav()" class="row" id="menu">&#9776;</span>
+				<div class="test" id="filterBar">
+					<form autocomplete="off" action=()>
+						<input class="center" type="text" id="filter" placeholder="Filters">
+						<!--
+						<button id="filterSubmit">
+						<a href="addfilter.html" class="button">
+							<i class="far fa-plus-square" ></i>
+						</a>
+					</button> -->
+					</form>
+				</div>
+				<div class="test" id="locationBar">
+						<a href="location.html" class="button">
+							<i class="fas fa-map-marker-alt fa"></i>
+						</a>
+				</div>
+			</div>
+		</a>
+		<a name="mobilitiyBar">
+			<div class="container-fluid test" id="mobility">
+				<!-- Go back one image -->
+				<button id="oneLeft" onClick=()> <i class="fas fa-arrow-left fa"></i> </button>
+				<!-- Save image to list -->
+				<button id="save" onClick=()> <i class="far fa-heart"></i> </button>
+				<!-- Go to next image -->
+				<button id="oneRight" onClick=()> <i class="fas fa-arrow-right fa"></i> </button>
+			</div>
+		</a>
 </div>
+</a>
+</div>
+
+<script src="scripts/blueimp-gallery.min.js"></script>
+<script>
+blueimp.Gallery(
+    document.getElementById('links').getElementsByTagName('a'),
+    {
+        container: '#blueimp-gallery-carousel',
+        carousel: true,
+				startSlideshow: false,
+				fullScreen: false
+    }
+);
+</script>
 </body>
