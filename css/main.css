@@ -80,6 +80,7 @@ body {
 }
 
 .moreInfoModal {
+  z-index: 999998;
 	display: none;
 	position:fixed;
 	z-index: 1;
@@ -112,7 +113,7 @@ body {
 }
 
 #socialBar {
-  z-index: 999998;
+  z-index: 0;
   position: relative;
   padding-top:10px;
   padding-bottom:-10px;
@@ -128,6 +129,7 @@ body {
 }
 
 #moreInfoBar {
+  z-index: 999999;
   padding-top:10px;
   margin-bottom: 5%;
   color: #294052;
@@ -349,6 +351,7 @@ body {
 }
 
 #morePictures th {
+  z-index: 999999;
 	width: 33%;
 	min-width: 33%;
 }

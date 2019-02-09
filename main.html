@@ -14,17 +14,18 @@
 </head>
 
 <body id="background">
+
 	<a name="foods">
 		<div id="pushField">
 		<div id="links">
-		    <a href="img/placeholder.jpg" title="Banana">
+		    <a href="img/placeholder.jpg" title="Banana" data-gallery>
 		    </a>
-		    <a href="img/placeholder.jpg" title="Apple">
+		    <a href="img/placeholder.jpg" title="Apple" data-gallery>
 		    </a>
-		    <a href="img/placeholder.jpg" title="Orange">
+		    <a href="img/placeholder.jpg" title="Orange" data-gallery>
 		    </a>
 		</div>
-		<div id="blueimp-gallery-carousel" class="blueimp-gallery">
+		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
 	    <div class="slides"></div>
 	    <a class="prev">‹</a>
 	    <a class="next">›</a>
@@ -39,17 +40,17 @@
 			</div>
 			<a name="menuBars">
 			    <div class="container-fluid test" id="socialBar">
-					<span onclick="openNav()" class="row" id="menu">&#9776;</span>
-					<div class="test" id="filterBar">
-						<form autocomplete="off" action=()>
-							<input class="center" type="text" id="filter" placeholder="Filters">
-						</form>
-					</div>
-					<div class="test" id="locationBar">
-							<a href="location.html" class="button">
-								<i class="fas fa-map-marker-alt fa"></i>
-							</a>
-					</div>
+						<span onclick="openNav()" class="row" id="menu">&#9776;</span>
+						<div class="test" id="filterBar">
+							<form autocomplete="off" action=()>
+								<input class="center" type="text" id="filter" placeholder="Filters">
+							</form>
+						</div>
+						<div class="test" id="locationBar">
+								<a href="location.html" class="button">
+									<i class="fas fa-map-marker-alt fa"></i>
+								</a>
+						</div>
 				</div>
 			</a>
 			<a name="mobilitiyBar">
@@ -57,11 +58,54 @@
 					<!-- Go back one image -->
 					<button id="oneLeft" onClick=()> <i class="fas fa-arrow-left fa"></i> </button>
 					<!-- Save image to list -->
-					<button id="save" onClick=()> <i class="far fa-heart"></i> </button>
+					<button id="save" onclick="openModal()"> <i class="far fa-heart"></i> </button>
 					<!-- Go to next image -->
 					<button id="oneRight" onClick=()> <i class="fas fa-arrow-right fa"></i> </button>
 				</div>
 			</a>
+			<div id="moreInfoModal" class="moreInfoModal test">
+
+			<div class="container-fluid test" id="moreInfoBar">
+				<div class="test" id="menu">
+						<a onclick=() class="button">
+							<i class="far fa-heart fa"></i>
+						</a>
+				</div>
+					<h4 id="moreName"> Replace Me </h4>
+				<div class="test" id="locationBar">
+						<a onclick="closeModal()" class="button" id="modalClose">
+							<i class="far fa-times-circle"></i>
+						</a>
+				</div>
+			</div>
+
+			<div class="test" id="moreInformation">
+				<img src="img/placeholder.jpg" id="additionalImg">
+				<!--<div id="moreImg" class="test">
+
+				</div>-->
+				<div id="moreContact" class="test">
+					<h3 class="contactClass"> Fill Name Here </h3>
+					<h3 class="contactClass"> Phone Number Here </h3>
+					<h3 class="contactClass"> ETA </h3>
+				</div>
+			</div>
+			<h4 id="moreBreaker"> Other Items from _____ </h4>
+			<table id="morePictures">
+				<tr>
+					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+					<!-- Fill images here as needed -->
+				</tr>
+				<tr>
+					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+					<!-- Fill images here as needed -->
+				</tr>
+			</table>
+		</div>
 	</div>
 	</a>
 </div>
@@ -74,7 +118,7 @@ blueimp.Gallery(
         container: '#blueimp-gallery-carousel',
         carousel: true,
 				startSlideshow: false,
-				fullScreen: false
+				fullScreen: false,
     }
 );
 </script>
