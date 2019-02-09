@@ -172,8 +172,6 @@ body {
 
 #locationBar {
 	display: inline-block;
-	text-align: right;
-	margin-right: 1%;
 	float:right;
 	background: transparent;
 	border-color: transparent;
