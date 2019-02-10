@@ -14,15 +14,14 @@
 </head>
 
 <body id="background">
-
 	<a name="foods">
 		<div id="pushField">
 		<div id="links">
-		    <a href="img/placeholder.jpg" title="Banana">
+		    <a href="img/placeholder.jpg" title="Burger">
 		    </a>
-		    <a href="img/placeholder.jpg" title="Apple">
+		    <a href="img/sushi.jpg" title="Sushi">
 		    </a>
-		    <a href="img/placeholder.jpg" title="Orange">
+		    <a href="img/ramen.jpg" title="Ramen">
 		    </a>
 		</div>
 		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
@@ -34,9 +33,11 @@
 			<div id="pullOutMenu" class="pullOut">
 				<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
 				<img src="img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
-				<a href="profile.html"> Profile </a>
-				<a href="saved.html"> Saved </a>
-				<a href="something.html"> Something </a>
+				<a href="main.html">Main</a>
+				<a href="main2.html">Main2</a>
+				<!--<a href="profile.html">Profile</a>-->
+				<a href="saved.html">Saved</a>
+				<a href="settings.html">Settings</a>
 			</div>
 			<a name="menuBars">
 			    <div class="container-fluid test" id="socialBar">
@@ -71,7 +72,7 @@
 							<i class="far fa-heart fa"></i>
 						</a>
 				</div>
-					<h4 id="moreName"> Replace Me </h4>
+					<h4 id="moreName">Resturant Name</h4>
 				<div class="test" id="locationBar">
 						<a onclick="closeModal()" class="button" id="modalClose">
 							<i class="far fa-times-circle"></i>
@@ -79,32 +80,41 @@
 				</div>
 			</div>
 
-			<div class="test" id="moreInformation">
-				<img src="img/placeholder.jpg" id="additionalImg">
-				<!--<div id="moreImg" class="test">
+			<div id="morePicturesScroll" style="width: 100%; height: 100%; overflow: scroll">
+				<div class="test" id="moreInformation">
+					<img src="img/placeholder.jpg" id="additionalImg">
+					<!--<div id="moreImg" class="test">
 
-				</div>-->
-				<div id="moreContact" class="test">
-					<h3 class="contactClass"> Fill Name Here </h3>
-					<h3 class="contactClass"> Phone Number Here </h3>
-					<h3 class="contactClass"> ETA </h3>
+					</div>-->
+					<div id="moreContact" class="moreInfo">
+						<h3 class="contactClass">Name of Food</h3>
+						<h3 class="contactClass">Phone Number Here</h3>
+						<h3 class="contactClass">ETA</h3>
+					</div>
 				</div>
+				<h4 id="moreBreaker"> Other Items from _____ </h4>
+
+					<table id="morePictures" style="width: 100%; margin: 0px 0px;">
+						<tr>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<!-- Fill images here as needed -->
+						</tr>
+						<tr>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<!-- Fill images here as needed -->
+						</tr>
+						<tr>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							<!-- Fill images here as needed -->
+						</tr>
+					</table>
 			</div>
-			<h4 id="moreBreaker"> Other Items from _____ </h4>
-			<table id="morePictures">
-				<tr>
-					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
-					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
-					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
-					<!-- Fill images here as needed -->
-				</tr>
-				<tr>
-					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
-					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
-					<th><img class="instaStyle" src="img/placeholder.jpg"></th>
-					<!-- Fill images here as needed -->
-				</tr>
-			</table>
 		</div>
 	</div>
 	</a>

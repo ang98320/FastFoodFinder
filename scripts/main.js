@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	getLocation();
+	//getLocation();
 });
 
 // INIT VARS
@@ -18,7 +18,7 @@ var modalCloser = document.getElementById("modalClose");
 function openNav() {
 	if (navState == 0) {
 		document.getElementById("pullOutMenu").style.width = "65%";
-		document.getElementById("pushField").style.marginLeft = "65%";
+		//document.getElementById("pushField").style.marginLeft = "65%";
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 		navState++;
 	}
@@ -32,6 +32,7 @@ function openNav() {
 
 function openModal() {
 	document.getElementById("moreInfoModal").style.display = "block";
+	console.log("openModal");
 }
 
 function closeModal() {
@@ -39,6 +40,15 @@ function closeModal() {
 	document.getElementById("moreInfoModal").style.display = "none";
 }
 
+function openModal2() {
+	document.getElementById("main-info").style.display = "block";
+	console.log("openModal");
+}
+
+function closeModal2() {
+	//var modal = document.getElementById("moreInfoModal").style.display = "none";
+	document.getElementById("main-info").style.display = "none";
+}
 
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
 

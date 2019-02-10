@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- https://github.com/blueimp/Gallery -->
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<title> FastEats. Food, faster. </title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/blueimp-gallery.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="scripts/main.js"> </script>
+	<meta charset="utf-8">
+</head>
+
+<body id="background">
+	<div id="pushField">
+		<div id="saved-container" class="container-fluid test">
+			<div id="foods">
+					<a href="img/placeholder.jpg" title="Burger">
+					</a>
+					<a href="img/sushi.jpg" title="Sushi">
+					</a>
+					<a href="img/ramen.jpg" title="Ramen">
+					</a>
+			</div>
+			<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
+				<div class="slides" onclick="openModal2()"></div>
+				<a class="prev">‹</a>
+				<a class="next">›</a>
+			</div>
+			<div id="saved-header">
+				<div id="pullOutMenu" class="pull-out">
+					<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
+					<img src="img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
+					<a href="main.html">Main</a>
+					<a href="main2.html">Main2</a>
+					<!--<a href="profile.html">Profile</a>-->
+					<a href="saved.html">Saved</a>
+					<a href="settings.html">Settings</a>
+				</div>
+				<div class="test" id="main-filter">
+					<form autocomplete="off" action=()>
+						<input class="center" type="text" id="filter-bar" placeholder="Filters">
+					</form>
+				</div>
+				<span onclick="openNav()" class="row" id="saved-menu-button">&#9776;</span>
+				<i id="main-location-button" onclick="" class="fas fa-map-marker-alt fa"></i>
+				<!--<span onclick="openNav()" class="material-icons" id="main-location-button"style="font-size:100px;">location_off</span>-->
+			</div>
+			<div id="main-body">
+			</div>
+			<div id="main-info">
+				<div id="saved-header">
+					<i id="saved-menu-button" onclick="" class="far fa-heart fa"></i>
+					<i id="main-location-button" onclick="closeModal2()" class="far fa-times-circle"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script src="scripts/blueimp-gallery.min.js"></script>
+<script>
+blueimp.Gallery(
+    document.getElementById('foods').getElementsByTagName('a'),
+    {
+        container: '#blueimp-gallery-carousel',
+        carousel: true,
+				startSlideshow: false,
+				toggleControlsOnSlideClick: false,
+				toggleControlsOnSlideClick: false,
+    }
+);
+</script>
+</body>
