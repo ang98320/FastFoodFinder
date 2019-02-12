@@ -1,4 +1,9 @@
 /*Begin class stuff */
+body {
+  margin: 0;
+  height: 100%;
+}
+
 .star-bright, hr.star-dark {
   margin: 40px auto 30px;
   padding: 0;
@@ -50,6 +55,14 @@
 	border-width: 1px;
 }*/
 
+.pull-out a {
+	padding: 10% 10% 10% 10%;
+	text-decoration: none;
+	font-size: 200%;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
 
 .pullOut a {
 	padding: 8px 8px 8px 32px;
@@ -77,6 +90,7 @@
 }
 
 .moreInfoModal {
+  z-index: 999999;
 	display: none;
 	position:fixed;
 	z-index: 1;
@@ -84,10 +98,175 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto;
+	overflow: hidden;
 	background-color: #FFF;
+  float: left;
+  clear: none;
 }
 /*Begin id stuff*/
+/*
+#menu {
+  width: 65%;
+  height: 100%;
+  background-color: white;
+}
+
+#closeMenu {
+  width: 30%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+*/
+#main-info {
+  z-index: 999999;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: none;
+}
+
+#saved-food img {
+	max-width: calc(100% / 3.02);
+	max-height: calc(100% / 3.02);
+	border-style: none;
+	display: inline;
+}
+
+#saved-food th {
+  z-index: 999999;
+	width: 10%;
+	min-width: 10%;
+  border-style: none;
+	display: inline;
+}
+
+#saved-label {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  font-size: 250%;
+}
+
+#saved-menu-button {
+  position: absolute;
+  width: 15%;
+  height: 100%;
+  font-size: 300%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*background-color: blue;*/
+}
+
+
+#main-location-button {
+  float: right;
+  position: relative;
+  width: 15%;
+  height: 100%;
+  font-size: 300%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cccccc;
+  /*background-color: blue;*/
+}
+
+#main-info-other img {
+	max-width: calc(100% / 3.02);
+	max-height: calc(100% / 3.02);
+	border-style: none;
+	display: inline;
+}
+
+#main-info-other th {
+  z-index: 999999;
+	width: 10%;
+	min-width: 10%;
+  border-style: none;
+	display: inline;
+}
+
+#saved-container {
+  z-index: 999999;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+}
+
+#saved-header {
+  z-index: 999999;
+  position: absolute;
+  width: 100%;
+  height: 10%;
+  background-color: #FFFFFF;
+}
+
+#saved-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  background-color: #F5F5F5;
+}
+
+#main-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  background-color: #F5F5F5;
+}
+
+#main-info-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  background-color: #F5F5F5;
+  overflow: scroll
+}
+
+#main-info-top {
+  width: 100%;
+  height: 30%;
+}
+
+#main-info-bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+}
+
+#main-info-img {
+  position: absolute;
+  max-width: 30%;
+  max-height: 30%;
+  width: auto;
+  height: auto;
+  padding: 8%;
+}
+
+#saved-body-info-text {
+  position: absolute;
+  right: 0;
+  width: 60%;
+  height: 30%;
+  padding-top: 8%;
+}
+
+#links {
+  margin-top: 15%;
+  background-color: red;
+}
+
+#foods {
+  margin-top: 0%;
+  background-color: black;
+}
 
 #nameline{
   margin-top:-50px;
@@ -104,6 +283,8 @@
 }
 
 #socialBar {
+  z-index: 0;
+  position: relative;
   padding-top:10px;
   padding-bottom:-10px;
   color: #294052;
@@ -113,11 +294,12 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #FFF;
-  height: 7%;
+  background-color: white;
+  height: 10%;
 }
 
 #moreInfoBar {
+  z-index: 999999;
   padding-top:10px;
   margin-bottom: 5%;
   color: #294052;
@@ -138,6 +320,7 @@
 }
 
 #menu {
+  margin-left: 2%;
 	padding-left: 1%;
 	display: inline-block;
 	float: left;
@@ -164,9 +347,13 @@
 #locationBar {
 	color: #000;
 	display: inline-block;
+<<<<<<< HEAD
 	text-align: right;
 	margin-right: 1%;
 	/*float:right;*/
+=======
+	float:right;
+>>>>>>> jim
 	background: transparent;
 	border-color: transparent;
 }
@@ -176,7 +363,11 @@
 	max-height: 100px;
 	font-size: 1.25em;
 	border-radius: 10px 10px 10px 10px;
+<<<<<<< HEAD
 	width:75%;
+=======
+	width: 90%;
+>>>>>>> jim
 }
 
 #filterSubmit{
@@ -195,7 +386,7 @@
 #navigateMe {
 	display: inline-block;
 	margin-left: auto;
-	font-size: 2em;	
+	font-size: 2em;
 	text-align: center;
 }
 
@@ -213,17 +404,17 @@
 }
 
 #mainImg{
-	background: 50% 50% no-repeat; 
-	width: 75%;
-	height: 75%;
+  position: fixed;
+  margin-top: 20%;
+	background: 50% 50% no-repeat;
+	width: auto;
+	height: auto;
 	max-width: 800px;
 	max-height: 800px;
 	margin: auto auto;
 	display: block;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	border-style: solid;
 	cursor: pointer;
+  background-color: black;
 }
 
 #mobility {
@@ -231,8 +422,8 @@
 	padding-bottom: 5%;
 	height:10%;
 	position: fixed;
-    width: 100%;
-    bottom: 0;
+  width: 100%;
+  bottom: 0;
 	background-color: #FFF;
 }
 
@@ -245,6 +436,7 @@
 	font-size: 2em;
 	display: inline-block
 	padding-left: 5%;
+  margin-left: 2%;
 }
 
 #oneRight {
@@ -262,21 +454,25 @@
 
 #pullOutMenu{
 	height: 100%;
-	//max-width: 350px;
+	width: 100%;
 	width: 0;
 	position: fixed;
-	z-index: 1;
+	z-index: 999999;
 	top: 0;
 	left: 0;
-	background-color: #111;
+	background-color: white;
 	overflow-x: hidden;
 	transition: 0.5s;
-	padding-top: 60px;
+	padding-top: 0px;
+  opacity: 50%;
 }
 
 #userImg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 	border-radius: 50%;
-	width: 33%;
+	width: 80%;
 	background-color: transparent;
 }
 
@@ -285,7 +481,7 @@
 }
 
 #foodImg {
-	height:70%;
+	height:100%;
 }
 
 #additionalImg{
@@ -331,17 +527,39 @@
 }
 
 #morePictures img {
-	max-width: 30%;
-	max-height: 30%;
-	border-style: solid;
+	max-width: calc(100% / 3.1);
+	max-height: calc(100% / 3.1);
+	border-style: none;
 	display: inline;
-	
 }
 
 #morePictures th {
-	width: 33%;
-	min-width: 33%;
+  z-index: 999999;
+	width: 10%;
+	min-width: 10%;
+  border-style: none;
+	display: inline;
 }
+
+#main-filter {
+  position: absolute;
+	width: 80%;
+  height: 100%;
+	text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#filter-bar {
+	height: 100%;
+	font-size: 250%;
+	border-radius: 10px 10px 10px 10px;
+	width: 80%;
+}
+
 
 /* Begin specific type stuff */
 video {
@@ -377,15 +595,14 @@ th {
 }
 /* Media controls as needed */
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {  
+@media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
 	#mainImg{
-	max-width: 700px;
-	max-height: 700px;
-	margin: auto auto;
+	width: 100%;
+	max-height: 80%;
 	display: block;
-	margin-top: 5%;
-	margin-bottom: 5%;
-	border-style: solid;
+	margin-top: 15%;
+	margin-bottom: 0%;
+  background-color: black;
 }
 
 	#moreImg {
@@ -393,10 +610,12 @@ th {
 	}
 
 	#mobility {
-		padding-bottom: 2%;
+		padding-bottom: 5%;
 		position: fixed;
 		width: 100%;
+    height: 10%
 		bottom: 0;
+    background-color: white;
 	}
 }
 
@@ -418,7 +637,7 @@ th {
 	#padding {
 		padding-top: 20%;
 	}
-	
+
 	#mainImg {
 		max-height: 600px;
 		max-width: 600px;

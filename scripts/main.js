@@ -1,8 +1,8 @@
 $(document).ready(function() {
-	getLocation();
+	//getLocation();
 });
 
-// INIT VARS 
+// INIT VARS
 
 var imgArray = [];
 var currLat;
@@ -17,8 +17,13 @@ var modalCloser = document.getElementById("modalClose");
 
 function openNav() {
 	if (navState == 0) {
+<<<<<<< HEAD
 		document.getElementById("pullOutMenu").style.width = "33%";
 		//document.getElementById("pushField").style.marginLeft = "33%";
+=======
+		document.getElementById("pullOutMenu").style.width = "65%";
+		//document.getElementById("pushField").style.marginLeft = "65%";
+>>>>>>> jim
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 		navState++;
 	}
@@ -32,19 +37,30 @@ function openNav() {
 
 function openModal() {
 	document.getElementById("moreInfoModal").style.display = "block";
+	console.log("openModal");
 }
 
 function closeModal() {
-	var modal = document.getElementById("moreInfoModal").style.display = "none";
+	//var modal = document.getElementById("moreInfoModal").style.display = "none";
+	document.getElementById("moreInfoModal").style.display = "none";
 }
 
+function openModal2() {
+	document.getElementById("main-info").style.display = "block";
+	console.log("openModal");
+}
+
+function closeModal2() {
+	//var modal = document.getElementById("moreInfoModal").style.display = "none";
+	document.getElementById("main-info").style.display = "none";
+}
 
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
 
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else { 
+  } else {
     alert("Geolocation is not supported by this browser.");
   }
 }
@@ -70,4 +86,3 @@ function showError(error) {
       break;
   }
 }
-
