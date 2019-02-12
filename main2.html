@@ -11,6 +11,7 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="scripts/main.js"> </script>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body id="background">
@@ -53,7 +54,43 @@
 			<div id="main-info">
 				<div id="saved-header">
 					<i id="saved-menu-button" onclick="" class="far fa-heart fa"></i>
+					<h1 id="saved-label">Resturant Name</h1>
 					<i id="main-location-button" onclick="closeModal2()" class="far fa-times-circle"></i>
+				</div>
+				<div id="main-info-container">
+					<div id="main-info-top">
+						<img id="main-info-img" src="img/placeholder.jpg">
+						<div id="saved-body-info-text">
+							<h1 id="">Food Name</h1>
+							<h1 id="">(123) 456-7890</h1>
+							<h1 id="">15 Minutes Away</h1>
+						</div>
+					</div>
+					<div id="main-info-bottom">
+						<h1 id="">Other Items From this Resturant:</h1>
+						<table id="main-info-other" style="width: 100%; margin: 0px 0px;">
+							<tr>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							</tr>
+							<tr>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							</tr>
+							<tr>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							</tr>
+							<tr>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+								<th><img class="instaStyle" src="img/placeholder.jpg"></th>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -67,6 +104,7 @@ blueimp.Gallery(
         container: '#blueimp-gallery-carousel',
         carousel: true,
 				startSlideshow: false,
+				fullScreen: false,
 				toggleControlsOnSlideClick: false,
 				toggleControlsOnSlideClick: false,
     }
