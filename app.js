@@ -7,6 +7,12 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
+var favicon = require('serve-favicon')
+var morgan = require('morgan')
+var methodOverride = require('method-override')
+var cookieParser = require('cookie-parser')
+var session = require('express-session')
+var serveStatic = require('serve-static')
 
 var main = require('./routes/main');
 //var add = require('./routes/add');
@@ -20,7 +26,7 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
-app.use(express.favicon());
+/*app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -31,12 +37,25 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
+/*
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
-}
+}*/
+
+app.use(morgan('dev'))
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(express.json());
+app.use(express.urlencoded());
+app.use(methodOverride('X-HTTP-Method-Override'))
+app.use(cookieParser())
+//app.use(app.router);
+app.use(session);
+//app.use(serveStatic('public/ftp', {'main': ['main.html', 'main.htm']}))
+
 
 // Add routes here
-app.get('/', main.view);
+//app.get('/', main.view);
+app.route('/main');
 //app.get('/add', add.addFriend);
 // Example route
 // app.get('/users', user.list);
