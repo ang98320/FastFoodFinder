@@ -19,6 +19,7 @@ var fs = require('fs');
 var main = require('./routes/main');
 var calls = require('./routes/calls');
 var saved = require('./routes/saved');
+var login = require('./routes/login');
 
 var client = yelp.client('rUjg38Ih2eukxKrKMf5VBeaf28E9xLeKPPs0xEafwEngFlZZ0DXsocjREqcU0NLg2Lat4a32LBvDpPPIHPLrfvhHe2GstgCh9vM1lOEKmGLkc20hxGCITNhS6AVjXHYx');
 
@@ -104,7 +105,8 @@ app.use(session({
 
 
 // Add routes here
-app.get('/', main.view);
+app.get('/', login.view);
+app.get('/main', main.view);
 app.get('/calls', calls.info);
 app.get('/saved', saved.view);
 //app.route('/main');
