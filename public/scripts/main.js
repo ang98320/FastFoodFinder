@@ -130,3 +130,15 @@ function save() {
 	console.log("Cookie written to");
 	console.log(savedFood);
 }
+
+function loadSaved() {
+	savedInfo = window.name;
+	for (i =0; i < savedInfo.length; i++) {
+		if (i % 3 ==0) {
+			$("#morePictures").append('<tr id=imageBar"' + i +'"> \n </tr>')
+		}
+		//do divide then floor * 3 to get correct location of tr
+		var barToPut = "imageBar" + (Math.floor(i/3) * 3);
+		$(barToPut).append('<img class="instaStyle" src="' + savedInfo[i].img +'" </th>');
+	}
+}
