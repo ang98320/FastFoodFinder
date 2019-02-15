@@ -1,7 +1,6 @@
 $(document).ready(function() {
 	//getLocation();
-	currIndex == -1;
-	goNext();
+	loadSaved();
 });
 
 // INIT VARS
@@ -12,7 +11,7 @@ var currLong;
 var navState = 0;
 var currIndex = 0;
 var savedFood = [];
-sessionStorage.setItem('savedFoods', []);
+
 document.cookie = [];
 //var modal = document.getElementById("moreInfoModal");
 var modalOpener = document.getElementById("mainImg");
@@ -124,18 +123,16 @@ function goBack() {
 
 function save() {
 	$.get("http://localhost:3000/calls", function(data) {
-		savedFood.push(JSON.stringify(data.restaurants[currIndex]));
-		//window.name = savedFood;
+		savedFood.push(data.restaurants[currIndex]);
+		window.name = savedFood;
 	});
 	console.log("Cookie written to");
 	console.log(savedFood);
-	sessionStorage.setItem('savedFoods', savedFood);
-	var print = sessionStorage.getItem("savedFoods")
-	console.log(print);
+	console.log(window.name);
 }
 
 function loadSaved() {
-	savedInfo = window.name;
+	var savedInfo = sessionStorage.getItem("savedFoods");
 	console.log(savedInfo);
 	for (i =0; i < savedInfo.length; i++) {
 		if (i % 3 ==0) {

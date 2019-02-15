@@ -50,10 +50,10 @@ client.search({
 		}
 	}
 	jsonTemp = jsonTemp.concat("", ']}');
-	fs.writeFile('response.json', jsonTemp, (err) => {
+	/*fs.writeFile('response.json', jsonTemp, (err) => {
 			if (err) throw err;
 			console.log("write successful!");
-		});
+		});*/
 }).catch(e => {
   console.log(e);
 });
