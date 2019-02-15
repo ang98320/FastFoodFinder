@@ -150,12 +150,14 @@ body {
 
 #saved-menu-button {
   position: absolute;
-  width: 15%;
-  height: 100%;
-  font-size: 300%;
+  width: 10%;
+  height: 40%;
+  font-size: 225%;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 18px;
+  left: 9px;
   /*background-color: blue;*/
 }
 
