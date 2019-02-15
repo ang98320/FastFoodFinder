@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="css/blueimp-gallery.min.css">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="scripts/main.js"> </script>
+	<!--<script src="scripts/zomato.js"> </script> -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -17,11 +18,11 @@
 	<!--<a name="foods">-->
 		<div id="pushField">
 		<div id="links">
-		    <a href="img/placeholder.jpg" title="Burger">
+		    <a href="img/placeholder.jpg" title="firstImage" id="firstScrollPic">
 		    </a>
-		    <a href="img/sushi.jpg" title="Sushi">
+		    <a href="img/sushi.jpg" title="secondImage" id="secondScrollPic">
 		    </a>
-		    <a href="img/ramen.jpg" title="Ramen">
+		    <a href="img/ramen.jpg" title="thirdImage" id="thirdScrollPic">
 		    </a>
 		</div>
 		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
@@ -57,18 +58,18 @@
 			<a name="mobilitiyBar">
 				<div class="container-fluid test" id="mobility">
 					<!-- Go back one image -->
-					<button id="oneLeft" onClick=()> <i class="fas fa-arrow-left fa"></i> </button>
+					<button id="oneLeft" onclick="()"> <i class="fas fa-arrow-left fa"></i> </button>
 					<!-- Save image to list -->
 					<button id="save" onclick="()"> <i class="far fa-heart"></i> </button>
 					<!-- Go to next image -->
-					<button id="oneRight" onClick=()> <i class="fas fa-arrow-right fa"></i> </button>
+					<button id="oneRight" onclick="nextFood()"> <i class="fas fa-arrow-right fa"></i> </button>
 				</div>
 			</a>
 			<div id="moreInfoModal" class="moreInfoModal test">
 
 			<div class="container-fluid test" id="moreInfoBar">
 				<div class="test" id="menu">
-						<a onclick=() class="button">
+						<a onclick="()" class="button">
 							<i class="far fa-heart fa"></i>
 						</a>
 				</div>
