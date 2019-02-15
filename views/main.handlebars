@@ -18,12 +18,14 @@
 	<!--<a name="foods">-->
 		<div id="pushField">
 		<div id="links">
-		    <a href="/img/placeholder.jpg" title="Burger" id="firstSlideshow">
+		    <a href="/img/placeholder.jpg" title="Burger" id="firstSlideshow" class="slideshowImg">
 		    </a>
+		    <!--
 		    <a href="/img/sushi.jpg" title="Sushi" id="secondSlideshow">
 		    </a>
 		    <a href="/img/ramen.jpg" title="Ramen" id="thirdSlideshow">
 		    </a>
+		-->
 		</div>
 		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
 	    <div class="slides" onclick="openModal()"></div>
@@ -60,7 +62,7 @@
 					<!-- Go back one image -->
 					<button id="oneLeft" onclick="goBack()"> <i class="fas fa-arrow-left fa"></i> </button>
 					<!-- Save image to list -->
-					<button id="save" onclick="()"> <i class="far fa-heart"></i> </button>
+					<button id="save" onclick="save()"> <i class="far fa-heart"></i> </button>
 					<!-- Go to next image -->
 					<button id="oneRight" onclick="goNext()"> <i class="fas fa-arrow-right fa"></i> </button>
 				</div>
@@ -88,9 +90,9 @@
 
 					</div>-->
 					<div id="moreContact" class="moreInfo">
-						<h3 class="contactClass">Name of Food</h3>
-						<h3 class="contactClass">Phone Number Here</h3>
-						<h3 class="contactClass">ETA</h3>
+						<h3 class="contactClass" id="handle">Name of Food</h3>
+						<h3 class="contactClass" id="phoneNumber">Phone Number Here</h3>
+						<h3 class="contactClass" id="navigate">ETA</h3>
 					</div>
 				</div>
 				<h4 id="moreBreaker"> Other Items from _____ </h4>

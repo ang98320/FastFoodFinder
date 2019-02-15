@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	//getLocation();
+	currIndex == -1;
+	goNext();
 });
 
 // INIT VARS
@@ -9,7 +11,9 @@ var currLat;
 var currLong;
 var navState = 0;
 var currIndex = 0;
+var savedFood = [];
 
+document.cookie = [];
 //var modal = document.getElementById("moreInfoModal");
 var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
@@ -87,26 +91,42 @@ function goNext() {
 	currIndex++;
 	console.log("click successful!");
 	$.get("http://localhost:3000/calls", function(data) {
-		console.log("AJAX successful");
-		console.log(data);
-		console.log(data.restaurants[currIndex].restName);
-		$("#firstSlideshow").attr("href", "beers.jpg");
-		$("#secondSlideshow").attr("href", "beers.jpg");
-		$("#thirdSlideshow").attr("href", "beers.jpg");
+		//console.log("AJAX successful");
+		//console.log(data);
+		//console.log(data.restaurants[currIndex].restName);
+		//$("#firstSlideshow").attr("href", "beers.jpg");
+		//$("#secondSlideshow").attr("href", "beers.jpg");
+		//$("#thirdSlideshow").attr("href", "beers.jpg");
+		//$("#links").remove(".slideshowImg");
+		$("#links").empty();
+		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
+		$("#phoneNumber").html(data.restaurants[currIndex].phone);
 		$("#moreName").html(data.restaurants[currIndex].restName);
 	});
 }
 
 function goBack() {
+	if (currIndex == 0) {
+		return;
+	}
 	currIndex--;
 	console.log("click successful!");
 	$.get("http://localhost:3000/calls", function(data) {
-		console.log("AJAX successful");
-		console.log(data);
-		console.log(data.restaurants[currIndex].restName);
-		$("#firstSlideshow").attr("href", "beers.jpg");
-		$("#secondSlideshow").attr("href", "beers.jpg");
-		$("#thirdSlideshow").attr("href", "beers.jpg");
+		//console.log("AJAX successful");
+		//console.log(data);
+		//console.log(data.restaurants[currIndex].restName);
+		$("#links").empty();
+		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
+		$("#phoneNumber").html(data.restaurants[currIndex].phone);
 		$("#moreName").html(data.restaurants[currIndex].restName);
 	});
+}
+
+function save() {
+	$.get("http://localhost:3000/calls", function(data) {
+		savedFood.push(data.restaurants[currIndex]);
+		document.cookie = savedFood;
+	});
+	console.log("Cookie written to");
+	console.log(savedFood);
 }
