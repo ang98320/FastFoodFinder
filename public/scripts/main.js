@@ -8,6 +8,7 @@ var imgArray = [];
 var currLat;
 var currLong;
 var navState = 0;
+var currIndex = 0;
 
 //var modal = document.getElementById("moreInfoModal");
 var modalOpener = document.getElementById("mainImg");
@@ -80,4 +81,32 @@ function showError(error) {
       alert("An unknown error occurred.")
       break;
   }
+}
+
+function goNext() {
+	currIndex++;
+	console.log("click successful!");
+	$.get("http://localhost:3000/calls", function(data) {
+		console.log("AJAX successful");
+		console.log(data);
+		console.log(data.restaurants[currIndex].restName);
+		$("#firstSlideshow").attr("href", "beers.jpg");
+		$("#secondSlideshow").attr("href", "beers.jpg");
+		$("#thirdSlideshow").attr("href", "beers.jpg");
+		$("#moreName").html(data.restaurants[currIndex].restName);
+	});
+}
+
+function goBack() {
+	currIndex--;
+	console.log("click successful!");
+	$.get("http://localhost:3000/calls", function(data) {
+		console.log("AJAX successful");
+		console.log(data);
+		console.log(data.restaurants[currIndex].restName);
+		$("#firstSlideshow").attr("href", "beers.jpg");
+		$("#secondSlideshow").attr("href", "beers.jpg");
+		$("#thirdSlideshow").attr("href", "beers.jpg");
+		$("#moreName").html(data.restaurants[currIndex].restName);
+	});
 }
