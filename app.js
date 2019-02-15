@@ -21,6 +21,8 @@ var main = require('./routes/main');
 
 var app = express();
 
+var router = express.Router();
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -44,22 +46,32 @@ if ('development' == app.get('env')) {
 
 app.use(morgan('dev'))
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('X-HTTP-Method-Override'))
-app.use(cookieParser())
+/app.use(cookieParser('123'))
 //app.use(app.router);
-app.use(session);
+app.use(session({
+  secret: '123',
+  resave: true,
+  saveUninitialized: true
+}));
 //app.use(serveStatic('public/ftp', {'main': ['main.html', 'main.htm']}))
 
 
 // Add routes here
-//app.get('/', main.view);
-app.route('/main');
+app.get('/', main.view);
+//app.route('/main');
 //app.get('/add', add.addFriend);
 // Example route
 // app.get('/users', user.list);
 
+const port = 3000;
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+/*
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+*/
