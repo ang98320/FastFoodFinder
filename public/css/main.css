@@ -143,9 +143,10 @@ body {
 
 #saved-label {
   position: absolute;
-  width: 100%;
+  width: 80%;
   height: 80%;
-  font-size: 250%;
+  font-size: 200%;
+  left: 10%;
 }
 
 #saved-menu-button {
