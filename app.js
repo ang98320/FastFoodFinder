@@ -113,7 +113,8 @@ app.get('/saved', saved.view);
 // app.get('/users', user.list);
 
 //const port = 3000;
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || 3000)
+//, () => console.log(`Example app listening on port ${PORT}!`)) 
 
 /*
 http.createServer(app).listen(app.get('port'), function(){
