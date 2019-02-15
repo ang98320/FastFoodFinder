@@ -1,5 +1,3 @@
-var restaurants = require('../restaurants.json');
-
-exports.restaurantsInfo = function(req, res) {
-	res.json(restaurants);
+exports.views = function(req, res) {
+	response.render('saved');
 }

@@ -125,7 +125,7 @@ function goBack() {
 function save() {
 	$.get("http://localhost:3000/calls", function(data) {
 		savedFood.push(data.restaurants[currIndex]);
-		document.cookie = savedFood;
+		window.name = savedFood;
 	});
 	console.log("Cookie written to");
 	console.log(savedFood);
