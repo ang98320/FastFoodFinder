@@ -24,6 +24,7 @@ var modalCloser = document.getElementById("modalClose");
 
 
 function openNav() {
+	console.log("openNav");
 	if (navState == 0) {
 		document.getElementById("pullOutMenu").style.width = "65%";
 		//document.getElementById("pushField").style.marginLeft = "65%";
