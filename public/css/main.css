@@ -143,19 +143,22 @@ body {
 
 #saved-label {
   position: absolute;
-  width: 100%;
+  width: 80%;
   height: 80%;
-  font-size: 250%;
+  font-size: 200%;
+  left: 10%;
 }
 
 #saved-menu-button {
   position: absolute;
-  width: 15%;
-  height: 100%;
-  font-size: 300%;
+  width: 10%;
+  height: 40%;
+  font-size: 225%;
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 18px;
+  left: 9px;
   /*background-color: blue;*/
 }
 

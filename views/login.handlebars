@@ -9,7 +9,8 @@
 	<link rel="stylesheet" href="css/main.css">
 	<title> FastEats. Food, faster. </title>
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="/scripts/main.js"> </script>
+	<script src="scripts/main.js"> </script>
+	<link rel="stylesheet" href="css/login.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,7 +20,8 @@
 
 </head>
 <body id='loginbackground'>
-
+<div>
+<!-- Real Login
 <form action="main.html">
 
   	<div id="screen">
@@ -29,11 +31,22 @@
     	<label for="psw"><b>Password</b></label>
     	<input type="password" placeholder="Enter Password" name="psw" required>
 
-    	<button class="loginbutton" type="submit"><span href="main">Login</span></button>
+    	<button class="loginbutton" hidden><span href="main">Login</span></button>
   </div>
 
 </form>
+-->
+<!-- This is the dummy Wizard of Oz Login -->
+<div id="screen">
+    	<label for="uname"><b>Username</b></label>
+    	<input type="text" placeholder="Enter Username" name="uname" required>
 
+    	<label for="psw"><b>Password</b></label>
+    	<input type="password" placeholder="Enter Password" name="psw" required>
+
+    	<a href="main"><button class="loginbutton"><span>Login</span></button> </a>
+	<!--<button class="loginbutton"><span href="main">Login</span></button>-->
+</div>
 <a href="main"> Dev Login? Click Here </a>
 
 </body>
