@@ -135,7 +135,9 @@ blueimp.Gallery(
 				fullScreen: false,
 				toggleControlsOnSlideClick: false,
 				toggleControlsOnSlideClick: false,
-				onslide: console.log("going to next"),
+				onslide: function (index, slide) {
+					console.log("going to next");
+        }
     }
 );
 blueimp.Gallery(
