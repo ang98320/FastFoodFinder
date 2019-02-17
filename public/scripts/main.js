@@ -1,4 +1,4 @@
-var = require('fs');
+var fs = require('fs');
 
 $(document).ready(function() {
 	//getLocation();
