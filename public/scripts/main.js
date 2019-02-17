@@ -123,7 +123,7 @@ function goBack() {
 }
 
 function save() {
-	$.get("http://localhost:3000/calls", function(data) {
+	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		savedFood.push(JSON.stringify(data.restaurants[currIndex]));
 		//window.name = savedFood;
 	});
