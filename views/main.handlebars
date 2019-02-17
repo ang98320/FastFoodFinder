@@ -135,37 +135,9 @@ blueimp.Gallery(
 				fullScreen: false,
 				toggleControlsOnSlideClick: false,
 				toggleControlsOnSlideClick: false,
-    }
-);
-</script>
-<script>
-var gallery = blueimp.Gallery(
-    document.getElementById('links').getElementsByTagName('a'),
-    {
-        onopen: function () {
-            // Callback function executed when the Gallery is initialized.
-        },
-        onopened: function () {
-            // Callback function executed when the Gallery has been initialized
-            // and the initialization transition has been completed.
-        },
-        onslide: function (index, slide) {
-            // Callback function executed on slide change.
-						console.log("next");
-        },
-        onslideend: function (index, slide) {
-            // Callback function executed after the slide change transition.
-        },
-        onslidecomplete: function (index, slide) {
-            // Callback function executed on slide content load.
-        },
-        onclose: function () {
-            // Callback function executed when the Gallery is about to be closed.
-        },
-        onclosed: function () {
-            // Callback function executed when the Gallery has been closed
-            // and the closing transition has been completed.
-        }
+				onslide: function (index, slide) {
+					console.log('next');
+				},
     }
 );
 </script>
