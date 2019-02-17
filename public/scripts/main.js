@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 $(document).ready(function() {
 	//getLocation();
 	currIndex == -1;
