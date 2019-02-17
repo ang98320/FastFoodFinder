@@ -1,3 +1,5 @@
+var = require('fs');
+
 $(document).ready(function() {
 	//getLocation();
 	currIndex == -1;
@@ -129,6 +131,8 @@ function save() {
 	});
 	console.log("Cookie written to");
 	console.log(savedFood);
+	var json = JSON.stringify(savedFood);
+	fs.writeFile('data.json', json, 'utf8', callback);
 	sessionStorage.setItem('savedFoods', savedFood);
 	var print = sessionStorage.getItem("savedFoods")
 	console.log(print);
