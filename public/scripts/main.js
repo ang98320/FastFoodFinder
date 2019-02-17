@@ -90,7 +90,7 @@ function showError(error) {
 function goNext() {
 	currIndex++;
 	console.log("click successful!");
-	$.get("http://localhost:3000/calls", function(data) {
+	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		//console.log("AJAX successful");
 		//console.log(data);
 		//console.log(data.restaurants[currIndex].restName);
@@ -111,7 +111,7 @@ function goBack() {
 	}
 	currIndex--;
 	console.log("click successful!");
-	$.get("http://localhost:3000/calls", function(data) {
+	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		//console.log("AJAX successful");
 		//console.log(data);
 		//console.log(data.restaurants[currIndex].restName);
