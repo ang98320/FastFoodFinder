@@ -126,7 +126,7 @@
 
 <script src="scripts/blueimp-gallery.min.js"></script>
 <script>
-var list = ["/img/udon.jpg", "/img/udon.jpg", "/img/udon.jpg"];
+var list = ["/img/placeholder.jpg", "/img/sushi.jpg", "/img/ramen.jpg"];
 var gallery = blueimp.Gallery(
     //document.getElementById('links').getElementsByTagName('a'),
 		list,
@@ -139,11 +139,7 @@ var gallery = blueimp.Gallery(
 				toggleControlsOnSlideClick: false,
 				onslide: function (index, slide) {
 					console.log('next');
-					var newImg = document.createElement('a');
-					newImg.href = "/img/udon.jpg";
-					document.getElementById('links').appendChild(newImg);
-					//list.push("/img/placeholder.jpg");
-					gallery.add(["/img/placeholder.jpg"]);
+					gallery.add(["/img/udon.jpg"]);
 				},
     }
 );
