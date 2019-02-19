@@ -88,13 +88,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }*/
 
-app.use(morgan('dev'))
+app.use(morgan('dev'));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use(methodOverride('X-HTTP-Method-Override'))
-app.use(cookieParser('123'))
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(cookieParser('123'));
 //app.use(app.router);
 app.use(session({
   secret: '123',
@@ -109,6 +109,16 @@ app.use(session({
 
 app.get('/', function (req, res) {
   res.render('main');
+  console.log("rendered main");
+  client.search({
+    latitude: "32.870190",
+    longitude: "-117.216192",
+    radius: "6000"
+  }).then(response => {
+    console.log(response.jsonBody.businesses[0].name);
+  }).catch(e => {
+    console.log(e);
+  });
 });
 
 
@@ -121,7 +131,7 @@ app.get('/saved', saved.view);
 // app.get('/users', user.list);
 
 //const port = 3000;
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3000);
 //app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 //, () => console.log(`Example app listening on port ${PORT}!`))
 /*
