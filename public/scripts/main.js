@@ -127,7 +127,7 @@ function goBack() {
 function save() {
 	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		savedFood.push(JSON.stringify(data.restaurants[currIndex]));
-		savedJSONString.
+		savedJSONString.appendJSON(JSON.stringify(data.restaurants[currIndex]));
 		//window.name = savedFood;
 	});
 	console.log("Cookie written to");
