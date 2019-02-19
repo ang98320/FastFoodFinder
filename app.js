@@ -105,7 +105,13 @@ app.use(session({
 
 
 // Add routes here
-app.get('/', login.view);
+//app.get('/', login.view);
+
+app.get('/', function (req, res) {
+  res.render(login.view);
+});
+
+
 app.get('/main', main.view);
 app.get('/calls', calls.info);
 app.get('/saved', saved.view);
