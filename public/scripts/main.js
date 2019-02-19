@@ -22,6 +22,7 @@ var savedJSONString = '{ "saved" : [';
 
 
 function openNav() {
+	console.log("openNav");
 	if (navState == 0) {
 		document.getElementById("pullOutMenu").style.width = "65%";
 		//document.getElementById("pushField").style.marginLeft = "65%";
@@ -91,7 +92,7 @@ function showError(error) {
 function goNext() {
 	currIndex++;
 	console.log("click successful!");
-	$.get("http://localhost:3000/calls", function(data) {
+	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		//console.log("AJAX successful");
 		//console.log(data);
 		//console.log(data.restaurants[currIndex].restName);
@@ -112,7 +113,7 @@ function goBack() {
 	}
 	currIndex--;
 	console.log("click successful!");
-	$.get("http://localhost:3000/calls", function(data) {
+	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		//console.log("AJAX successful");
 		//console.log(data);
 		//console.log(data.restaurants[currIndex].restName);
@@ -124,7 +125,7 @@ function goBack() {
 }
 
 function save() {
-	$.get("http://localhost:3000/calls", function(data) {
+	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		savedFood.push(JSON.stringify(data.restaurants[currIndex]));
 		savedJSONString.
 		//window.name = savedFood;
@@ -153,5 +154,4 @@ function appendJSON(string) {
 	if (this.endsWith("}]") {
 		this.replace("}]", "");
 	}
-		return this.append("," + string + "}]");
-}
+		return this.append("," + string + "}]")
