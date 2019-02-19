@@ -108,13 +108,15 @@ app.use(session({
 //app.get('/', login.view);
 
 app.get('/', function (req, res) {
-  res.render('main');
-  console.log("rendered main");
+  //res.render('main');
+  //console.log("rendered main");
   client.search({
     latitude: "32.870190",
     longitude: "-117.216192",
     radius: "6000"
   }).then(response => {
+    res.render('main');
+    console.log("rendered main");
     console.log(response.jsonBody.businesses[0].name);
   }).catch(e => {
     console.log(e);
