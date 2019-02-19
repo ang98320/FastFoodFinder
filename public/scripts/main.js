@@ -17,6 +17,7 @@ document.cookie = [];
 //var modal = document.getElementById("moreInfoModal");
 var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
+var savedJSONString = '{ "saved" : [';
 
 
 
@@ -125,6 +126,7 @@ function goBack() {
 function save() {
 	$.get("http://localhost:3000/calls", function(data) {
 		savedFood.push(JSON.stringify(data.restaurants[currIndex]));
+		savedJSONString.
 		//window.name = savedFood;
 	});
 	console.log("Cookie written to");
@@ -145,4 +147,11 @@ function loadSaved() {
 		var barToPut = "imageBar" + (Math.floor(i/3) * 3);
 		$(barToPut).append('<img class="instaStyle" src="' + savedInfo[i].img +'" </th>');
 	}
+}
+
+function appendJSON(string) {
+	if (this.endsWith("}]") {
+		this.replace("}]", "");
+	}
+		return this.append("," + string + "}]");
 }
