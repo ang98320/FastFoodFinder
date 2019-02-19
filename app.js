@@ -108,7 +108,7 @@ app.use(session({
 //app.get('/', login.view);
 
 app.get('/', function (req, res) {
-  res.render(login.view);
+  res.render('main');
 });
 
 
