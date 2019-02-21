@@ -155,3 +155,4 @@ function appendJSON(string) {
 		this.replace("}]", "");
 	}
 		return this.append("," + string + "}]")
+}
