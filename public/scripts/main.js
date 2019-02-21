@@ -19,7 +19,7 @@ var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 var savedJSONString = '{ "saved" : [';
 
-$.get( "/", function(data) {
+$.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
 	console.log(data);
 });

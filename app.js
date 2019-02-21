@@ -119,8 +119,10 @@ app.get('/', function (req, res) {
     console.log("rendered main");
     console.log(response.jsonBody.businesses[0].name);
     //res.json({ yelp: "response.jsonBody.businesses[0].name"});
-    res.render('main', { yelp: "response.jsonBody.businesses[0].name"});
-    //res.json({ yelp: "response.jsonBody.businesses[0].name"});
+    //res.render('main', { yelp: "response.jsonBody.businesses[0].name"});
+    res.json({ yelp: "response.jsonBody.businesses[0].name"});
+    req.url = "/";
+    router.handle(req, res);
     //res.render('main');
   }).catch(e => {
     console.log(e);
