@@ -20,7 +20,7 @@ var modalCloser = document.getElementById("modalClose");
 var savedJSONString = '{ "saved" : [';
 
 $.get( "/", function(data) {
-  yelp = data.yelp;
+  var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
 	console.log(yelp);
 });
 
