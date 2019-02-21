@@ -115,9 +115,9 @@ app.get('/', function (req, res) {
     longitude: "-117.216192",
     radius: "6000"
   }).then(response => {
-    res.render('main');
     console.log("rendered main");
     console.log(response.jsonBody.businesses[0].name);
+    res.render('main');
   }).catch(e => {
     console.log(e);
   });
