@@ -20,8 +20,8 @@ var modalCloser = document.getElementById("modalClose");
 var savedJSONString = '{ "saved" : [';
 
 $.get( "/", function(data) {
-  var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
-	console.log(yelp);
+  //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
+	console.log(data);
 });
 
 function openNav() {
