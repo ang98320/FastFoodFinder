@@ -118,8 +118,8 @@ app.get('/', function (req, res) {
   }).then(response => {
     console.log("rendered main");
     console.log(response.jsonBody.businesses[0].name);
-    //res.render('main');
-    res.render('saved');
+    res.send("rendered main");
+    res.render('main');
   }).catch(e => {
     console.log(e);
   });
