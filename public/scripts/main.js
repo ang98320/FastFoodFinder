@@ -19,7 +19,10 @@ var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 var savedJSONString = '{ "saved" : [';
 
-
+$.get( "/", function( data ) {
+  yelp = data.yelp;
+	console.log(yelp);
+});
 
 function openNav() {
 	console.log("openNav");
