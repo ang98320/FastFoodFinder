@@ -151,7 +151,7 @@ function loadSaved() {
 }
 
 function appendJSON(string) {
-	if (this.endsWith("}]") {
+	if (this.endsWith("}]")) {
 		this.replace("}]", "");
 	}
 		return this.append("," + string + "}]")
