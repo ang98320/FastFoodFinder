@@ -108,6 +108,7 @@ app.use(session({
 //app.get('/', login.view);
 
 app.get('/', function (req, res) {
+  console.log("called /");
   //res.render('main');
   //console.log("rendered main");
   client.search({
