@@ -58,14 +58,15 @@
 			</a>
 			<a name="mobilitiyBar">
 				<div class="container-fluid test" id="mobility">
-					<!-- Go back one image
-					<button id="oneLeft" onclick="goBack()"> <i class="fas fa-arrow-left fa"></i> </button> -->
+					 <!-- Go back one image -->
+					<button id="oneLeft" onclick="goBack()"> <i class="fas fa-arrow-left fa"></i> </button> 
 					<!-- Save image to list -->
-					<button id="save" onclick="save()"> <i class="far fa-heart"></i> </button>
-					<!-- Go to next image
-					<button id="oneRight" onclick="goNext()"> <i class="fas fa-arrow-right fa"></i> </button> -->
+					<button id="save" onclick="save()"> <i id="heartButton" class="far fa-heart heart"></i> </button>
+					<!-- Go to next image-->
+					<button id="oneRight" onclick="goNext()"> <i class="fas fa-arrow-right fa"></i> </button>
 				</div>
 			</a>
+			
 			<div id="moreInfoModal" class="moreInfoModal test">
 
 			<div class="container-fluid test" id="moreInfoBar">
@@ -97,26 +98,7 @@
 				<h4 id="moreBreaker"> Other Items from _____ </h4>
 
 					<table id="morePictures" style="width: 100%; margin: 0px 0px;">
-						<!--
-						<tr>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<!-- Fill images here as needed
-						</tr>
-						<tr>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<!-- Fill images here as needed
-						</tr>
-						<tr>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<!-- Fill images here as needed
-						</tr>
-						-->
+						
 					</table>
 			</div>
 		</div>
@@ -124,9 +106,12 @@
 	<!--</a>-->
 </div>
 
+
 <script src="scripts/blueimp-gallery.min.js"></script>
 <script>
+
 //var list = ["/img/placeholder.jpg", "/img/sushi.jpg", "/img/ramen.jpg"];
+
 var gallery = blueimp.Gallery(
     document.getElementById('links').getElementsByTagName('a'),
 		//list,
@@ -137,12 +122,13 @@ var gallery = blueimp.Gallery(
 				fullScreen: false,
 				toggleControlsOnSlideClick: false,
 				toggleControlsOnSlideClick: false,
-				onslide: function (index, slide) {
-					/* will need to keep track if going forward or backward */
-					console.log('next');
+				/*onslide: function (index, slide) {
+					 // will need to keep track if going forward or backward 
+					 console.log('next');
 					gallery.add(["/img/udon.jpg"]);
-				},
+				},*/
     }
 );
 </script>
+
 </body>

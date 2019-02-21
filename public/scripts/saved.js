@@ -55,7 +55,7 @@ function closeModal2() {
 }
 
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
-
+/*
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -131,15 +131,59 @@ function save() {
 	console.log(window.name);
 }
 
+*/
+
 function loadSaved() {
 	var savedInfo = sessionStorage.getItem("savedFoods");
 	console.log(savedInfo);
-	for (i =0; i < savedInfo.length; i++) {
+	var savedJSONObject = JSON.parse(savedInfo);
+	console.log(savedJSONObject);
+
+	console.log(generateTable(savedJSONObject.saved.length));
+
+	$("#saved-body").append(generateTable(savedJSONObject.saved.length));
+	
+	var JSONIndex = 0;
+
+	for (i =0; i < savedJSONObject.saved.length; i++) {
+		var appendJSON = ".col" + JSONIndex;
+		$(appendJSON).append('<img src="' + savedJSONObject.saved[JSONIndex].img + '">');
+		JSONIndex++;
+	}
+
+	/*for (i =0; i < savedInfo.length; i++) {
+		console.log("in for loop");
 		if (i % 3 ==0) {
 			$("#morePictures").append('<tr id=imageBar"' + i +'"> \n </tr>')
 		}
 		//do divide then floor * 3 to get correct location of tr
 		var barToPut = "imageBar" + (Math.floor(i/3) * 3);
 		$(barToPut).append('<img class="instaStyle" src="' + savedInfo[i].img +'" </th>');
+	}*/
+	// for (i = 0; i < )
+}
+
+function generateTable(numObjects) {
+	var tableCode = "<table id='saved-food' style='width: 100%; margin: 0px 0px;'>";
+	var currAddIndex = 0;
+	// var numRows = Math.floor(numObjects / 3) + 1;
+	// var intCast = parseInt(numObjects);
+	// console.log(intCast);
+	// var numRows = intCast + 2;
+	// console.log(numRows);
+	for (i =0; i < numObjects; i++){
+		var indexClass = "col" + currAddIndex;
+		tableCode += '<tr class="saveStyle ' + indexClass + '"">';
+		/*
+		for (j = 0; j < 3; j++) {
+			var indexClass = "col" + currAddIndex;
+			tableCode += '<td class="saveStyle ' + indexClass + '"> </td>';
+			currAddIndex++;
+		}
+		*/
+		tableCode += "</tr>";
+		currAddIndex++;
 	}
+	tableCode += "</table>";
+	return tableCode;
 }
