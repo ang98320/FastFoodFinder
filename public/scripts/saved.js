@@ -1,6 +1,17 @@
 $(document).ready(function() {
 	//getLocation();
 	loadSaved();
+	$(".saveStyle").click(function() {
+		// console.log(thisSavedSession);
+		document.getElementById("moreInfoModal").style.display = "block";
+		var savedIndex = parseInt($(this).attr("class").replace(/[^0-9\.]/g, ''));
+		// console.log($(this).attr("class"));
+		// console.log(savedIndex);
+		$("#moreName").html(thisSavedSession.saved[savedIndex].restName);
+		$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
+		$("#additionalImg").attr("src", thisSavedSession.saved[savedIndex].img);
+		// console.log("openModal");
+	})
 });
 
 // INIT VARS
@@ -18,7 +29,7 @@ var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 
 var thisSavedSession;
-
+var googleDirections = "https://www.google.com/maps/dir/?api=1&";
 
 
 function openNav() {
@@ -72,7 +83,8 @@ function loadSaved() {
 
 	for (i =0; i < savedJSONObject.saved.length; i++) {
 		var appendJSON = ".col" + JSONIndex;
-		$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
+		// $(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
+		$(appendJSON).append('<a id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
 		JSONIndex++;
 	}}
 
@@ -102,14 +114,14 @@ function generateTable(numObjects) {
 }
 
 function openModal() {
-	console.log(thisSavedSession);
-	document.getElementById("moreInfoModal").style.display = "block";
-	var savedIndex = parseInt($(this).attr("class"));
-	console.log($(this).attr("class"));
-	console.log(savedIndex);
-	$("#moreName").html(thisSavedSession.saved[savedIndex].restName);
-	$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
-	console.log("openModal");
+	// console.log(thisSavedSession);
+	// document.getElementById("moreInfoModal").style.display = "block";
+	// var savedIndex = parseInt($(this).attr("class").replace(/[^0-9\.]/g, ''));
+	// console.log($(this).attr("class"));
+	// console.log(savedIndex);
+	// $("#moreName").html(thisSavedSession.saved[savedIndex].restName);
+	// $("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
+	// console.log("openModal");
 }
 
 function closeModal() {

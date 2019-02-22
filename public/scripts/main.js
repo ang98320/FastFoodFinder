@@ -1,15 +1,20 @@
 $(document).ready(function() {
-	//getLocation();
+	getLocation(function () {
+	console.log(currLat);
+	var googleDirections = "https://www.google.com/maps/dir/?api=1&origin=";
+	googleDirections = googleDirections + currLat + "," + currLong + "&";
+	userLocation = googleDirections;
+	});
 	currIndex == -1;
-	goNext();
-	$(".next").click(nextSlideshow());
+	setTimeout(goNext(), 20000);
+	// $(".next").click(nextSlideshow());
 });
 
 // INIT VARS
 
 var imgArray = [];
-var currLat;
-var currLong;
+var currLat = 32.871229;
+var currLong = -117.217869;
 var navState = 0;
 var currIndex = 0;
 var savedFood = [];
@@ -20,8 +25,11 @@ var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 var savedJSONString = '{ "saved" : [';
 var saveIndex = 0;
+var googleDirections = "https://www.google.com/maps/dir/?api=1&origin=";
+var userLocation;
 
-var autoFill = ["afghani", "african", "senegalese", "southafrican", "newamerican", "tradamerican", "arabian", "argentine", "armenian"]
+
+var autoFill = ["afghani", "african", "senegalese", "southafrican", "newamerican", "tradamerican", "arabian", "argentine", "armenian"];
 
 function openNav() {
 	console.log("openNav");
@@ -61,17 +69,21 @@ function closeModal2() {
 
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
 
-function getLocation() {
+function getLocation(callback) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition, showError);
   } else {
     alert("Geolocation is not supported by this browser.");
   }
+  setTimeout(callback(), 20000);
 }
 
 function showPosition(position) {
 	currLat = position.coords.latitude;
 	currLong = position.coords.longitude;
+	// console.log(currLat);
+	// console.log(currLong);
+	// googleDirections = googleDirections + currLong + "&";
 }
 
 function showError(error) {
@@ -93,8 +105,9 @@ function showError(error) {
 
 function goNext() {
 	currIndex++;
-	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
+	// $.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
+	$.get("/calls", function(data) {
 		$("#heartButton").removeClass("fa");
 		$("#links").empty();
 		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
@@ -103,7 +116,9 @@ function goNext() {
 		$("#additionalImg").attr("src", data.restaurants[currIndex].img);
 		$("#phoneNumber").html(data.restaurants[currIndex].phone);
 		$("#moreName").html(data.restaurants[currIndex].restName);
-
+		googleDirections = userLocation + "destination=" + data.restaurants[currIndex].lat + "," + data.restaurants[currIndex].long + "&travelmode=driving";
+		// console.log(googleDirections);
+		$("#navi").attr("href", googleDirections)
 		var gallery = blueimp.Gallery(
 		    document.getElementById('links').getElementsByTagName('a'),
 				//list,
@@ -126,8 +141,9 @@ function goBack() {
 	}
 	currIndex--;
 	// console.log("click successful!");
-	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
+	// $.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
+	$.get("/calls", function(data) {
 		$("#links").empty();
 		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
 		$("#links").append('<a href="/img/beers.jpg" class="slideshowImg"> </a>');
@@ -150,8 +166,9 @@ function goBack() {
 }
 
 function save() {
-	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
+	// $.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
+		$.get("/calls", function(data) {
 		stringJSON = JSON.stringify(data.restaurants[currIndex]);
 		savedFood.push(stringJSON);
 		if(savedJSONString.includes(',' + stringJSON)) {
@@ -214,9 +231,9 @@ function appendJSONText(string) {
 
 
 function nextSlideshow() {
-	//This should work on click of a.next
-	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
-	// $.get("http://localhost:3000/calls", function(data) {
+	// This should work on click of a.next
+	// $.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
+	$.get("http://localhost:3000/calls", function(data) {
 		// var imgLink = '"' +  data.restaurants[currIndex].img + '"';
 		// console.log(imgLink)
 		 var gallery = blueimp.Gallery(
