@@ -93,7 +93,6 @@ function showError(error) {
 
 function goNext() {
 	currIndex++;
-	//console.log("click successful!");
 	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
 		$("#heartButton").removeClass("fa");
@@ -126,7 +125,7 @@ function goBack() {
 		return;
 	}
 	currIndex--;
-	console.log("click successful!");
+	// console.log("click successful!");
 	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
 		$("#links").empty();
