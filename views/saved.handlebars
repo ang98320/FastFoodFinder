@@ -16,89 +16,94 @@
 
 <body id="background">
 	<div id="pushField">
-		<div id="saved-container" class="container-fluid test">
-			<div id="saved-header">
+		<!--<div id="saved-container" class="container-fluid test">-->
 				<div id="pullOutMenu" class="pullOut">
 					<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
 					<img src="img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
 					<a href="main">Main</a>
 					<a href="saved">Saved</a>
-					<!--
-					<a href="main2.html">Main2</a>
-					<a href="profile.html">Profile</a>
-					<a href="settings.html">Settings</a> -->
 				</div>
-				<h1 id="title">Saved</h1>
-				<span onclick="openNav()" class="row" id="saved-menu-button">&#9776;</span>
+			<div id="saved-header">
+				<a name="menuBars">
+						<div class="container-fluid test" id="socialBar">
+							<span onclick="openNav()" class="row" id="saved-menu-button">&#9776;</span>
+							<h1 id="title">Saved</h1>
+					</div>
+				</a>
 			</div>
 
 			<!-- <div id="padding"> </div> -->
-			<div id="saved-body" style="overflow: scroll">
-				<!-- begin demo rows -->
-				<div class="saved-row" onclick="openModal()">
-					<div class="saved-col-left">
-						<img class="saved-row-img" src="/img/sushi.jpg"></img>
+			<div id="saved-body" style="overflow: scroll;">
+				<a name="menuBars">
+					<div id="saved-container" class="container-fluid test">
+					<!-- begin demo rows -->
+						<div class="saved-row" onclick="openModal()">
+							<div class="saved-col-left">
+								<img class="saved-row-img" src="/img/sushi.jpg"></img>
+							</div>
+							<div class="saved-col-right">
+								<h3 class="saved-row-label">Resturant Name</h3>
+								<h4 class="saved-row-label">Added: 1/2/19</h4>
+							</div>
+						</div>
+						<div class="saved-row" onclick="openModal()">
+							<div class="saved-col-left">
+								<img class="saved-row-img" src="/img/sushi.jpg"></img>
+							</div>
+							<div class="saved-col-right">
+								<h3 class="saved-row-label">Resturant Name</h3>
+								<h4 class="saved-row-label">Added: 1/2/19</h4>
+							</div>
+						</div>
+						<div class="saved-row" onclick="openModal()">
+							<div class="saved-col-left">
+								<img class="saved-row-img" src="/img/sushi.jpg"></img>
+							</div>
+							<div class="saved-col-right">
+								<h3 class="saved-row-label">Resturant Name</h3>
+								<h4 class="saved-row-label">Added: 1/2/19</h4>
+							</div>
+						</div>
+						<div class="saved-row" onclick="openModal()">
+							<div class="saved-col-left">
+								<img class="saved-row-img" src="/img/sushi.jpg"></img>
+							</div>
+							<div class="saved-col-right">
+								<h3 class="saved-row-label">Resturant Name</h3>
+								<h4 class="saved-row-label">Added: 1/2/19</h4>
+							</div>
+						</div>
+						<div class="saved-row" onclick="openModal()">
+							<div class="saved-col-left">
+								<img class="saved-row-img" src="/img/sushi.jpg"></img>
+							</div>
+							<div class="saved-col-right">
+								<h3 class="saved-row-label">Resturant Name</h3>
+								<h4 class="saved-row-label">Added: 1/2/19</h4>
+							</div>
+						</div>
+
+					<!-- end demo rows -->
 					</div>
-					<div class="saved-col-right">
-						<h1 class="saved-row-label">Resturant Name</h1>
-						<h3 class="saved-row-label">Added: 1/2/19</h3>
-					</div>
-				</div>
-				<div class="saved-row" onclick="openModal()">
-					<div class="saved-col-left">
-						<img class="saved-row-img" src="/img/sushi.jpg"></img>
-					</div>
-					<div class="saved-col-right">
-						<h1 class="saved-row-label">Resturant Name</h1>
-						<h3 class="saved-row-label">Added: 1/2/19</h3>
-					</div>
-				</div>
-				<div class="saved-row" onclick="openModal()">
-					<div class="saved-col-left">
-						<img class="saved-row-img" src="/img/sushi.jpg"></img>
-					</div>
-					<div class="saved-col-right">
-						<h1 class="saved-row-label">Resturant Name</h1>
-						<h3 class="saved-row-label">Added: 1/2/19</h3>
-					</div>
-				</div>
-				<div class="saved-row" onclick="openModal()">
-					<div class="saved-col-left">
-						<img class="saved-row-img" src="/img/sushi.jpg"></img>
-					</div>
-					<div class="saved-col-right">
-						<h1 class="saved-row-label">Resturant Name</h1>
-						<h3 class="saved-row-label">Added: 1/2/19</h3>
-					</div>
-				</div>
-				<div class="saved-row" onclick="openModal()">
-					<div class="saved-col-left">
-						<img class="saved-row-img" src="/img/sushi.jpg"></img>
-					</div>
-					<div class="saved-col-right">
-						<h1 class="saved-row-label">Resturant Name</h1>
-						<h3 class="saved-row-label">Added: 1/2/19</h3>
-					</div>
-				</div>
-				<!-- end demo rows -->
+				</a>
 			</div>
-		</div>
+		<!--</div>-->
 
 
-		<div id="moreInfoModal" class="moreInfoModal test">
-			<div class="container-fluid test" id="moreInfoBar">
-				<div class="test" id="menu">
-						<a onclick=() class="button">
-							<i class="far fa-heart fa"></i>
-						</a>
-				</div>
+			<div id="moreInfoModal" class="moreInfoModal test">
+				<div class="container-fluid test" id="moreInfoBar">
+					<div class="test" id="menu">
+							<a onclick=() class="button">
+								<i class="far fa-heart fa"></i>
+							</a>
+					</div>
 					<h4 id="moreName">Resturant Name</h4>
-				<div class="test" id="locationBar">
+					<div class="test" id="locationBar">
 						<a onclick="closeModal()" class="button" id="modalClose">
 							<i class="far fa-times-circle"></i>
 						</a>
+					</div>
 				</div>
-			</div>
 
 			<div id="morePicturesScroll" style="width: 100%; height: 100%; overflow: scroll">
 				<div class="test" id="moreInformation">
@@ -113,9 +118,7 @@
 					</div>
 				</div>
 				<h4 id="moreBreaker"> Other Items from </h4>
-					<table id="morePictures" style="width: 100%; margin: 0px 0px;">
-
-					</table>
+					<table id="morePictures" style="width: 100%; margin: 0px 0px;"></table>
 			</div>
 		</div>
 	</div>
