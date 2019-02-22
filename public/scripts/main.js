@@ -97,9 +97,6 @@ function goNext() {
 	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
 		$("#heartButton").removeClass("fa");
-		//console.log("AJAX successful");
-		//console.log(data);
-		//console.log(data.restaurants[currIndex].restName);
 		$("#links").empty();
 		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
 		$("#links").append('<a href="/img/beers.jpg" class="slideshowImg"> </a>');
@@ -132,9 +129,6 @@ function goBack() {
 	console.log("click successful!");
 	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
-		//console.log("AJAX successful");
-		//console.log(data);
-		//console.log(data.restaurants[currIndex].restName);
 		$("#links").empty();
 		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
 		$("#links").append('<a href="/img/beers.jpg" class="slideshowImg"> </a>');
@@ -177,12 +171,10 @@ function save() {
 			$("#heartButton").removeClass("fa");
 			return;
 		}
-		// console.log(saveIndex);
 		if (savedJSONString.endsWith("]}")) {
 			// console.log("ends with }]");
 			savedJSONString = savedJSONString.replace("]}", "");
 		}
-		// if (saveIndex == 0) {
 		if (savedJSONString ===  '{ "saved" : [') {
 			savedJSONString = savedJSONString.concat(stringJSON + "]}");
 		}
@@ -191,14 +183,11 @@ function save() {
 		}
 		if($("#heartButton").hasClass("fa")) {
 			$("#heartButton").removeClass("fa");
-			// $("#heartButton").addClass("fa");
 		}
 		else {
 			$("#heartButton").addClass("fa");
-			// $("#heartButton").removeClass("fa");
 		}
 		console.log(savedJSONString);
-		// console.log("Cookie written to");
 		sessionStorage.setItem('savedFoods', savedJSONString);
 		saveIndex++;
 	});
@@ -224,11 +213,11 @@ function appendJSONText(string) {
 		return this.concat("," + string + "}]");
 }
 
-/*
+
 function nextSlideshow() {
 	//This should work on click of a.next
-	
-	 $.get("http://localhost:3000/calls", function(data) {
+	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
+	// $.get("http://localhost:3000/calls", function(data) {
 		// var imgLink = '"' +  data.restaurants[currIndex].img + '"';
 		// console.log(imgLink)
 		 var gallery = blueimp.Gallery(
@@ -249,7 +238,7 @@ function nextSlideshow() {
 		    }
 		);
 }); 
-/*
+// /*
 		var gallery = blueimp.Gallery(
 	    document.getElementById('links').getElementsByTagName('a'),
 			//list,
@@ -266,8 +255,8 @@ function nextSlideshow() {
 						gallery.add(["/img/udon.jpg"]);
 					},
 	    }
-	); */
-// }
+	); 
+}
 
 
 function lastSlideshow() {

@@ -59,8 +59,8 @@ function closeModal2() {
 
 function loadSaved() {
 	var savedInfo = sessionStorage.getItem("savedFoods");
-	console.log(savedInfo);
 	var savedJSONObject = JSON.parse(savedInfo);
+	console.log(savedInfo);
 	console.log(savedJSONObject);
 
 	thisSavedSession = savedJSONObject;
@@ -74,19 +74,7 @@ function loadSaved() {
 		var appendJSON = ".col" + JSONIndex;
 		$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
 		JSONIndex++;
-	}
-
-	/*for (i =0; i < savedInfo.length; i++) {
-		console.log("in for loop");
-		if (i % 3 ==0) {
-			$("#morePictures").append('<tr id=imageBar"' + i +'"> \n </tr>')
-		}
-		//do divide then floor * 3 to get correct location of tr
-		var barToPut = "imageBar" + (Math.floor(i/3) * 3);
-		$(barToPut).append('<img class="instaStyle" src="' + savedInfo[i].img +'" </th>');
-	}*/
-	// for (i = 0; i < )
-}
+	}}
 
 function generateTable(numObjects) {
 	var tableCode = "<table id='saved-food' style='width: 100%; margin: 0px 0px;'>";
