@@ -15,14 +15,14 @@ function statusChangeCallback(response) {
     // Logged into your app and Facebook.
         console.log('Successfully logged in with Facebook');
         window.location.href = "/main";
-        FB.api('/me?fields=name,first_name,picture.width(200)', changeUser);
+        //FB.api('/me?fields=name,first_name,picture.width(200)', changeUser);
   }
 }
 
 //Add this callback at bottom of facebook.js and add the required functionality in it
 function changeUser(response) {
   //Add code to change name and image
-  $(".facebookLogin").hide();
+  //$(".facebookLogin").hide();
   //document.getElementById("name").innerHTML = response.name;
   document.getElementById("userImg").src = response.picture.data.url;
 }
