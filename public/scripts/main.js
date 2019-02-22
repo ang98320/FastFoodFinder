@@ -18,6 +18,7 @@ document.cookie = [];
 var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 var savedJSONString = '{ "saved" : [';
+var saveIndex = 0;
 
 $.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
@@ -103,7 +104,7 @@ function showError(error) {
 
 function goNext() {
 	currIndex++;
-	console.log("click successful!");
+	$("#heartButton").removeClass("fa");
 	$.get("/getnext", function(data) {
 		console.log(data);
 	});
@@ -144,15 +145,45 @@ function goBack() {
 
 function save() {
 	$.get("/calls", function(data) {
-		savedFood.push(JSON.stringify(data.restaurants[currIndex]));
-		//savedJSONString.
-		//window.name = savedFood;
+	// $.get("http://localhost:3000/calls", function(data) {
+		stringJSON = JSON.stringify(data.restaurants[currIndex]);
+		savedFood.push(stringJSON);
+		if(savedJSONString.includes(',' + stringJSON)) {
+			// console.log("Checked ,");
+			alert("You already saved this! Removing!");
+			appendedString = ',' + stringJSON;
+			// console.log(appendedString);
+			savedJSONString = savedJSONString.replace(appendedString, '');
+			$("#heartButton").removeClass("fa");
+			return;
+		}
+		if(savedJSONString.includes(stringJSON)) {
+			console.log("Checked empty");
+			alert("You already saved this! Removing!");
+			savedJSONString = savedJSONString.replace(stringJSON, "");
+			$("#heartButton").removeClass("fa");
+			return;
+		}
+		if (savedJSONString.endsWith("]}")) {
+			// console.log("ends with }]");
+			savedJSONString = savedJSONString.replace("]}", "");
+		}
+		if (savedJSONString ===  '{ "saved" : [') {
+			savedJSONString = savedJSONString.concat(stringJSON + "]}");
+		}
+		else {
+			savedJSONString = savedJSONString.concat("," + stringJSON + "]}");
+		}
+		if($("#heartButton").hasClass("fa")) {
+			$("#heartButton").removeClass("fa");
+		}
+		else {
+			$("#heartButton").addClass("fa");
+		}
+		console.log(savedJSONString);
+		sessionStorage.setItem('savedFoods', savedJSONString);
+		saveIndex++;
 	});
-	console.log("Cookie written to");
-	console.log(savedFood);
-	sessionStorage.setItem('savedFoods', savedFood);
-	var print = sessionStorage.getItem("savedFoods")
-	console.log(print);
 }
 
 function loadSaved() {
@@ -167,6 +198,7 @@ function loadSaved() {
 		$(barToPut).append('<img class="instaStyle" src="' + savedInfo[i].img +'" </th>');
 	}
 }
+
 
 function appendJSON(string) {
 	if (this.endsWith("}]")) {

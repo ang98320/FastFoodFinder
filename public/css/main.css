@@ -428,6 +428,11 @@ body {
   margin-left: 2%;
 }
 
+#heartButton {
+  font-size: 1em;
+  color: red;
+}
+
 #oneRight {
 	display: inline-block;
 	float: right;
@@ -552,7 +557,7 @@ body {
 
 /* Begin login screen */
 
-/* long loging button 
+/* long loging button
 .logbutton {
   	background-color: #80bfff;
   	color: white;
