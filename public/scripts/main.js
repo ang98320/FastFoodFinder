@@ -122,6 +122,7 @@ function goNext() {
 		$("#moreName").html(data.restaurants[currIndex].restName);
 	});
 	*/
+	return "/img/udon.jpg";
 }
 
 function goBack() {

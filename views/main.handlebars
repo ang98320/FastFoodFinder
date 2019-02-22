@@ -144,8 +144,11 @@ var gallery = blueimp.Gallery(
 					if ((currentIndex + 1) == index) {
 						currentIndex = index;
 						console.log('next: ' + index);
-						gallery.add(["/img/udon.jpg"]);
-						goNext();
+						var next = goNext();
+						gallery.add([next]);
+						console.log("just added " + next + " to gallery");
+						//gallery.add(["/img/udon.jpg"]);
+						//goNext();
 					} else if ((currentIndex - 1) == index) {
 						currentIndex = index;
 						console.log('prev: ' + index);
