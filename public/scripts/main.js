@@ -120,8 +120,10 @@ function loadList(callback) {
 	});
 }
 
-function goNext(callback) {
+function goNext(index, callback) {
+	//console.log("index: ", index);
 	currIndex++;
+	//console.log("currIndex: ", currIndex);
 	$.get("/calls", function(data) {
 		$("#heartButton").removeClass("fa");
 		var a = {

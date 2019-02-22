@@ -140,7 +140,7 @@ loadList(function(result) {
 							console.log('next: ' + index);
 							if (maxIndex < index) {
 								maxIndex++;
-								goNext(function(result) {
+								goNext(index, function(result) {
 									console.log(result);
 									gallery.add([{
 										title: 'title',
