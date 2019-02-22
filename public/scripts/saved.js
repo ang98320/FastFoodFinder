@@ -19,10 +19,6 @@ var modalCloser = document.getElementById("modalClose");
 
 var thisSavedSession;
 
-<<<<<<< HEAD
-=======
-
-
 function openNav() {
 	if (navState == 0) {
 		document.getElementById("pullOutMenu").style.width = "65%";
@@ -188,7 +184,7 @@ function loadSaved() {
 	console.log(generateTable(savedJSONObject.saved.length));
 
 	$("#saved-body").append(generateTable(savedJSONObject.saved.length));
-	
+
 	var JSONIndex = 0;
 
 	for (i =0; i < savedJSONObject.saved.length; i++) {
@@ -218,7 +214,6 @@ function generateTable(numObjects) {
 		tableCode += "</tr>";
 		currAddIndex++;
 	}
-<<<<<<< HEAD
 	tableCode += "</table>";
 	return tableCode;
 }
@@ -238,7 +233,3 @@ function closeModal() {
 	//var modal = document.getElementById("moreInfoModal").style.display = "none";
 	document.getElementById("moreInfoModal").style.display = "none";
 }
-=======
-}
-*/
->>>>>>> d234d3fb595e11a58be9ba2b0669c1907a3b9e31

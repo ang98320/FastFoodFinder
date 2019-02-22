@@ -122,7 +122,13 @@ function goNext(callback) {
 	currIndex++;
 	$.get("/calls", function(data) {
 		$("#heartButton").removeClass("fa");
+		var a = {
+			title: data.restaurants[currIndex].restName,
+			href: data.restaurants[currIndex].img,
+			phone: data.restaurants[currIndex].phone,
+		}
 		callback(data.restaurants[currIndex].img);
+		//callback(a);
 	});
 	//return "hi";
 }
