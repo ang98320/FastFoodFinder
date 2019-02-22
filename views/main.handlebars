@@ -14,6 +14,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
+
+
 <body id="background">
 	<!--<a name="foods">-->
 		<div id="pushField">
@@ -45,12 +47,13 @@
 			<a name="menuBars">
 			    <div class="container-fluid test" id="socialBar">
 						<span onclick="openNav()" class="row" id="menu">&#9776;</span>
+						<h1 id="title">Fast Eats</h1>
 						<!--
 						<div class="test" id="filterBar">
 							<form autocomplete="off" action=()>
 								<input class="center" type="text" id="filter" placeholder="Filters">
 							</form>
-						</div>-->
+						</div> -->
 						<!--
 						<div class="test" id="locationBar">
 								<a href="location.html" class="button">
@@ -61,14 +64,15 @@
 			</a>
 			<a name="mobilitiyBar">
 				<div class="container-fluid test" id="mobility">
-					<!-- Go back one image
-					<button id="oneLeft" onclick="goBack()"> <i class="fas fa-arrow-left fa"></i> </button> -->
+					 <!-- Go back one image -->
+					<!--<button id="oneLeft" onclick="goBack()"> <i class="fas fa-arrow-left fa"></i> </button>-->
 					<!-- Save image to list -->
-					<button id="save" onclick="save()"> <i id="heartButton" class="far fa-heart"></i> </button>
-					<!-- Go to next image
-					<button id="oneRight" onclick="goNext()"> <i class="fas fa-arrow-right fa"></i> </button> -->
+					<button id="save" onclick="save()"> <i id="heartButton" class="far fa-heart heart"></i> </button>
+					<!-- Go to next image-->
+					<!--<button id="oneRight" onclick="goNext()"> <i class="fas fa-arrow-right fa"></i> </button>-->
 				</div>
 			</a>
+
 			<div id="moreInfoModal" class="moreInfoModal test">
 
 			<div class="container-fluid test" id="moreInfoBar">
@@ -100,26 +104,7 @@
 				<h4 id="moreBreaker"> Other Items from _____ </h4>
 
 					<table id="morePictures" style="width: 100%; margin: 0px 0px;">
-						<!--
-						<tr>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<!-- Fill images here as needed
-						</tr>
-						<tr>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<!-- Fill images here as needed
-						</tr>
-						<tr>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<th><img class="instaStyle" src="/img/placeholder.jpg"></th>
-							<!-- Fill images here as needed
-						</tr>
-						-->
+
 					</table>
 			</div>
 		</div>
@@ -127,8 +112,10 @@
 	<!--</a>-->
 </div>
 
+
 <script src="scripts/blueimp-gallery.min.js"></script>
 <script>
+
 //var list = ["/img/placeholder.jpg", "/img/sushi.jpg", "/img/ramen.jpg"];
 loadList(function(result) {
 	var list = result;

@@ -9,7 +9,7 @@
 	<title> FastEats. Food, faster. </title>
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="scripts/saved.js"> </script>
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/saved.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -28,25 +28,48 @@
 					<a href="settings.html">Settings</a> -->
 					<a href="saved">Saved</a>
 				</div>
-				<h1 id="saved-label">Saved</h1>
+				<h1 id="title">Saved</h1>
 				<span onclick="openNav()" class="row" id="saved-menu-button">&#9776;</span>
 			</div>
-			<div id="saved-body" style="overflow: scroll">
-				<table id="saved-food" style="width: 100%; margin: 0px 0px;">
-					<!--
-					<tr id="savedBar1">
-						<th><img class="instaStyle" src="img/placeholder.jpg" id="image1"></th>
-						<th><img class="instaStyle" src="img/placeholder.jpg" id="image2"></th>
-						<th><img class="instaStyle" src="img/placeholder.jpg" id="image3"></th>
-					</tr>
-					<tr>
-						<th><img class="instaStyle" src="img/placeholder.jpg" id="image4"></th>
-						<th><img class="instaStyle" src="img/placeholder.jpg" id="image5"></th>
-						<th><img class="instaStyle" src="img/placeholder.jpg" id="image6"></th>
-					</tr>
 
-					</tr> -->
-				</table>
+			<!-- <div id="padding"> </div> -->
+			<div id="saved-body" style="overflow: scroll">
+				
+			</div>
+		</div>
+
+
+		<div id="moreInfoModal" class="moreInfoModal test">
+			<div class="container-fluid test" id="moreInfoBar">
+				<div class="test" id="menu">
+						<a onclick=() class="button">
+							<i class="far fa-heart fa"></i>
+						</a>
+				</div>
+					<h4 id="moreName">Resturant Name</h4>
+				<div class="test" id="locationBar">
+						<a onclick="closeModal()" class="button" id="modalClose">
+							<i class="far fa-times-circle"></i>
+						</a>
+				</div>
+			</div>
+
+			<div id="morePicturesScroll" style="width: 100%; height: 100%; overflow: scroll">
+				<div class="test" id="moreInformation">
+					<img src="/img/placeholder.jpg" id="additionalImg">
+					<!--<div id="moreImg" class="test">
+
+					</div>-->
+					<div id="moreContact" class="moreInfo">
+						<h3 class="contactClass" id="handle">Name of Food</h3>
+						<h3 class="contactClass" id="phoneNumber">Phone Number Here</h3>
+						<h3 class="contactClass" id="navigate">ETA</h3>
+					</div>
+				</div>
+				<h4 id="moreBreaker"> Other Items from </h4>
+					<table id="morePictures" style="width: 100%; margin: 0px 0px;">
+						
+					</table>
 			</div>
 		</div>
 	</div>
