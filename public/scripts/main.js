@@ -23,7 +23,7 @@ var saveIndex = 0;
 $.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
 	//console.log(data);
-	console.log("inside main.js after / called in app.js")
+	console.log("inside main.js after / called in app.js");
 });
 
 /*
