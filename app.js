@@ -104,11 +104,6 @@ app.use(session({
 }));
 //app.use(serveStatic('public/ftp', {'main': ['main.html', 'main.htm']}))
 
-app.use(cors({
-  //origin: 'https://a6-fasteats.herokuapp.com/calls'
-  origin: 'http://localhost:3000'
-}));
-
 // Add routes here
 //app.get('/', login.view);
 
@@ -130,11 +125,7 @@ app.get('/getnext', function (req, res) {
 
 //app.get('/main', main.view);
 //app.get('/calls', cors(), calls.info);
-app.get('/calls', cors(), function(req, res) {
-  res.render(calls);
-});
-
-
+app.get('/calls', calls.info);
 app.get('/saved', saved.view);
 //app.route('/main');
 //app.get('/add', add.addFriend);
