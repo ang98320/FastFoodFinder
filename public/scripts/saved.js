@@ -187,9 +187,40 @@ function loadSaved() {
 
 	var JSONIndex = 0;
 
-	for (i =0; i < savedJSONObject.saved.length; i++) {
+	for (i = 0; i < savedJSONObject.saved.length; i++) {
 		var appendJSON = ".col" + JSONIndex;
-		$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
+		//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
+		var rowDiv = document.createElement('div')
+		rowDiv.className = "saved-row"
+		rowDiv.setAttribute("onclick", "openModal()")
+
+		var colLeft = document.createElement('div')
+		colLeft.className = "saved-col-left"
+
+		var colRight = document.createElement('div')
+		colRight.className = "saved-col-right"
+
+		var img = document.createElement('img')
+		img.className = "saved-row-img"
+		img.src = savedJSONObject.saved[JSONIndex].img
+
+		var l1 = document.createElement('h3')
+		l1.className = "saved-row-label"
+		l1.innerHTML = savedJSONObject.saved[JSONIndex].restName
+		var l2 = document.createElement('h4')
+		l2.className = "saved-row-label"
+		l2.innerHTML = "Added: Today"
+
+		colLeft.append(img)
+
+		colRight.append(l1)
+		colRight.append(l2)
+
+		rowDiv.append(colLeft)
+		rowDiv.append(colRight)
+
+		$(appendJSON).append(rowDiv)
+
 		JSONIndex++;
 	}}
 
@@ -201,7 +232,7 @@ function generateTable(numObjects) {
 	// console.log(intCast);
 	// var numRows = intCast + 2;
 	// console.log(numRows);
-	for (i =0; i < numObjects; i++){
+	for (i = 0; i < numObjects; i++){
 		var indexClass = "col" + currAddIndex;
 		tableCode += '<tr class="saveStyle ' + indexClass + '"">';
 		/*
