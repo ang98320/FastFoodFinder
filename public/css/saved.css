@@ -50,6 +50,18 @@
   clear: none;
 }
 
+#title {
+  color: black;
+  text-align: center;
+  font-family: "Arial Black";
+  font-size: 40px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
 #main-info {
   z-index: 999999;
   position: absolute;
