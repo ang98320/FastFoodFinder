@@ -17,6 +17,8 @@ var yelp = require('yelp-fusion');
 var fs = require('fs');
 var cors = require('cors');
 
+var restaurants = require('./response.json');
+
 var main = require('./routes/main');
 var calls = require('./routes/calls');
 var saved = require('./routes/saved');

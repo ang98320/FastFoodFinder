@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	//getLocation();
 	currIndex == -1;
-	goNext();
+	//goNext();
 });
 
 // INIT VARS
@@ -102,29 +102,44 @@ function showError(error) {
   }
 }
 
+function loadList(callback) {
+	$.get("/calls", function(data) {
+		var res = []
+		for (i = 0; i < 3; i++) {
+			currIndex++;
+			var a = {
+				title: data.restaurants[i].restName,
+				href: data.restaurants[i].img,
+				phone: data.restaurants[i].phone,
+			}
+			res.push(a);
+		}
+		callback(res)
+	});
+}
+
+function goNext(callback) {
+	currIndex++;
+	$.get("/calls", function(data) {
+		$("#heartButton").removeClass("fa");
+		callback(data.restaurants[currIndex].img);
+	});
+	//return "hi";
+}
+
+/*
 function goNext() {
 	currIndex++;
 	$("#heartButton").removeClass("fa");
+	var ref;
 	$.get("/getnext", function(data) {
 		console.log(data);
+		ref = data;
 	});
-	/*
-	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
-		//console.log("AJAX successful");
-		//console.log(data);
-		//console.log(data.restaurants[currIndex].restName);
-		//$("#firstSlideshow").attr("href", "beers.jpg");
-		//$("#secondSlideshow").attr("href", "beers.jpg");
-		//$("#thirdSlideshow").attr("href", "beers.jpg");
-		//$("#links").remove(".slideshowImg");
-		$("#links").empty();
-		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
-		$("#phoneNumber").html(data.restaurants[currIndex].phone);
-		$("#moreName").html(data.restaurants[currIndex].restName);
-	});
-	*/
-	return "/img/udon.jpg";
+	//return "/img/udon.jpg";
+	return ref;
 }
+*/
 
 function goBack() {
 	if (currIndex == 0) {
@@ -205,4 +220,11 @@ function appendJSON(string) {
 		this.replace("}]", "");
 	}
 		return this.append("," + string + "}]")
+}
+
+function changeUser(response) {
+  //Add code to change name and image
+  //$(".facebookLogin").hide();
+  //document.getElementById("name").innerHTML = response.name;
+  //document.getElementById("photo").src = response.picture.data.url;
 }

@@ -18,12 +18,14 @@
 	<!--<a name="foods">-->
 		<div id="pushField">
 		<div id="links">
+			<!--
 		    <a href="/img/placeholder.jpg" title="Burger" id="firstSlideshow" class="slideshowImg">
 		    </a>
 		    <a href="/img/sushi.jpg" title="Sushi" id="secondSlideshow">
 		    </a>
 		    <a href="/img/ramen.jpg" title="Ramen" id="thirdSlideshow">
-		    </a>
+		    </a>-->
+				<a></a>
 		</div>
 		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
 	    <div class="slides" onclick="openModal()"></div>
@@ -128,38 +130,43 @@
 <script src="scripts/blueimp-gallery.min.js"></script>
 <script>
 //var list = ["/img/placeholder.jpg", "/img/sushi.jpg", "/img/ramen.jpg"];
-var currentIndex = 0;
-var maxIndex = 0;
-var gallery = blueimp.Gallery(
-    document.getElementById('links').getElementsByTagName('a'),
-		//list,
-    {
-        container: '#blueimp-gallery-carousel',
-        carousel: true,
-				startSlideshow: false,
-				fullScreen: false,
-				toggleControlsOnSlideClick: false,
-				toggleControlsOnSlideClick: false,
-				onslide: function (index, slide) {
-					/* will need to keep track if going forward or backward */
-					if ((currentIndex + 1) == index) {
-						currentIndex = index;
-						console.log('next: ' + index);
-						if (maxIndex < index) {
-							maxIndex++;
-							var next = goNext();
-							gallery.add([next]);
-							console.log("just added " + next + " to gallery");
+loadList(function(result) {
+	var list = result;
+	var currentIndex = 0;
+	var maxIndex = 0;
+	var gallery = blueimp.Gallery(
+	    //document.getElementById('links').getElementsByTagName('a'),
+			list,
+	    {
+	        container: '#blueimp-gallery-carousel',
+	        carousel: true,
+					continuous: false,
+					startSlideshow: false,
+					fullScreen: false,
+					toggleControlsOnSlideClick: false,
+					toggleControlsOnSlideClick: false,
+					onslide: function (index, slide) {
+						if ((currentIndex + 1) == index) {
+							currentIndex = index;
+							console.log('next: ' + index);
+							if (maxIndex < index) {
+								maxIndex++;
+								goNext(function(result) {
+									console.log(result);
+									gallery.add([{
+										title: 'title',
+										href: result,
+									}]);
+								});
+							}
+						} else if ((currentIndex - 1) == index) {
+							currentIndex = index;
+							console.log('prev: ' + index);
 						}
-						//gallery.add(["/img/udon.jpg"]);
-						//goNext();
-					} else if ((currentIndex - 1) == index) {
-						currentIndex = index;
-						console.log('prev: ' + index);
-					}
-				},
-    }
-);
+					},
+	    }
+	);
+});
 </script>
 
 </body>
