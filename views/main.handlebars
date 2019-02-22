@@ -129,6 +129,7 @@
 <script>
 //var list = ["/img/placeholder.jpg", "/img/sushi.jpg", "/img/ramen.jpg"];
 var currentIndex = 0;
+var maxIndex = 0;
 var gallery = blueimp.Gallery(
     document.getElementById('links').getElementsByTagName('a'),
 		//list,
@@ -144,9 +145,12 @@ var gallery = blueimp.Gallery(
 					if ((currentIndex + 1) == index) {
 						currentIndex = index;
 						console.log('next: ' + index);
-						var next = goNext();
-						gallery.add([next]);
-						console.log("just added " + next + " to gallery");
+						if (maxIndex < index) {
+							maxIndex++;
+							var next = goNext();
+							gallery.add([next]);
+							console.log("just added " + next + " to gallery");
+						}
 						//gallery.add(["/img/udon.jpg"]);
 						//goNext();
 					} else if ((currentIndex - 1) == index) {
