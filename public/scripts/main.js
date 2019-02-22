@@ -21,8 +21,17 @@ var savedJSONString = '{ "saved" : [';
 
 $.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
+	//console.log(data);
+	console.log("inside main.js after / called in app.js")
+});
+
+/*
+$.get("/getnext", function(data) {
+  //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
+	console.log("/getnext called");
 	console.log(data);
 });
+*/
 
 function openNav() {
 	console.log("openNav");
@@ -95,6 +104,10 @@ function showError(error) {
 function goNext() {
 	currIndex++;
 	console.log("click successful!");
+	$.get("/getnext", function(data) {
+		console.log(data);
+	});
+	/*
 	$.get("https://a6-fasteats.herokuapp.com/calls", function(data) {
 		//console.log("AJAX successful");
 		//console.log(data);
@@ -108,6 +121,7 @@ function goNext() {
 		$("#phoneNumber").html(data.restaurants[currIndex].phone);
 		$("#moreName").html(data.restaurants[currIndex].restName);
 	});
+	*/
 }
 
 function goBack() {

@@ -15,6 +15,7 @@ var session = require('express-session');
 var serveStatic = require('serve-static');
 var yelp = require('yelp-fusion');
 var fs = require('fs');
+var cors = require('cors');
 
 var main = require('./routes/main');
 var calls = require('./routes/calls');
@@ -103,35 +104,37 @@ app.use(session({
 }));
 //app.use(serveStatic('public/ftp', {'main': ['main.html', 'main.htm']}))
 
+app.use(cors({
+  //origin: 'https://a6-fasteats.herokuapp.com/calls'
+  origin: 'http://localhost:3000'
+}));
 
 // Add routes here
 //app.get('/', login.view);
 
-app.get('/', function (req, res) {
-  console.log("called /");
-  //res.render('main');
-  //console.log("rendered main");
+app.options('*', cors())
+
+app.get('/', main.view);
+
+app.get('/getnext', function (req, res) {
   client.search({
     latitude: "32.870190",
     longitude: "-117.216192",
     radius: "6000"
   }).then(response => {
-    console.log("rendered main");
-    console.log(response.jsonBody.businesses[0].name);
-    //res.json({ yelp: "response.jsonBody.businesses[0].name"});
-    //res.render('main', { yelp: "response.jsonBody.businesses[0].name"});
-    res.json({ yelp: "response.jsonBody.businesses[0].name"});
-    req.url = "/main";
-    app.handle(req, res);
-    //res.render('main');
+    res.json({ yelp: response});
   }).catch(e => {
     console.log(e);
   });
 });
 
+//app.get('/main', main.view);
+//app.get('/calls', cors(), calls.info);
+app.get('/calls', cors(), function(req, res) {
+  res.render(calls);
+});
 
-app.get('/main', main.view);
-app.get('/calls', calls.info);
+
 app.get('/saved', saved.view);
 //app.route('/main');
 //app.get('/add', add.addFriend);
