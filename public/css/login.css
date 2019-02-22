@@ -12,7 +12,7 @@ input[type=text], input[type=password] {
 	position: static;
 }
 
-/* long button 
+/* long button
 .logbutton {
   	background-color: #80bfff;
   	color: white;
@@ -29,6 +29,20 @@ input[type=text], input[type=password] {
   	transition-duration: 0.5s;
 }
 */
+
+.fb {
+  margin-top: 5%;
+  position: relative;
+  width: 100%;
+}
+
+.fb-login-button {
+  position: absolute;
+  top: 10%; left: 25%;
+  width: 200px;
+  height: 200px;
+}
+
 
 .loginbutton {
   	display: inline-block;
