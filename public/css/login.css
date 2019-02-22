@@ -37,6 +37,7 @@ input[type=text], input[type=password] {
 }
 
 .fb-login-button {
+  z-index: 99999;
   position: absolute;
   top: 10%; left: 25%;
   width: 200px;

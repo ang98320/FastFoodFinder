@@ -49,11 +49,12 @@
     	<label for="psw"><b>Password</b></label>
     	<input type="password" placeholder="Enter Password" name="psw" required>
 
-    	<a href="main"><button class="loginbutton" style="background-color:#66CD00;"><span>Login</span></button> </a>
+    	<a href="main"><button class="loginbutton" style="background-color:#66CD00;"><span>Login</span></button></a>
 			<!--<button class="loginbutton" onclick="login()" style="background-color:#66CD00;"><span>Login</span></button>-->
 			<!--<a href="main"><button class="loginbutton" style="background-color:#3B5998;"><span>Login with Facebook</span></button> </a>-->
+			<!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
 			<h1></h1>
-			<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+			<div class="fb-login-button" data-size="large" scope="public_profile,email" onlogin="checkLoginState();" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
 	<!--<button class="loginbutton"><span href="main">Login</span></button>-->
 </div>
 <!--<a href="main"> Dev Login? Click Here </a>-->
