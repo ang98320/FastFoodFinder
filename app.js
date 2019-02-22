@@ -109,7 +109,7 @@ app.use(session({
 
 app.options('*', cors())
 
-app.get('/', main.view);
+app.get('/', login.view);
 
 app.get('/getnext', function (req, res) {
   client.search({
@@ -123,7 +123,7 @@ app.get('/getnext', function (req, res) {
   });
 });
 
-//app.get('/main', main.view);
+app.get('/main', main.view);
 //app.get('/calls', cors(), calls.info);
 app.get('/calls', calls.info);
 app.get('/saved', saved.view);
