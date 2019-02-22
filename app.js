@@ -109,6 +109,9 @@ app.get('/', login.view);
 app.get('/main', main.view);
 app.get('/calls', calls.info);
 app.get('/saved', saved.view);
+// app.options('*', cors());
+
+app.get('/', login.view);
 //app.route('/main');
 //app.get('/add', add.addFriend);
 // Example route

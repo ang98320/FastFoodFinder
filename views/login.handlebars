@@ -20,6 +20,8 @@
 
 </head>
 <body id='loginbackground'>
+	<div id="fb-root"></div>
+	<script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=146022223845"></script>
 <div>
 <!-- Real Login
 <form action="main.html">
@@ -45,6 +47,7 @@
     	<input type="password" placeholder="Enter Password" name="psw" required>
 
     	<a href="main"><button class="loginbutton"><span>Login</span></button> </a>
+    	<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 	<!--<button class="loginbutton"><span href="main">Login</span></button>-->
 </div>
 <a href="main"> Dev Login? Click Here </a>
