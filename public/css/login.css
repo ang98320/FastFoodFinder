@@ -30,20 +30,13 @@ input[type=text], input[type=password] {
 }
 */
 
-.fb {
-  margin-top: 5%;
-  position: relative;
-  width: 100%;
-}
 
+/*
 .fb-login-button {
   z-index: 99999;
   position: absolute;
-  top: 10%; left: 25%;
-  width: 200px;
-  height: 200px;
 }
-
+*/
 
 .loginbutton {
   	display: inline-block;
