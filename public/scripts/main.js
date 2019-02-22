@@ -224,6 +224,7 @@ function appendJSONText(string) {
 		return this.concat("," + string + "}]");
 }
 
+/*
 function nextSlideshow() {
 	//This should work on click of a.next
 	
@@ -266,7 +267,7 @@ function nextSlideshow() {
 					},
 	    }
 	); */
-}
+// }
 
 
 function lastSlideshow() {

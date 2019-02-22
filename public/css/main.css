@@ -171,6 +171,10 @@ body {
   height: 10%;
 }
 
+#padding{
+  padding-top: 10%;
+}
+
 #moreInfoBar {
   z-index: 999999;
   padding-top:10px;

@@ -17,6 +17,8 @@ document.cookie = [];
 var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 
+var thisSavedSession;
+
 
 
 function openNav() {
@@ -34,10 +36,11 @@ function openNav() {
 	}
 }
 
-function openModal() {
+/*function openModal() {
 	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
 }
+*/
 
 function closeModal() {
 	//var modal = document.getElementById("moreInfoModal").style.display = "none";
@@ -54,91 +57,13 @@ function closeModal2() {
 	document.getElementById("main-info").style.display = "none";
 }
 
-//https://www.w3schools.com/html/html5_geolocation.asp geolocation info
-/*
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
-}
-
-function showPosition(position) {
-	currLat = position.coords.latitude;
-	currLong = position.coords.longitude;
-}
-
-function showError(error) {
-  switch(error.code) {
-    case error.PERMISSION_DENIED:
-      alert("User denied the request for Geolocation.");
-      break;
-    case error.POSITION_UNAVAILABLE:
-      alert("Location information is unavailable.")
-      break;
-    case error.TIMEOUT:
-      alert("The request to get user location timed out.")
-      break;
-    case error.UNKNOWN_ERROR:
-      alert("An unknown error occurred.")
-      break;
-  }
-}
-
-function goNext() {
-	currIndex++;
-	console.log("click successful!");
-	$.get("http://localhost:3000/calls", function(data) {
-		//console.log("AJAX successful");
-		//console.log(data);
-		//console.log(data.restaurants[currIndex].restName);
-		//$("#firstSlideshow").attr("href", "beers.jpg");
-		//$("#secondSlideshow").attr("href", "beers.jpg");
-		//$("#thirdSlideshow").attr("href", "beers.jpg");
-		//$("#links").remove(".slideshowImg");
-		$("#links").empty();
-		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
-		$("#phoneNumber").html(data.restaurants[currIndex].phone);
-		$("#moreName").html(data.restaurants[currIndex].restName);
-	});
-}
-
-function goBack() {
-	if (currIndex == 0) {
-		return;
-	}
-	currIndex--;
-	console.log("click successful!");
-	$.get("http://localhost:3000/calls", function(data) {
-		//console.log("AJAX successful");
-		//console.log(data);
-		//console.log(data.restaurants[currIndex].restName);
-		$("#links").empty();
-		$("#links").append('<a href="' + data.restaurants[currIndex].img + '" class="slideshowImg"> </a>');
-		$("#phoneNumber").html(data.restaurants[currIndex].phone);
-		$("#moreName").html(data.restaurants[currIndex].restName);
-	});
-}
-
-function save() {
-	$.get("http://localhost:3000/calls", function(data) {
-		savedFood.push(data.restaurants[currIndex]);
-		window.name = savedFood;
-	});
-	console.log("Cookie written to");
-	console.log(savedFood);
-	console.log(window.name);
-}
-
-*/
-
 function loadSaved() {
 	var savedInfo = sessionStorage.getItem("savedFoods");
 	console.log(savedInfo);
 	var savedJSONObject = JSON.parse(savedInfo);
 	console.log(savedJSONObject);
 
+	thisSavedSession = savedJSONObject;
 	console.log(generateTable(savedJSONObject.saved.length));
 
 	$("#saved-body").append(generateTable(savedJSONObject.saved.length));
@@ -147,7 +72,7 @@ function loadSaved() {
 
 	for (i =0; i < savedJSONObject.saved.length; i++) {
 		var appendJSON = ".col" + JSONIndex;
-		$(appendJSON).append('<img src="' + savedJSONObject.saved[JSONIndex].img + '">');
+		$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
 		JSONIndex++;
 	}
 
@@ -186,4 +111,20 @@ function generateTable(numObjects) {
 	}
 	tableCode += "</table>";
 	return tableCode;
+}
+
+function openModal() {
+	console.log(thisSavedSession);
+	document.getElementById("moreInfoModal").style.display = "block";
+	var savedIndex = parseInt($(this).attr("class"));
+	console.log($(this).attr("class"));
+	console.log(savedIndex);
+	$("#moreName").html(thisSavedSession.saved[savedIndex].restName);
+	$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
+	console.log("openModal");
+}
+
+function closeModal() {
+	//var modal = document.getElementById("moreInfoModal").style.display = "none";
+	document.getElementById("moreInfoModal").style.display = "none";
 }
