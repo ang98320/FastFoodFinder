@@ -4,6 +4,19 @@ function checkLoginState() {
   });
 }
 
+function getProfileImage() {
+  FB.getLoginStatus(function(response) {
+    change(response);
+  });
+}
+
+function change(response) {
+  if (response.status === 'connected') {
+    console.log("changing profile image");
+    FB.api('/me?fields=name,first_name,picture.width(500)', changeUser);
+  }
+}
+
 function statusChangeCallback(response) {
   console.log('Facebook login status changed.');
   console.log(response);

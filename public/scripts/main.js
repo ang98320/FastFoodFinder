@@ -2,6 +2,7 @@ $(document).ready(function() {
 	//getLocation();
 	currIndex == -1;
 	//goNext();
+	getProfileImage();
 });
 
 // INIT VARS
@@ -35,14 +36,15 @@ $.get("/getnext", function(data) {
 */
 
 function openNav() {
-	console.log("openNav");
 	if (navState == 0) {
+		console.log("openNav");
 		document.getElementById("pullOutMenu").style.width = "65%";
 		//document.getElementById("pushField").style.marginLeft = "65%";
 		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 		navState++;
 	}
 	else {
+		console.log("closeNav");
 		document.getElementById("pullOutMenu").style.width = "0";
 		document.getElementById("pushField").style.marginLeft = "0";
 		document.body.style.backgroundColor = "white";
