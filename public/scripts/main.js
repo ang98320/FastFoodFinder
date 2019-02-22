@@ -167,7 +167,7 @@ function goBack() {
 function save() {
 	$.get("/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
-		stringJSON = JSON.stringify(data.restaurants[currIndex]);
+		stringJSON = JSON.stringify(data.restaurants[currIndex - 3]);
 		savedFood.push(stringJSON);
 		if(savedJSONString.includes(',' + stringJSON)) {
 			// console.log("Checked ,");
