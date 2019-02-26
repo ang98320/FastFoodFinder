@@ -121,6 +121,7 @@ app.get('/getnext/:lat/:long', function (req, res) {
     longitude: req.query.long,
     categories: 'food',
     limit: 50,
+    offset: 26,
   }).then(response => {
     res.json({ yelp: response});
   }).catch(e => {
