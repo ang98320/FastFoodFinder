@@ -1,5 +1,15 @@
 $(document).ready(function() {
-	getLocation();
+	if(sessionStorage.hasLat) {
+		currLat = sessionStorage.hasLat;
+		currLong = sessionStorage.hasLong;
+		var googleDirections = "https://www.google.com/maps/dir/?api=1&origin=";
+		googleDirections = googleDirections + currLat + "," + currLong + "&";
+		userLocation = googleDirections;
+		console.log(userLocation);
+	}
+	else {
+		getLocation();
+	}
   	console.log("at login");
 });
 

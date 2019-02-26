@@ -79,6 +79,8 @@ var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 var savedJSONString = '{ "saved" : [';
 var saveIndex = 0;
+var googleDirections = "https://www.google.com/maps/dir/?api=1&origin=";
+var userLocation;
 
 $.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
@@ -187,8 +189,9 @@ function loadList(callback) {
 
 function fetchData(callback) {
 	$.get("/getnext", function(data) {
-		//console.log(data);
+		console.log(data);
 		callback(data.yelp.body);
+		// $("#navigator".attr("href",))
 	});
 }
 
