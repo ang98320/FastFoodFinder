@@ -1,8 +1,58 @@
+var resturants = [];
+
 $(document).ready(function() {
 	//getLocation();
 	currIndex == -1;
 	//goNext();
 	getProfileImage();
+	fetchData(function(result) {
+		var json = JSON.parse(result);
+		console.log(json);
+		for (i = 0; i < json.businesses.length; i++) {
+			var resturant = {
+				title: json.businesses[i].alias,
+				href: json.businesses[i].image_url,
+				phone: json.businesses[i].display_phone,
+				lat: json.businesses[i].coordinates.latitude,
+				long: json.businesses[i].coordinates.longitude,
+				categories: json.businesses[i].categories,
+			}
+			resturants.push(resturant);
+		}
+		var currentIndex = 0;
+		var maxIndex = 0;
+		console.log(resturants);
+		var gallery = blueimp.Gallery(
+				//document.getElementById('links').getElementsByTagName('a'),
+				//list,
+				resturants,
+				{
+						container: '#blueimp-gallery-carousel',
+						carousel: true,
+						continuous: false,
+						startSlideshow: false,
+						fullScreen: false,
+						toggleControlsOnSlideClick: false,
+						toggleControlsOnSlideClick: false,
+						onslide: function (index, slide) {
+							if ((currentIndex + 1) == index) {
+								currentIndex = index;
+								console.log('next: ' + index);
+								if (maxIndex < index) {
+									maxIndex++;
+									goNext(index, function(result) {
+										console.log(result);
+										gallery.add(result);
+									});
+								}
+							} else if ((currentIndex - 1) == index) {
+								currentIndex = index;
+								console.log('prev: ' + index);
+							}
+						},
+				}
+		);
+	});
 });
 
 // INIT VARS
@@ -104,6 +154,7 @@ function showError(error) {
   }
 }
 
+/*
 function loadList(callback) {
 	$.get("/calls", function(data) {
 		var res = []
@@ -118,12 +169,20 @@ function loadList(callback) {
 		}
 		callback(res)
 	});
+} */
+
+function fetchData(callback) {
+	$.get("/getnext", function(data) {
+		//console.log(data);
+		callback(data.yelp.body);
+	});
 }
 
 function goNext(index, callback) {
 	//console.log("index: ", index);
-	currIndex++;
+	//currIndex++;
 	//console.log("currIndex: ", currIndex);
+	/*
 	$.get("/calls", function(data) {
 		$("#heartButton").removeClass("fa");
 		var a = {
@@ -131,25 +190,10 @@ function goNext(index, callback) {
 			href: data.restaurants[currIndex].img,
 			phone: data.restaurants[currIndex].phone,
 		}
-		//callback(data.restaurants[currIndex].img);
 		callback(a);
-	});
+	}); */
 	//return "hi";
 }
-
-/*
-function goNext() {
-	currIndex++;
-	$("#heartButton").removeClass("fa");
-	var ref;
-	$.get("/getnext", function(data) {
-		console.log(data);
-		ref = data;
-	});
-	//return "/img/udon.jpg";
-	return ref;
-}
-*/
 
 function goBack() {
 	if (currIndex == 0) {

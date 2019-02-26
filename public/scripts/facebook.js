@@ -5,9 +5,13 @@ function checkLoginState() {
 }
 
 function getProfileImage() {
-  FB.getLoginStatus(function(response) {
-    change(response);
-  });
+  try {
+    FB.getLoginStatus(function(response) {
+      change(response);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 function change(response) {

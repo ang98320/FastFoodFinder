@@ -115,9 +115,8 @@ app.get('/', login.view);
 
 app.get('/getnext', function (req, res) {
   client.search({
-    latitude: "32.870190",
-    longitude: "-117.216192",
-    radius: "6000"
+    location:'san diego',
+    categories:'food',
   }).then(response => {
     res.json({ yelp: response});
   }).catch(e => {
