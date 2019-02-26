@@ -147,8 +147,8 @@ function getLocation() {
 }
 
 function showPosition(position) {
-	currLat = position.coords.latitude;
-	currLong = position.coords.longitude;
+	sessionStorage.hasLat = position.coords.latitude;
+	sessionStorage.hasLong = position.coords.longitude;
 }
 
 function showError(error) {
