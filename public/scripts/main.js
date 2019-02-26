@@ -1,7 +1,16 @@
 var resturants = [];
 
 $(document).ready(function() {
-	//getLocation();
+	if(sessionStorage.hasLat) {
+		currLat = sessionStorage.hasLat;
+		currLong = sessionStorage.hasLong;
+		googleDirections = googleDirections + currLat + "," + currLong + "&";
+		userLocation = googleDirections;
+		console.log(userLocation);
+	}
+	else {
+		getLocation();
+	}
 	currIndex == -1;
 	//goNext();
 	getProfileImage();
@@ -125,11 +134,16 @@ function closeModal2() {
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
 
 function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition, showError);
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
+	if (sessionStorage.hasLat) {
+		return;
+	}
+	else{
+	  if (navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(showPosition, showError);
+	  } else {
+	    alert("Geolocation is not supported by this browser.");
+	  }
+	}
 }
 
 function showPosition(position) {
