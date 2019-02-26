@@ -113,10 +113,13 @@ app.options('*', cors())
 
 app.get('/', login.view);
 
-app.get('/getnext', function (req, res) {
+app.get('/getnext/:lat/:long', function (req, res) {
+  //console.log(req.query.lat)
+  //console.log(req.query.long)
   client.search({
-    location:'san diego',
-    categories:'food',
+    latitude: req.query.lat,
+    longitude: req.query.long,
+    categories: 'food',
   }).then(response => {
     res.json({ yelp: response});
   }).catch(e => {

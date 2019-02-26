@@ -188,7 +188,9 @@ function loadList(callback) {
 } */
 
 function fetchData(callback) {
-	$.get("/getnext", function(data) {
+	console.log(sessionStorage.hasLat)
+	console.log(sessionStorage.hasLong)
+	$.get("/getnext/:lat/:long", {lat:sessionStorage.hasLat, long:sessionStorage.hasLong} ,function(data) {
 		console.log(data);
 		callback(data.yelp.body);
 		// $("#navigator".attr("href",))
