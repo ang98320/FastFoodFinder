@@ -19,9 +19,11 @@ $(document).ready(function() {
 		console.log(json);
 		for (i = 0; i < json.businesses.length; i++) {
 			var resturant = {
-				title: json.businesses[i].alias,
+				title: json.businesses[i].name,
+				alias: json.businesses[i].alias,
 				href: json.businesses[i].image_url,
-				phone: json.businesses[i].display_phone,
+				// phone: json.businesses[i].display_phone,
+				phone: json.businesses[i].phone,
 				lat: json.businesses[i].coordinates.latitude,
 				long: json.businesses[i].coordinates.longitude,
 				categories: json.businesses[i].categories,
@@ -46,6 +48,7 @@ $(document).ready(function() {
 						onslide: function (index, slide) {
 							if ((currentIndex + 1) == index) {
 								currentIndex = index;
+								galleryInd = index;
 								console.log('next: ' + index);
 								if (maxIndex < index) {
 									maxIndex++;
@@ -81,6 +84,7 @@ var savedJSONString = '{ "saved" : [';
 var saveIndex = 0;
 var googleDirections = "https://www.google.com/maps/dir/?api=1&origin=";
 var userLocation;
+var galleryInd = 0;
 
 $.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
@@ -116,6 +120,10 @@ function openNav() {
 function openModal() {
 	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
+	console.log(galleryInd);
+	$("#phoneNumber").html(resturants[galleryInd].phone);
+	$("#additionalImg").attr('src', resturants[galleryInd].href);
+	$("#moreName").html(resturants[galleryInd].title);
 }
 
 function closeModal() {

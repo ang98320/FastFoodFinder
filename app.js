@@ -122,6 +122,7 @@ app.get('/getnext/:lat/:long', function (req, res) {
     categories: 'food',
     limit: 50,
     offset: 26,
+    radius: 6000,
   }).then(response => {
     res.json({ yelp: response});
   }).catch(e => {
