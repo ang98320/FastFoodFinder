@@ -398,12 +398,10 @@ body {
 	overflow: hidden;
 	height: 10%;
 	margin-bottom: 5%;
-	margin-left: 5%;
 	font-family: "Raleway";
   font-size: 3.5vw;
-  margin-top: 10%;
-  padding-top: 10%;
-  max-width: 60%;
+  text-align: center;
+  width: 100%;
 }
 
 #moreContact h3 {

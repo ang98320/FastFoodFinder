@@ -33,6 +33,7 @@ $(document).ready(function() {
 			}
 			resturants.push(resturant);
 		}
+		$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
 		var currentIndex = 0;
 		var maxIndex = 0;
 		console.log(resturants);
@@ -54,6 +55,7 @@ $(document).ready(function() {
 								currentIndex = index;
 								galleryInd = index;
 								console.log('next: ' + index);
+								$("#navigator").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
 								if (maxIndex < index) {
 									maxIndex++;
 									goNext(index, function(result) {
@@ -62,6 +64,7 @@ $(document).ready(function() {
 									});
 								}
 							} else if ((currentIndex - 1) == index) {
+								$("#navigator").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
 								currentIndex = index;
 								console.log('prev: ' + index);
 							}
