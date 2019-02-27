@@ -11,6 +11,7 @@ $(document).ready(function() {
 	}
 	else {
 		getLocation();
+		console.log("getting location")
 	}
 	currIndex == -1;
 	//goNext();

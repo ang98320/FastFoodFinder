@@ -473,7 +473,7 @@ body {
   height: 100%;
   width: 100%;
   overflow: scroll;
-  background-color: red;
+  /*background-color: red;*/
 }
 
 /* Begin login screen */
