@@ -1,4 +1,5 @@
 var resturants = [];
+var gallery;
 
 $(document).ready(function() {
 	if(sessionStorage.hasLat) {
@@ -19,19 +20,21 @@ $(document).ready(function() {
 		console.log(json);
 		for (i = 0; i < json.businesses.length; i++) {
 			var resturant = {
-				title: json.businesses[i].alias,
+				title: json.businesses[i].name,
 				href: json.businesses[i].image_url,
 				phone: json.businesses[i].display_phone,
 				lat: json.businesses[i].coordinates.latitude,
 				long: json.businesses[i].coordinates.longitude,
+				alias: json.businesses[i].alias,
 				categories: json.businesses[i].categories,
+				liked: false,
 			}
 			resturants.push(resturant);
 		}
 		var currentIndex = 0;
 		var maxIndex = 0;
 		console.log(resturants);
-		var gallery = blueimp.Gallery(
+		gallery = blueimp.Gallery(
 				//document.getElementById('links').getElementsByTagName('a'),
 				//list,
 				resturants,
@@ -43,6 +46,7 @@ $(document).ready(function() {
 						fullScreen: false,
 						toggleControlsOnSlideClick: false,
 						toggleControlsOnSlideClick: false,
+						hidePageScrollbars:false,
 						onslide: function (index, slide) {
 							if ((currentIndex + 1) == index) {
 								currentIndex = index;
@@ -116,21 +120,19 @@ function openNav() {
 function openModal() {
 	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
+	var index = gallery.getIndex()
+	var data = gallery.list[index];
+	var liked = gallery.list[index].liked;
+	console.log(data);
+
+	document.getElementById("additionalImg").src = gallery.list[index].href;
+	document.getElementById("handle").innerHTML = gallery.list[index].title;
+	document.getElementById("phoneNumber").innerHTML = gallery.list[index].phone;
 }
 
 function closeModal() {
 	//var modal = document.getElementById("moreInfoModal").style.display = "none";
 	document.getElementById("moreInfoModal").style.display = "none";
-}
-
-function openModal2() {
-	document.getElementById("main-info").style.display = "block";
-	console.log("openModal");
-}
-
-function closeModal2() {
-	//var modal = document.getElementById("moreInfoModal").style.display = "none";
-	document.getElementById("main-info").style.display = "none";
 }
 
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
@@ -201,6 +203,7 @@ function goNext(index, callback) {
 	//console.log("index: ", index);
 	//currIndex++;
 	//console.log("currIndex: ", currIndex);
+	$("#heartButton").removeClass("fa");
 	/*
 	$.get("/calls", function(data) {
 		$("#heartButton").removeClass("fa");

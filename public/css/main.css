@@ -23,7 +23,7 @@ body {
   height: 50px;
   text-align: center;
   font-size: 24px;
-  line-height: 48px;
+  /*line-height: 48px;*/
 }
 
 .center {
@@ -202,6 +202,10 @@ body {
   background-color: #FFF;
 }
 
+#modalClose {
+  height: 10%;
+}
+
 #extraspace {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -365,6 +369,7 @@ body {
 	height:100%;
 }
 
+/*
 #additionalImg{
 	width: 20%;
 	height: 25%;
@@ -374,7 +379,17 @@ body {
 	object-fit: cover;
 	margin-bottom: 5%;
 	border-style: solid;
+} */
+
+#additionalImg{
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	margin-top: 15%;
+	object-fit: cover;
+	margin-bottom: 5%;
 }
+
 
 #moreContact {
 	display: inline-block;
@@ -453,6 +468,14 @@ body {
 #saved-food {
   margin-top: 5%;
 }
+
+#morePicturesScroll {
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  background-color: red;
+}
+
 /* Begin login screen */
 
 /* long loging button

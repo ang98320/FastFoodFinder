@@ -119,7 +119,7 @@ app.get('/getnext/:lat/:long', function (req, res) {
   client.search({
     latitude: req.query.lat,
     longitude: req.query.long,
-    categories: 'food',
+    categories: 'restaurant',
     limit: 50,
     offset: 26,
   }).then(response => {
