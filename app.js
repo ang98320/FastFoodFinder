@@ -131,6 +131,22 @@ app.get('/getnext/:lat/:long', function (req, res) {
   });
 });
 
+app.get('/getlocation/:location', function (req, res) {
+  //console.log(req.query.lat)
+  //console.log(req.query.long)
+  client.search({
+    location: req.query.location,
+    categories: 'restaurant',
+    limit: 50,
+    offset: 0,
+    radius: 6000,
+  }).then(response => {
+    res.json({ yelp: response});
+  }).catch(e => {
+    console.log(e);
+  });
+});
+
 app.get('/main', main.view);
 app.get('/main0', main0.view);
 //app.get('/calls', cors(), calls.info);

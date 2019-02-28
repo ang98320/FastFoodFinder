@@ -18,7 +18,7 @@ $(document).ready(function() {
 	getProfileImage();
 	fetchData(function(result) {
 		var json = JSON.parse(result);
-		console.log(json);
+		//console.log(json);
 		for (i = 0; i < json.businesses.length; i++) {
 			var resturant = {
 				title: json.businesses[i].name,
@@ -112,6 +112,39 @@ function closeModal() {
 
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
 
+function askLocation() {
+  var location = prompt("Please enter a location (or Current Location):");
+	console.log(location)
+	changeLocation(location, function(result) {
+		document.getElementById("data-container").innerHTML = ""
+		var json = JSON.parse(result);
+		//console.log(json);
+		for (i = 0; i < json.businesses.length; i++) {
+			var resturant = {
+				title: json.businesses[i].name,
+				href: json.businesses[i].image_url,
+				phone: json.businesses[i].phone,
+				lat: json.businesses[i].coordinates.latitude,
+				long: json.businesses[i].coordinates.longitude,
+				alias: json.businesses[i].alias,
+				categories: json.businesses[i].categories,
+				liked: false,
+			}
+			addData(resturant, i)
+		}
+		window.mySwipe = Swipe(document.getElementById('slider'), {
+			continuous: false,
+		});
+	});
+}
+
+function changeLocation(where, callback) {
+	$.get("/getlocation/:location", {location:where} ,function(data) {
+		console.log(data);
+		callback(data.yelp.body);
+	});
+}
+
 function getLocation() {
 	if (sessionStorage.hasLat) {
 		return;
@@ -165,9 +198,17 @@ function loadList(callback) {
 } */
 
 function fetchData(callback) {
+	var latitude = sessionStorage.hasLat
+	var longitude = sessionStorage.hasLong
+	if (latitude == null) {
+		latitude = 32.906694699999996
+	}
+	if (longitude == null) {
+		-117.168471
+	}
 	console.log(sessionStorage.hasLat)
 	console.log(sessionStorage.hasLong)
-	$.get("/getnext/:lat/:long", {lat:sessionStorage.hasLat, long:sessionStorage.hasLong} ,function(data) {
+	$.get("/getnext/:lat/:long", {lat:latitude, long:longitude} ,function(data) {
 		console.log(data);
 		callback(data.yelp.body);
 		// $("#navigator".attr("href",))
@@ -180,7 +221,7 @@ function hello() {
 
 function addData(resturant, i) {
 	var body = document.getElementById("data-container")
-	console.log(body)
+	//console.log(body)
 	var container = document.createElement('div')
 	container.className = "data"
 	container.setAttribute('data-index', i)
