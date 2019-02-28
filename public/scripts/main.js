@@ -245,12 +245,14 @@ function goBack() {
 	});
 }
 
-function save() {
+function save() {/*
 	var index = gallery.getIndex()
 	$.get("/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
 		stringJSON = JSON.stringify(data.restaurants[currIndex - 3]);
 		savedFood.push(stringJSON);
+		*/
+		stringJSON = JSON.stringify(resturants[galleryInd]);
 		if(savedJSONString.includes(',' + stringJSON)) {
 			// console.log("Checked ,");
 			alert("You already saved this! Removing!");
@@ -286,7 +288,6 @@ function save() {
 		console.log(savedJSONString);
 		sessionStorage.setItem('savedFoods', savedJSONString);
 		saveIndex++;
-	});
 }
 
 function loadSaved() {

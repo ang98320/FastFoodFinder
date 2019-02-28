@@ -1,8 +1,4 @@
 /*Begin class stuff */
-body {
-  margin: 0;
-  height: 100%;
-}
 
 .star-bright, hr.star-dark {
   margin: 40px auto 30px;
@@ -579,6 +575,16 @@ th {
 	height:200px;
 	zoom: 1;         /* for IE */
 	display*:inline; /* for IE */
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+
+html {
+	font-family: "Raleway";
 }
 /* Media controls as needed */
 

@@ -72,15 +72,15 @@
 
 .moreInfoModal {
   z-index: 999999;
-	display: none;
-	position:fixed;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background-color: #FFF;
+  display: none;
+  position:fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #FFF;
   float: left;
   clear: none;
 }
@@ -88,7 +88,7 @@
 #title {
   color: black;
   text-align: center;
-  font-family: "Arial Black";
+  /*font-family: "Arial Black";*/
   font-size: 40px;
   position: absolute;
   top: 10%;
@@ -297,8 +297,9 @@
 	overflow: hidden;
 	height: 10%;
 	margin-bottom: 5%;
-	margin-left: 5%;
 	font-family: "Raleway";
+  text-align: center;
+  width: 100%;
 }
 
 #moreContact h3 {
@@ -337,7 +338,7 @@
   border-style: none;
 	display: inline;
 }
-
+/*
 #additionalImg{
 	width: 20%;
 	height: 25%;
@@ -347,6 +348,15 @@
 	object-fit: cover;
 	margin-bottom: 5%;
 	border-style: solid;
+} */
+
+#additionalImg{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  margin-top: 15%;
+  object-fit: cover;
+  margin-bottom: 5%;
 }
 
 #menu {
@@ -381,4 +391,8 @@
   width: 100%;
   height: 7%;
   background-color: #FFF;
+}
+
+html {
+  font-family: "Raleway";
 }

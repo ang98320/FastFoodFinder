@@ -1,6 +1,16 @@
 $(document).ready(function() {
 	//getLocation();
 	loadSaved();
+	$(".saved-row").click(function() {
+		openModal();
+		var savedIndex = parseInt($(this).attr("id").replace('row', ''));
+		console.log($(this).attr("id"));
+		console.log(savedIndex);
+		$("#moreName").html(savedJSONObject.saved[savedIndex].title);
+		$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
+		$("#additionalImg").attr("src", savedJSONObject.saved[savedIndex].href);
+		$("#handle").html(savedJSONObject.saved[savedIndex].title);
+	});
 });
 
 // INIT VARS
@@ -13,6 +23,9 @@ var currIndex = 0;
 var savedFood = [];
 
 document.cookie = [];
+
+var savedInfo = sessionStorage.getItem("savedFoods");
+var savedJSONObject = JSON.parse(savedInfo);
 //var modal = document.getElementById("moreInfoModal");
 var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
@@ -55,6 +68,7 @@ function closeModal2() {
 	document.getElementById("main-info").style.display = "none";
 }
 
+/*
 function loadSaved() {
 	var savedInfo = sessionStorage.getItem("savedFoods");
 	var savedJSONObject = JSON.parse(savedInfo);
@@ -73,6 +87,7 @@ function loadSaved() {
 		$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
 		JSONIndex++;
 	}}
+*/
 
 function generateTable(numObjects) {
 	var tableCode = "<table id='saved-food' style='width: 100%; margin: 0px 0px;'>";
@@ -175,11 +190,6 @@ function closeModal2() {
 }
 
 function loadSaved() {
-	var savedInfo = sessionStorage.getItem("savedFoods");
-	var savedJSONObject = JSON.parse(savedInfo);
-	console.log(savedInfo);
-	console.log(savedJSONObject);
-
 	thisSavedSession = savedJSONObject;
 	console.log(generateTable(savedJSONObject.saved.length));
 
@@ -190,40 +200,42 @@ function loadSaved() {
 	for (i = 0; i < savedJSONObject.saved.length; i++) {
 		var appendJSON = ".col" + JSONIndex;
 		//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
-		var rowDiv = document.createElement('div')
-		rowDiv.className = "saved-row"
-		rowDiv.setAttribute("onclick", "openModal()")
+		var rowDiv = document.createElement('div');
+		rowDiv.className = "saved-row";
+		rowDiv.id = "row" + i;
+		rowDiv.setAttribute("onclick", "openModal()");
 
-		var colLeft = document.createElement('div')
-		colLeft.className = "saved-col-left"
+		var colLeft = document.createElement('div');
+		colLeft.className = "saved-col-left";
 
-		var colRight = document.createElement('div')
-		colRight.className = "saved-col-right"
+		var colRight = document.createElement('div');
+		colRight.className = "saved-col-right";
 
-		var img = document.createElement('img')
-		img.className = "saved-row-img"
-		img.src = savedJSONObject.saved[JSONIndex].img
+		var img = document.createElement('img');
+		img.className = "saved-row-img";
+		img.src = savedJSONObject.saved[i].href;
 
-		var l1 = document.createElement('h3')
-		l1.className = "saved-row-label"
-		l1.innerHTML = savedJSONObject.saved[JSONIndex].restName
-		var l2 = document.createElement('h4')
-		l2.className = "saved-row-label"
-		l2.innerHTML = "Added: Today"
+		var l1 = document.createElement('h3');
+		l1.className = "saved-row-label";
+		l1.innerHTML = savedJSONObject.saved[i].title;
+		var l2 = document.createElement('h4');
+		l2.className = "saved-row-label";
+		l2.innerHTML = "Added: Today";
 
-		colLeft.append(img)
+		colLeft.append(img);
 
-		colRight.append(l1)
-		colRight.append(l2)
+		colRight.append(l1);
+		colRight.append(l2);
 
-		rowDiv.append(colLeft)
-		rowDiv.append(colRight)
+		rowDiv.append(colLeft);
+		rowDiv.append(colRight);
 
 		//$(appendJSON).prepend(rowDiv)
-		$("#saved-container").prepend(rowDiv)
+		$("#saved-container").prepend(rowDiv);
 
 		JSONIndex++;
 	}}
+
 
 function generateTable(numObjects) {
 	var tableCode = "<table id='saved-food' style='width: 100%; margin: 0px 0px;'>";
@@ -251,13 +263,14 @@ function generateTable(numObjects) {
 }
 
 function openModal() {
+	/*
 	console.log(thisSavedSession);
-	document.getElementById("moreInfoModal").style.display = "block";
 	var savedIndex = parseInt($(this).attr("class"));
 	console.log($(this).attr("class"));
 	console.log(savedIndex);
 	$("#moreName").html(thisSavedSession.saved[savedIndex].restName);
-	$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
+	$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone); */
+	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
 }
 
