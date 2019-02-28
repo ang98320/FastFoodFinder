@@ -200,7 +200,20 @@ function loadList(callback) {
 function fetchData(callback) {
 	console.log(sessionStorage.hasLat)
 	console.log(sessionStorage.hasLong)
-	$.get("/getnext/:lat/:long", {lat:sessionStorage.hasLat, long:sessionStorage.hasLong} ,function(data) {
+	var latitude = sessionStorage.hasLat
+	var longitude = sessionStorage.hasLong
+
+	if (latitude == null) {
+		latitude = 32.906661899999996
+	}
+	if (longitude == null) {
+		longitude = -117.1684615
+	}
+
+	console.log(latitude)
+	console.log(longitude)
+
+	$.get("/getnext/:lat/:long", {lat:latitude, long:longitude} ,function(data) {
 		console.log(data);
 		callback(data.yelp.body);
 		// $("#navigator".attr("href",))
@@ -242,48 +255,43 @@ function goBack() {
 	});
 }
 
-function save() { /*
-	$.get("/calls", function(data) {
-	// $.get("http://localhost:3000/calls", function(data) {
-		stringJSON = JSON.stringify(data.restaurants[currIndex - 3]);
-		savedFood.push(stringJSON);
-		*/
-		stringJSON = JSON.stringify(resturants[galleryInd]);
-		if(savedJSONString.includes(',' + stringJSON)) {
-			// console.log("Checked ,");
-			alert("You already saved this! Removing!");
-			appendedString = ',' + stringJSON;
-			// console.log(appendedString);
-			savedJSONString = savedJSONString.replace(appendedString, '');
-			$("#heartButton").removeClass("fa");
-			return;
-		}
-		if(savedJSONString.includes(stringJSON)) {
-			console.log("Checked empty");
-			alert("You already saved this! Removing!");
-			savedJSONString = savedJSONString.replace(stringJSON, "");
-			$("#heartButton").removeClass("fa");
-			return;
-		}
-		if (savedJSONString.endsWith("]}")) {
-			// console.log("ends with }]");
-			savedJSONString = savedJSONString.replace("]}", "");
-		}
-		if (savedJSONString ===  '{ "saved" : [') {
-			savedJSONString = savedJSONString.concat(stringJSON + "]}");
-		}
-		else {
-			savedJSONString = savedJSONString.concat("," + stringJSON + "]}");
-		}
-		if($("#heartButton").hasClass("fa")) {
-			$("#heartButton").removeClass("fa");
-		}
-		else {
-			$("#heartButton").addClass("fa");
-		}
-		console.log(savedJSONString);
-		sessionStorage.setItem('savedFoods', savedJSONString);
-		saveIndex++;
+function save() {
+	stringJSON = JSON.stringify(resturants[galleryInd]);
+	if(savedJSONString.includes(',' + stringJSON)) {
+		// console.log("Checked ,");
+		alert("You already saved this! Removing!");
+		appendedString = ',' + stringJSON;
+		// console.log(appendedString);
+		savedJSONString = savedJSONString.replace(appendedString, '');
+		$("#heartButton").removeClass("fa");
+		return;
+	}
+	if(savedJSONString.includes(stringJSON)) {
+		console.log("Checked empty");
+		alert("You already saved this! Removing!");
+		savedJSONString = savedJSONString.replace(stringJSON, "");
+		$("#heartButton").removeClass("fa");
+		return;
+	}
+	if (savedJSONString.endsWith("]}")) {
+		// console.log("ends with }]");
+		savedJSONString = savedJSONString.replace("]}", "");
+	}
+	if (savedJSONString ===  '{ "saved" : [') {
+		savedJSONString = savedJSONString.concat(stringJSON + "]}");
+	}
+	else {
+		savedJSONString = savedJSONString.concat("," + stringJSON + "]}");
+	}
+	if($("#heartButton").hasClass("fa")) {
+		$("#heartButton").removeClass("fa");
+	}
+	else {
+		$("#heartButton").addClass("fa");
+	}
+	console.log("res:", savedJSONString);
+	sessionStorage.setItem('savedFoods', savedJSONString);
+	saveIndex++;
 }
 
 function loadSaved() {

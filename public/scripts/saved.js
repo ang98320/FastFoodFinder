@@ -117,6 +117,7 @@ function generateTable(numObjects) {
 }
 /*
 
+/*
 function openModal() {
 	console.log(thisSavedSession);
 	document.getElementById("moreInfoModal").style.display = "block";
