@@ -136,7 +136,7 @@ app.get('/getlocation/:location', function (req, res) {
   //console.log(req.query.long)
   client.search({
     location: req.query.location,
-    categories: 'restaurant',
+    categories: 'food',
     limit: 50,
     offset: 0,
     radius: 6000,

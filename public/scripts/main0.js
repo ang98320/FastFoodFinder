@@ -41,10 +41,10 @@ $(document).ready(function() {
 
 		window.mySwipe = Swipe(document.getElementById('slider'), {
 			continuous: false,
-			startSlide: sessionStorage.currIdx,
+			/*startSlide: sessionStorage.currIdx,*/
 			callback: function(index, elem) {
 				console.log("going to :", index)
-				sessionStorage.currIdx = index
+				//sessionStorage.currIdx = index
 			},
 		});
 
@@ -145,10 +145,12 @@ function askLocation() {
   var location = prompt("Please enter a location (or Current Location):");
 	console.log(location)
 	changeLocation(location, function(result) {
+		//window.mySwipe = ""
+		window.mySwipe.kill()
 		resturants = []
-		document.getElementById("data-container").innerHTML = ""
+		document.getElementById("data-container").innerHTML = "";
 		var json = JSON.parse(result);
-		//console.log(json);
+		console.log("new len:", json.businesses.length);
 		for (i = 0; i < json.businesses.length; i++) {
 			var resturant = {
 				title: json.businesses[i].name,
@@ -161,10 +163,23 @@ function askLocation() {
 				liked: false,
 			}
 			resturants.push(resturant);
+			//resturants[index] = resturant
 			addData(resturant, i)
 		}
+
+		//window.mySwipe.restart()
+		/*
 		window.mySwipe = Swipe(document.getElementById('slider'), {
 			continuous: false,
+		}); */
+
+		window.mySwipe = Swipe(document.getElementById('slider'), {
+			continuous: false,
+			startSlide: 0,
+			callback: function(index, elem) {
+				console.log("going to :", index)
+				//sessionStorage.currIdx = index
+			},
 		});
 	});
 }
@@ -235,7 +250,7 @@ function fetchData(callback) {
 		latitude = 32.906694699999996
 	}
 	if (longitude == null) {
-		-117.168471
+		longitude = -117.168471
 	}
 	console.log(sessionStorage.hasLat)
 	console.log(sessionStorage.hasLong)
