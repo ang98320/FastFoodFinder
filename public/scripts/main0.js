@@ -2,6 +2,10 @@ var resturants = [];
 var gallery;
 
 $(document).ready(function() {
+	console.log("ready")
+	console.log("current index: ", sessionStorage.currIdx)
+	//window.mySwipe.slide(sessionStorage.currIdx)
+
 	if(sessionStorage.hasLat) {
 		currLat = sessionStorage.hasLat;
 		currLong = sessionStorage.hasLong;
@@ -37,6 +41,11 @@ $(document).ready(function() {
 
 		window.mySwipe = Swipe(document.getElementById('slider'), {
 			continuous: false,
+			startSlide: sessionStorage.currIdx,
+			callback: function(index, elem) {
+				console.log("going to :", index)
+				sessionStorage.currIdx = index
+			},
 		});
 
 		//$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
@@ -71,6 +80,12 @@ $.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
 	//console.log(data);
 	console.log("inside main.js after / called in app.js")
+});
+
+$.get("/main0", function(data) {
+  //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');
+	//console.log(data);
+	console.log("loaded")
 });
 
 /*
