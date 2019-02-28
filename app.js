@@ -20,6 +20,7 @@ var cors = require('cors');
 var restaurants = require('./response.json');
 
 var main = require('./routes/main');
+var main0 = require('./routes/main0');
 var calls = require('./routes/calls');
 var saved = require('./routes/saved');
 var login = require('./routes/login');
@@ -131,6 +132,7 @@ app.get('/getnext/:lat/:long', function (req, res) {
 });
 
 app.get('/main', main.view);
+app.get('/main0', main0.view);
 //app.get('/calls', cors(), calls.info);
 app.get('/calls', calls.info);
 app.get('/saved', saved.view);
