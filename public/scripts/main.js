@@ -14,6 +14,13 @@ $(document).ready(function() {
 		console.log("getting location")
 	}
 	currIndex == -1;
+
+	if (sessionStorage.savedFoods) {
+		savedJSONString = sessionStorage.getItem("savedFoods");
+	}
+	else {
+		sessionStorage.setItem("savedFoods", []);
+	}
 	//goNext();
 	getProfileImage();
 	fetchData(function(result) {
@@ -82,7 +89,7 @@ var currLong;
 var navState = 0;
 var currIndex = 0;
 var savedFood = [];
-sessionStorage.setItem('savedFoods', []);
+//sessionStorage.setItem('savedFoods', []);
 document.cookie = [];
 //var modal = document.getElementById("moreInfoModal");
 var modalOpener = document.getElementById("mainImg");
