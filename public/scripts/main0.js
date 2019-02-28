@@ -30,7 +30,7 @@ $(document).ready(function() {
 				categories: json.businesses[i].categories,
 				liked: false,
 			}
-			//resturants.push(resturant);
+			resturants.push(resturant);
 			// TODO insert elements here
 			addData(resturant, i)
 		}
@@ -39,7 +39,9 @@ $(document).ready(function() {
 			continuous: false,
 		});
 
-		$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
+		//$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
+		//var idx = window.mySwipe.getPos()
+		//$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
 		var currentIndex = 0;
 		var maxIndex = 0;
 		console.log(resturants);
@@ -79,6 +81,18 @@ $.get("/getnext", function(data) {
 });
 */
 
+function go() {
+	console.log("go")
+	var idx = window.mySwipe.getPos()
+	console.log(resturants[idx].lat)
+	console.log(resturants[idx].long)
+	//var url = "http://www.google.com/maps/place/" + resturants[idx].lat + "," + resturants[idx].long
+	//window.open(url, '_blank', 'location=yes');
+	console.log(userLocation)
+	$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
+
+}
+
 function openNav() {
 	if (navState == 0) {
 		console.log("openNav");
@@ -116,6 +130,7 @@ function askLocation() {
   var location = prompt("Please enter a location (or Current Location):");
 	console.log(location)
 	changeLocation(location, function(result) {
+		resturants = []
 		document.getElementById("data-container").innerHTML = ""
 		var json = JSON.parse(result);
 		//console.log(json);
@@ -130,6 +145,7 @@ function askLocation() {
 				categories: json.businesses[i].categories,
 				liked: false,
 			}
+			resturants.push(resturant);
 			addData(resturant, i)
 		}
 		window.mySwipe = Swipe(document.getElementById('slider'), {

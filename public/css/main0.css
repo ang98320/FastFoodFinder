@@ -71,7 +71,6 @@ body {
   	/*display: inline-block;*/
     position: fixed;
   	border-radius: 0px;
-  	background-color: #80bfff;
   	border: none;
   	color: #FFFFFF;
   	text-align: center;
@@ -82,6 +81,7 @@ body {
   	cursor: pointer;
   	margin-top: 25px;
     bottom: 0;
+    opacity: 50%;
 }
 
 .gobutton span {
@@ -89,6 +89,7 @@ body {
   	display: inline-block;
   	position: relative;
   	transition: 0.5s;
+    opacity: 50%;
 }
 
 .gobutton span:after {
@@ -98,15 +99,18 @@ body {
   	top: 0;
   	right: -20px;
   	transition: 0.5s;
+    opacity: 50%;
 }
 
 .gobutton:hover span {
   	padding-right: 25px;
+    opacity: 50%;
 }
 
 .gobutton:hover span:after {
   	opacity: 1;
   	right: 0;
+    opacity: 50%;
 }
 
 .star-bright, hr.star-dark {
