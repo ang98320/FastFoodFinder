@@ -195,7 +195,20 @@ function loadList(callback) {
 function fetchData(callback) {
 	console.log(sessionStorage.hasLat)
 	console.log(sessionStorage.hasLong)
-	$.get("/getnext/:lat/:long", {lat:sessionStorage.hasLat, long:sessionStorage.hasLong} ,function(data) {
+	var latitude = sessionStorage.hasLat
+	var longitude = sessionStorage.hasLong
+
+	if (latitude == null) {
+		latitude = 32.906661899999996
+	}
+	if (longitude == null) {
+		longitude = -117.1684615
+	}
+
+	console.log(latitude)
+	console.log(longitude)
+
+	$.get("/getnext/:lat/:long", {lat:latitude, long:longitude} ,function(data) {
 		console.log(data);
 		callback(data.yelp.body);
 		// $("#navigator".attr("href",))
@@ -238,7 +251,11 @@ function goBack() {
 }
 
 function save() {
+	var index = gallery.getIndex()
+	jsonString = JSON.stringify(resturants[index]);
+	console.log(jsonString)
 	$.get("/calls", function(data) {
+		console.log("data:", data)
 	// $.get("http://localhost:3000/calls", function(data) {
 		stringJSON = JSON.stringify(data.restaurants[currIndex - 3]);
 		savedFood.push(stringJSON);
@@ -274,7 +291,7 @@ function save() {
 		else {
 			$("#heartButton").addClass("fa");
 		}
-		console.log(savedJSONString);
+		console.log("res:", savedJSONString);
 		sessionStorage.setItem('savedFoods', savedJSONString);
 		saveIndex++;
 	});

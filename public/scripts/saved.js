@@ -99,6 +99,7 @@ function generateTable(numObjects) {
 	return tableCode;
 }
 
+/*
 function openModal() {
 	console.log(thisSavedSession);
 	document.getElementById("moreInfoModal").style.display = "block";
@@ -109,6 +110,7 @@ function openModal() {
 	$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
 	console.log("openModal");
 }
+*/
 
 function closeModal() {
 	//var modal = document.getElementById("moreInfoModal").style.display = "none";
