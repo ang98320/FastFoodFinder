@@ -37,13 +37,33 @@ body {
   top: 0;
 }
 
+#data-info {
+  background-color: blue;
+}
+
+#data-info-save {
+  float: left;
+  padding-top: 5%;
+  padding-left: 5%;
+  width: 25%;
+  /*background-color: purple;*/
+}
+
+#data-info-fields {
+  float:left;
+  text-align: left;
+  right: 0;
+  width: 70%;
+  /*background-color: green;*/
+}
+
 /*
 #data-img {
   width: 100%;
 }
 */
 .data h3 {
-  margin-left: 5%;
+  margin-left: 1%;
 }
 
 

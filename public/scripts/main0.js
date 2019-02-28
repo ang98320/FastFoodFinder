@@ -188,15 +188,38 @@ function addData(resturant, i) {
 	img.src = resturant.href
 	img.className = "data-img"
 	img.onDblClick = hello;
+
+	var info = document.createElement('div')
+	info.id = "data-info"
+	var info_save = document.createElement('div')
+	info_save.id = "data-info-save"
+	var info_fields = document.createElement('div')
+	info_fields.id = "data-info-fields"
+
+	var save = document.createElement('button')
+	save.id = "save"
+	save.setAttribute( "onClick", "javascript: save();" );
+	var heart = document.createElement('i')
+	heart.id = "heartButton"
+	heart.className = "far fa-heart heart"
+
+	save.append(heart)
+	info_save.append(save)
+
 	var name = document.createElement('h3')
 	name.innerHTML = resturant.title
 	//name.className = ""
 	var phone = document.createElement('h3')
 	phone.innerHTML = resturant.phone
 
+	info_fields.append(name)
+	info_fields.append(phone)
+
+	info.append(info_save)
+	info.append(info_fields)
+
 	container.append(img)
-	container.append(name)
-	container.append(phone)
+	container.append(info)
 	$("#data-container").append(container)
 }
 
