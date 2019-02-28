@@ -16,6 +16,11 @@ $(document).ready(function() {
 	currIndex == -1;
 	//goNext();
 	getProfileImage();
+
+	if (sessionStorage.savedFoods) {
+		savedJSONString = sessionStorage.getItem("savedFoods");
+	}
+
 	fetchData(function(result) {
 		var json = JSON.parse(result);
 		console.log(json);
@@ -237,11 +242,13 @@ function goBack() {
 	});
 }
 
-function save() {
+function save() { /*
 	$.get("/calls", function(data) {
 	// $.get("http://localhost:3000/calls", function(data) {
 		stringJSON = JSON.stringify(data.restaurants[currIndex - 3]);
 		savedFood.push(stringJSON);
+		*/
+		stringJSON = JSON.stringify(resturants[galleryInd]);
 		if(savedJSONString.includes(',' + stringJSON)) {
 			// console.log("Checked ,");
 			alert("You already saved this! Removing!");
@@ -277,7 +284,6 @@ function save() {
 		console.log(savedJSONString);
 		sessionStorage.setItem('savedFoods', savedJSONString);
 		saveIndex++;
-	});
 }
 
 function loadSaved() {
