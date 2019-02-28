@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	//getLocation();
 	loadSaved();
+	userLocation = sessionStorage.getItem("userLocation");
 	$(".saved-row").click(function() {
 		openModal();
 		var savedIndex = parseInt($(this).attr("id").replace('row', ''));
@@ -10,6 +11,7 @@ $(document).ready(function() {
 		$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
 		$("#additionalImg").attr("src", savedJSONObject.saved[savedIndex].href);
 		$("#handle").html(savedJSONObject.saved[savedIndex].title);
+		$("#navigator").attr('href', userLocation + "&destination=" + savedJSONObject.saved[savedIndex].lat + "," + savedJSONObject.saved[savedIndex].long +"&travelmode=driving");
 	});
 });
 
@@ -31,6 +33,7 @@ var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
 
 var thisSavedSession;
+var userLocation;
 
 function openNav() {
 	if (navState == 0) {

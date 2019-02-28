@@ -85,6 +85,10 @@
   clear: none;
 }
 
+.black {
+  color: #000;
+}
+
 #title {
   color: black;
   text-align: center;

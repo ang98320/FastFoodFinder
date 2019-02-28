@@ -8,6 +8,7 @@ $(document).ready(function() {
 		googleDirections = googleDirections + currLat + "," + currLong + "&";
 		userLocation = googleDirections;
 		console.log(userLocation);
+		sessionStorage.setItem("userLocation", userLocation);
 	}
 	else {
 		getLocation();
