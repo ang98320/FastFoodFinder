@@ -2,6 +2,7 @@ var resturants = [];
 var gallery;
 
 $(document).ready(function() {
+	console.log("currIndex:", sessionStorage.currIndex)
 	if(sessionStorage.hasLat) {
 		currLat = sessionStorage.hasLat;
 		currLong = sessionStorage.hasLong;
@@ -58,7 +59,16 @@ $(document).ready(function() {
 						toggleControlsOnSlideClick: false,
 						toggleControlsOnSlideClick: false,
 						hidePageScrollbars:false,
+						index: sessionStorage.currIndex,
 						onslide: function (index, slide) {
+							sessionStorage.currIndex = index
+							var liked = resturants[index].liked
+							console.log("liked:", liked)
+							if (liked) {
+								$("#heartButton").addClass("fa");
+							} else {
+								$("#heartButton").removeClass("fa");
+							}
 							if ((currentIndex + 1) == index) {
 								currentIndex = index;
 								galleryInd = index;
@@ -260,11 +270,20 @@ function save() {/*
 		stringJSON = JSON.stringify(data.restaurants[currIndex - 3]);
 		savedFood.push(stringJSON);
 		*/
-		stringJSON = JSON.stringify(resturants[galleryInd]);
+		var index = gallery.getIndex()
+		var liked = resturants[index].liked = true
+		if (resturants[index].liked) {
+			$("#heartButton").addClass("fa");
+		}
+		//$("#heartButton").className = "far fa-heart heart"
+
+		//stringJSON = JSON.stringify(resturants[galleryInd]);
+		stringJSON = JSON.stringify(resturants[index]);
 		if(savedJSONString.includes(',' + stringJSON)) {
 			// console.log("Checked ,");
 			alert("You already saved this! Removing!");
 			appendedString = ',' + stringJSON;
+			resturants[index].liked = false
 			// console.log(appendedString);
 			savedJSONString = savedJSONString.replace(appendedString, '');
 			$("#heartButton").removeClass("fa");
@@ -287,13 +306,16 @@ function save() {/*
 		else {
 			savedJSONString = savedJSONString.concat("," + stringJSON + "]}");
 		}
+		/*
 		if($("#heartButton").hasClass("fa")) {
 			$("#heartButton").removeClass("fa");
 		}
 		else {
 			$("#heartButton").addClass("fa");
 		}
-		console.log(savedJSONString);
+		*/
+		//console.log(savedJSONString);
+		console.log("saving: ", stringJSON)
 		sessionStorage.setItem('savedFoods', savedJSONString);
 		saveIndex++;
 }
