@@ -74,6 +74,7 @@ $(document).ready(function() {
 							} else if ((currentIndex - 1) == index) {
 								$("#navigator").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
 								currentIndex = index;
+								galleryInd = index;
 								console.log('prev: ' + index);
 							}
 						},
