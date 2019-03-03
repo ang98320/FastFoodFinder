@@ -159,6 +159,40 @@ app.get('/main0', main0.view);
 //app.get('/calls', cors(), calls.info);
 app.get('/calls', calls.info);
 app.get('/saved', saved.view);
+
+app.post('/saveItem', function(req, res) {
+  var id = req.body.id;
+  var resturant = req.body.resturant
+  fs.readFile('data.json', 'utf8', function (err, data){
+    if (err){
+        console.log(err);
+    } else {
+    obj = JSON.parse(data); //now it an object
+    obj.table.push({id: id, resturant: resturant}); //add some data
+    var json = JSON.stringify(obj, null, 4); //convert it back to json
+    fs.writeFile('data.json', json, 'utf8', function (err, data) {
+      console.log("Successfully written to json")
+    });
+}});
+});
+
+app.post('/getItems', function(req, res) {
+  var id = req.body.id
+  var obj;
+  var resturants = []
+  fs.readFile("data.json", 'utf8', function(err, data) {
+    if (err) throw err;
+    obj = JSON.parse(data);
+    //console.log(obj.table[2].resturant)
+    for (var i = 0; i < obj.table.length; i++) {
+      var resturant = obj.table[i].resturant
+      if (obj.table[i].id = id) resturants.push(resturant)
+    }
+    //console.log(resturants)
+    res.json(resturants)
+  });
+});
+
 //app.route('/main');
 //app.get('/add', add.addFriend);
 // Example route

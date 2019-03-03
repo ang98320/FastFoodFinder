@@ -287,6 +287,13 @@ function save() {/*
 		if (resturants[index].liked) {
 			$("#heartButton").addClass("fa");
 		}
+
+		var id = sessionStorage.id
+
+		console.log(resturants[index])
+		$.post("/saveItem", {id: id, resturant: resturants[index]}, function callback(err, data) {
+			console.log("success")
+		});
 		//$("#heartButton").className = "far fa-heart heart"
 
 		//stringJSON = JSON.stringify(resturants[galleryInd]);

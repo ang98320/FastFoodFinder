@@ -1,5 +1,8 @@
 $(document).ready(function() {
 	//getLocation();
+	loadFromJSON(function(result) {
+		console.log(result)
+	});
 	loadSaved();
 	userLocation = sessionStorage.getItem("userLocation");
 	$(".saved-row").click(function() {
@@ -34,6 +37,15 @@ var modalCloser = document.getElementById("modalClose");
 
 var thisSavedSession;
 var userLocation;
+
+function loadFromJSON() {
+	var id = sessionStorage.id
+	console.log("id:", id)
+	$.post("/getItems", {id: id}, function(req, res) {
+		console.log(req)
+		console.log(res)
+	});
+}
 
 function openNav() {
 	if (navState == 0) {
