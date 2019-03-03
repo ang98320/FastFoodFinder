@@ -2,7 +2,8 @@ var resturants = [];
 var gallery;
 
 $(document).ready(function() {
-	console.log("currIndex:", sessionStorage.currIndex)
+	console.log("user id is:", sessionStorage.id)
+	//console.log("currIndex:", sessionStorage.currIndex)
 	if(sessionStorage.hasLat) {
 		currLat = sessionStorage.hasLat;
 		currLong = sessionStorage.hasLong;

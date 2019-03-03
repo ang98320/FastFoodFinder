@@ -31,9 +31,16 @@ function statusChangeCallback(response) {
   if (response.status === 'connected') {
     // Logged into your app and Facebook.
         console.log('Successfully logged in with Facebook');
-        window.location.href = "/main";
+        FB.api('/me?fields=name,first_name,id', startMain);
+        //window.location.href = "/main";
         //FB.api('/me?fields=name,first_name,picture.width(200)', changeUser);
   }
+}
+
+function startMain(response) {
+  sessionStorage.id = response.id
+  console.log("logging in with id:", sessionStorage.id)
+  window.location.href = "/main";
 }
 
 //Add this callback at bottom of facebook.js and add the required functionality in it

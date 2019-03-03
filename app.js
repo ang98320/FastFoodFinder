@@ -147,7 +147,12 @@ app.get('/getlocation/:location', function (req, res) {
   });
 });
 
-app.get('/main', main.view);
+//app.get('/main', main.view);
+app.get('/main', function(req, res) {
+  res.render("main.handlebars")
+});
+
+
 app.get('/main0', main0.view);
 //app.get('/calls', cors(), calls.info);
 app.get('/calls', calls.info);
