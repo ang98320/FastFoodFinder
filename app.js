@@ -120,10 +120,11 @@ app.get('/getnext/:lat/:long', function (req, res) {
   client.search({
     latitude: req.query.lat,
     longitude: req.query.long,
-    categories: 'restaurant',
+    categories: 'restaurants',
     limit: 50,
     offset: 26,
     radius: 6000,
+    // sort_by: distance,
   }).then(response => {
     res.json({ yelp: response});
   }).catch(e => {
@@ -136,10 +137,11 @@ app.get('/getlocation/:location', function (req, res) {
   //console.log(req.query.long)
   client.search({
     location: req.query.location,
-    categories: 'food',
+    categories: 'restaurants',
     limit: 50,
     offset: 0,
     radius: 6000,
+    // sort_by: distance,
   }).then(response => {
     res.json({ yelp: response});
   }).catch(e => {
