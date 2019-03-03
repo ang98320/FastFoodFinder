@@ -12,6 +12,11 @@ input[type=text], input[type=password] {
 	position: static;
 }
 
+#fb-login-button {
+  position: absolute;
+  right: 0;
+}
+
 /* long button
 .logbutton {
   	background-color: #80bfff;

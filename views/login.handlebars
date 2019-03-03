@@ -44,22 +44,21 @@
 <!-- This is the dummy Wizard of Oz Login -->
 <div id="screen">
     	<label for="uname"><b>Username</b></label>
-    	<input type="text" placeholder="Enter Username" name="uname" required>
+    	<input type="text" placeholder="Enter Username" name="uname" required></input>
 
     	<label for="psw"><b>Password</b></label>
-    	<input type="password" placeholder="Enter Password" name="psw" required>
+    	<input type="password" placeholder="Enter Password" name="psw" required></input>
 
-    	<a href="main"><button class="loginbutton" style="background-color:#66CD00;"><span>Login</span></button></a>
-			<!--<button class="loginbutton" onclick="login()" style="background-color:#66CD00;"><span>Login</span></button>-->
-			<!--<a href="main"><button class="loginbutton" style="background-color:#3B5998;"><span>Login with Facebook</span></button> </a>-->
-			<!--<fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>-->
+			<a href="main">
+				<button class="loginbutton" style="background-color:#66CD00;">Login</button>
+			</a>
+
 			<h3></h3>
 			<div class="fb-login-button" data-size="large" scope="public_profile,email"
 			onlogin="checkLoginState();" data-button-type="login_with"
 			data-auto-logout-link="false" data-use-continue-as="false"></div>
-	<!--<button class="loginbutton"><span href="main">Login</span></button>-->
+
 </div>
-<!--<a href="main"> Dev Login? Click Here </a>-->
 
 </body>
 </html>

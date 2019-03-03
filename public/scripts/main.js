@@ -5,6 +5,7 @@ $(document).ready(function() {
 	console.log("user id is:", sessionStorage.id)
 	//console.log("currIndex:", sessionStorage.currIndex)
 	if(sessionStorage.hasLat) {
+		console.log("already has location")
 		currLat = sessionStorage.hasLat;
 		currLong = sessionStorage.hasLong;
 		googleDirections = googleDirections + currLat + "," + currLong + "&";
@@ -13,8 +14,9 @@ $(document).ready(function() {
 		sessionStorage.setItem("userLocation", userLocation);
 	}
 	else {
-		getLocation();
-		console.log("getting location")
+		getLocation(function (result) {
+			console.log("getLocation:", result)
+		});
 	}
 	currIndex == -1;
 
@@ -65,16 +67,12 @@ $(document).ready(function() {
 							sessionStorage.currIndex = index
 							var liked = resturants[index].liked
 							console.log("liked:", liked)
-							if (liked) {
-								$("#heartButton").addClass("fa");
-							} else {
-								$("#heartButton").removeClass("fa");
-							}
+							toggleHeart(liked)
+							openMap(userLocation, resturants[index].lat, resturants[index].long)
 							if ((currentIndex + 1) == index) {
 								currentIndex = index;
 								galleryInd = index;
 								console.log('next: ' + index);
-								$("#navigator").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
 								if (maxIndex < index) {
 									maxIndex++;
 									goNext(index, function(result) {
@@ -83,7 +81,6 @@ $(document).ready(function() {
 									});
 								}
 							} else if ((currentIndex - 1) == index) {
-								$("#navigator").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
 								currentIndex = index;
 								galleryInd = index;
 								console.log('prev: ' + index);
@@ -127,6 +124,18 @@ $.get("/getnext", function(data) {
 });
 */
 
+function toggleHeart(liked) {
+	if (liked) {
+		$("#heartButton").addClass("fa");
+	} else {
+		$("#heartButton").removeClass("fa");
+	}
+}
+
+function openMap(userLocation, latitude, longitude) {
+	$("#navigator").attr("href", userLocation + "&destination=" + latitude + "," + longitude +"&travelmode=driving");
+}
+
 function openNav() {
 	if (navState == 0) {
 		console.log("openNav");
@@ -147,10 +156,10 @@ function openNav() {
 function openModal() {
 	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
-	console.log(galleryInd);
-	$("#phoneNumber").html(resturants[galleryInd].phone);
-	$("#additionalImg").attr('src', resturants[galleryInd].href);
-	$("#moreName").html(resturants[galleryInd].title);
+	var index = gallery.getIndex()
+	$("#phoneNumber").html(resturants[index].phone);
+	$("#additionalImg").attr('src', resturants[index].href);
+	$("#moreName").html(resturants[index].title);
 }
 
 function closeModal() {
@@ -176,6 +185,7 @@ function getLocation() {
 function showPosition(position) {
 	sessionStorage.hasLat = position.coords.latitude;
 	sessionStorage.hasLong = position.coords.longitude;
+	console.log("showPosition: ", sessionStorage.hasLat, sessionStorage.hasLong)
 }
 
 function showError(error) {
