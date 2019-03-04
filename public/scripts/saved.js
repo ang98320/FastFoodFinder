@@ -237,12 +237,11 @@ function loadSaved() {
 		l2.className = "saved-row-label";
 		l2.innerHTML = "Added: Today";
 
-		$("#row" + i).append('<a onclick="remove()" class="trashcan"> + <i class="far fa-trash-alt"></i> </a>');
-
 		colLeft.append(img);
 
 		colRight.append(l1);
 		colRight.append(l2);
+		// colRight.append('<a onclick="remove()" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
 
 		rowDiv.append(colLeft);
 		rowDiv.append(colRight);
@@ -251,7 +250,9 @@ function loadSaved() {
 		$("#saved-container").prepend(rowDiv);
 
 		JSONIndex++;
-	}}
+	}
+	$(".saved-col-right").append('<a onclick="remove()" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
+}
 
 
 function generateTable(numObjects) {
