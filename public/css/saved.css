@@ -19,7 +19,11 @@
   float: right;
   width: 75%;
   padding: 5px;
+<<<<<<< Updated upstream
   padding-left: 20px;
+=======
+  margin-right: 5%;
+>>>>>>> Stashed changes
 }
 
 .saved-row-img {
@@ -32,6 +36,7 @@
 
 .saved-row-label {
   margin: 0 auto;
+  font-size: 3vh;
 }
 
 .saveStyle {
@@ -90,11 +95,16 @@
   color: #000;
 }
 
+.trashcan {
+  float:right;
+  font-size: 3vh;
+}
+
 #title {
   color: black;
   text-align: center;
   /*font-family: "Arial Black";*/
-  font-size: 40px;
+  font-size: 6vh;
   position: absolute;
   top: 10%;
   left: 50%;
@@ -151,12 +161,12 @@
 #saved-menu-button {
   position: absolute;
   width: 10%;
-  height: 40%;
-  font-size: 1.6em;
+  /*height: 40%;*/
+  font-size: 6vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  top: 18px;
+  /*justify-content: center;*/
+  /*top: 18px;*/
   left: 9px;
   /*background-color: blue;*/
 }
@@ -231,7 +241,7 @@
   /*background-color: transparent;*/
   background-color: #F5F5F5;
   opacity: 10%;
-  margin-top: 20%;
+  margin-top: 25%;
   overflow-y: scroll;
 }
 
@@ -400,4 +410,13 @@
 
 html {
   font-family: "Raleway";
+}
+
+/*Media Controls*/
+
+@media only screen and (min-height : 1024px) {
+  #saved-body {
+    margin-top: 15%;
+  }
+  }
 }

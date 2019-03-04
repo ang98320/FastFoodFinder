@@ -237,6 +237,8 @@ function loadSaved() {
 		l2.className = "saved-row-label";
 		l2.innerHTML = "Added: Today";
 
+		$("#row" + i).append('<a onclick="remove()" class="trashcan"> + <i class="far fa-trash-alt"></i> </a>');
+
 		colLeft.append(img);
 
 		colRight.append(l1);
