@@ -15,8 +15,14 @@ $(document).ready(function() {
 	}
 	else {
 		getLocation(function (result) {
-			console.log("getLocation:", result)
+			console.log("getLocation:", result);
 		});
+		currLat = sessionStorage.hasLat;
+		currLong = sessionStorage.hasLong;
+		googleDirections = googleDirections + currLat + "," + currLong + "&";
+		userLocation = googleDirections;
+		console.log(userLocation);
+		sessionStorage.setItem("userLocation", userLocation);
 	}
 	currIndex == -1;
 
@@ -45,7 +51,8 @@ $(document).ready(function() {
 			}
 			resturants.push(resturant);
 		}
-		$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
+		// $("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
+		$("#director").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
 		var currentIndex = 0;
 		var maxIndex = 0;
 		console.log(resturants);
@@ -64,15 +71,22 @@ $(document).ready(function() {
 						hidePageScrollbars:false,
 						index: sessionStorage.currIndex,
 						onslide: function (index, slide) {
-							sessionStorage.currIndex = index
-							var liked = resturants[index].liked
-							console.log("liked:", liked)
-							toggleHeart(liked)
-							openMap(userLocation, resturants[index].lat, resturants[index].long)
+							sessionStorage.currIndex = index;
+							var liked = resturants[index].liked;
+							// console.log("liked:", liked)
+							toggleHeart(liked);
+							openMap(userLocation, resturants[index].lat, resturants[index].long);
 							if ((currentIndex + 1) == index) {
+								sessionStorage.currIndex = index;
 								currentIndex = index;
 								galleryInd = index;
 								console.log('next: ' + index);
+								if (resturants[index].liked == true) {
+									$("#heartButton").addClass("fa");
+								}
+								else {
+									$("#heartButton").removeClass("fa");
+								}
 								if (maxIndex < index) {
 									maxIndex++;
 									goNext(index, function(result) {
@@ -80,10 +94,25 @@ $(document).ready(function() {
 										gallery.add(result);
 									});
 								}
+								console.log(index);
+								console.log(userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
+								$("#director").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
 							} else if ((currentIndex - 1) == index) {
+								sessionStorage.currIndex = index;
 								currentIndex = index;
 								galleryInd = index;
 								console.log('prev: ' + index);
+								if (resturants[index].liked == true) {
+									// $("#heartButton").addClass("fa");
+									$(".fa-heart").addClass("fa");
+								}
+								else {
+									// $("#heartButton").removeClass("fa");
+									$(".fa-heart").removeClass("fa");
+								}
+								console.log(index);
+								console.log(userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
+								$("#director").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
 							}
 						},
 				}
@@ -283,9 +312,10 @@ function save() {/*
 		savedFood.push(stringJSON);
 		*/
 		var index = gallery.getIndex()
-		var liked = resturants[index].liked = true
+		var liked = resturants[index].liked = true;
 		if (resturants[index].liked) {
-			$("#heartButton").addClass("fa");
+			// $("#heartButton").addClass("fa");
+			$(".fa-heart").addClass("fa");
 		}
 
 		var id = sessionStorage.id
@@ -305,14 +335,28 @@ function save() {/*
 			resturants[index].liked = false
 			// console.log(appendedString);
 			savedJSONString = savedJSONString.replace(appendedString, '');
-			$("#heartButton").removeClass("fa");
+			// $("#heartButton").removeClass("fa");
+			$(".fa-heart").removeClass("fa");
 			return;
 		}
+		// Checks if first is removed, but with other things in the array
+		if(savedJSONString.includes(stringJSON + ',')) {
+			alert("You already saved this! Removing!");
+			appendedString = stringJSON + ",";
+			resturants[index].liked = false
+			// console.log(appendedString);
+			savedJSONString = savedJSONString.replace(appendedString, '');
+			// $("#heartButton").removeClass("fa");
+			$(".fa-heart").removeClass("fa");
+			return;
+		}
+		//Checks if first is alone in array
 		if(savedJSONString.includes(stringJSON)) {
 			console.log("Checked empty");
 			alert("You already saved this! Removing!");
 			savedJSONString = savedJSONString.replace(stringJSON, "");
-			$("#heartButton").removeClass("fa");
+			// $("#heartButton").removeClass("fa");
+			$(".fa-heart").removeClass("fa");
 			return;
 		}
 		if (savedJSONString.endsWith("]}")) {
@@ -333,7 +377,7 @@ function save() {/*
 			$("#heartButton").addClass("fa");
 		}
 		*/
-		//console.log(savedJSONString);
+		console.log(savedJSONString);
 		console.log("saving: ", stringJSON)
 		sessionStorage.setItem('savedFoods', savedJSONString);
 		saveIndex++;
