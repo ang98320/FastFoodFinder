@@ -2,6 +2,7 @@ var resturants = [];
 var gallery;
 
 $(document).ready(function() {
+	initializePage();
 	console.log("user id is:", sessionStorage.id)
 	//console.log("currIndex:", sessionStorage.currIndex)
 	if(sessionStorage.hasLat) {
@@ -409,4 +410,11 @@ function changeUser(response) {
   //$(".facebookLogin").hide();
   //document.getElementById("name").innerHTML = response.name;
   //document.getElementById("photo").src = response.picture.data.url;
+}
+
+function initializePage() {
+	// your code here
+	$(".gobutton").click( function() {
+		ga("send", "event", 'like', 'click');
+	});
 }
