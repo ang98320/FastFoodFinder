@@ -105,7 +105,7 @@ function go() {
 	//var url = "http://www.google.com/maps/place/" + resturants[idx].lat + "," + resturants[idx].long
 	//window.open(url, '_blank', 'location=yes');
 	console.log(userLocation)
-	//$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
+	$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
 
 }
 
