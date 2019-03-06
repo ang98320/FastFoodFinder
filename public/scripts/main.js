@@ -421,7 +421,7 @@ function initializePage() {
 	$(".gobutton").click( function() {
 		ga("send", "event", 'like', 'click');
 
-	}
+	});
 }
 
 function askLocation() {
