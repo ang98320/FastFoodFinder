@@ -415,12 +415,15 @@ function changeUser(response) {
   //document.getElementById("photo").src = response.picture.data.url;
 }
 
-<<<<<<< HEAD
+
 function initializePage() {
 	// your code here
 	$(".gobutton").click( function() {
 		ga("send", "event", 'like', 'click');
-=======
+
+	}
+}
+
 function askLocation() {
   var location = prompt("Please enter a location (or Current Location):");
 	console.log(location)
@@ -461,6 +464,5 @@ function askLocation() {
 				//sessionStorage.currIdx = index
 			},
 		});
->>>>>>> 2c0c20b11b935160c374f06f496784910efc4b39
 	});
 }
