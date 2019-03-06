@@ -296,3 +296,8 @@ function closeModal() {
 	//var modal = document.getElementById("moreInfoModal").style.display = "none";
 	document.getElementById("moreInfoModal").style.display = "none";
 }
+
+function remove() {
+	//get index, get json object, stringify, remove this string from sessionStorage
+	var removeJSONString;
+}

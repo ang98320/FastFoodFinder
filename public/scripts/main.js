@@ -76,17 +76,17 @@ $(document).ready(function() {
 							var liked = resturants[index].liked;
 							// console.log("liked:", liked)
 							toggleHeart(liked);
-							openMap(userLocation, resturants[index].lat, resturants[index].long);
+							openMap(userLocation, resturants[sessionStorage.currIndex].lat, resturants[sessionStorage.currIndex].long);
 							if ((currentIndex + 1) == index) {
 								sessionStorage.currIndex = index;
 								currentIndex = index;
 								galleryInd = index;
 								console.log('next: ' + index);
 								if (resturants[index].liked == true) {
-									$("#heartButton").addClass("fa");
+									$(".fa-heart").addClass("fa");
 								}
 								else {
-									$("#heartButton").removeClass("fa");
+									$(".fa-heart").removeClass("fa");
 								}
 								if (maxIndex < index) {
 									maxIndex++;
@@ -96,8 +96,8 @@ $(document).ready(function() {
 									});
 								}
 								console.log(index);
-								console.log(userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
-								$("#director").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
+								console.log(userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
+								$("#director").attr("href", userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
 							} else if ((currentIndex - 1) == index) {
 								sessionStorage.currIndex = index;
 								currentIndex = index;
@@ -112,8 +112,8 @@ $(document).ready(function() {
 									$(".fa-heart").removeClass("fa");
 								}
 								console.log(index);
-								console.log(userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
-								$("#director").attr("href", userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving");
+								console.log(userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
+								$("#director").attr("href", userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
 							}
 						},
 				}
@@ -163,7 +163,8 @@ function toggleHeart(liked) {
 }
 
 function openMap(userLocation, latitude, longitude) {
-	$("#navigator").attr("href", userLocation + "&destination=" + latitude + "," + longitude +"&travelmode=driving");
+	// $("#navigator").attr("href", userLocation + "&destination=" + latitude + "," + longitude +"&travelmode=driving");
+	$("#director").attr("href", userLocation + "&destination=" + latitude + "," + longitude +"&travelmode=driving");
 }
 
 function openNav() {
@@ -186,8 +187,10 @@ function openNav() {
 function openModal() {
 	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
-	var index = gallery.getIndex()
-	$("#phoneNumber").html(resturants[index].phone);
+	var index = gallery.getIndex();
+	$("#callOut").attr('href', 'tel:' +resturants[index].phone);
+	$("#phoneNumber").html(" " + resturants[index].phone);
+	$("#phoneNumber").prepend('<i class="fas fa-mobile-alt"></i>');
 	$("#additionalImg").attr('src', resturants[index].href);
 	$("#moreName").html(resturants[index].title);
 }
@@ -274,7 +277,7 @@ function goNext(index, callback) {
 	//console.log("index: ", index);
 	//currIndex++;
 	//console.log("currIndex: ", currIndex);
-	$("#heartButton").removeClass("fa");
+	$("#fa-heart").removeClass("fa");
 	/*
 	$.get("/calls", function(data) {
 		$("#heartButton").removeClass("fa");
@@ -412,9 +415,52 @@ function changeUser(response) {
   //document.getElementById("photo").src = response.picture.data.url;
 }
 
+<<<<<<< HEAD
 function initializePage() {
 	// your code here
 	$(".gobutton").click( function() {
 		ga("send", "event", 'like', 'click');
+=======
+function askLocation() {
+  var location = prompt("Please enter a location (or Current Location):");
+	console.log(location)
+	changeLocation(location, function(result) {
+		//window.mySwipe = ""
+		window.mySwipe.kill()
+		resturants = []
+		document.getElementById("data-container").innerHTML = "";
+		var json = JSON.parse(result);
+		console.log("new len:", json.businesses.length);
+		for (i = 0; i < json.businesses.length; i++) {
+			var resturant = {
+				title: json.businesses[i].name,
+				href: json.businesses[i].image_url,
+				phone: json.businesses[i].phone,
+				lat: json.businesses[i].coordinates.latitude,
+				long: json.businesses[i].coordinates.longitude,
+				alias: json.businesses[i].alias,
+				categories: json.businesses[i].categories,
+				liked: false,
+			}
+			resturants.push(resturant);
+			//resturants[index] = resturant
+			addData(resturant, i)
+		}
+
+		//window.mySwipe.restart()
+		/*
+		window.mySwipe = Swipe(document.getElementById('slider'), {
+			continuous: false,
+		}); */
+
+		window.mySwipe = Swipe(document.getElementById('slider'), {
+			continuous: false,
+			startSlide: 0,
+			callback: function(index, elem) {
+				console.log("going to :", index)
+				//sessionStorage.currIdx = index
+			},
+		});
+>>>>>>> 2c0c20b11b935160c374f06f496784910efc4b39
 	});
 }
