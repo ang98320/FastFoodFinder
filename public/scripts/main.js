@@ -70,6 +70,7 @@ $(document).ready(function() {
 						toggleControlsOnSlideClick: false,
 						toggleControlsOnSlideClick: false,
 						hidePageScrollbars:false,
+						stretchImages: true,
 						index: sessionStorage.currIndex,
 						onslide: function (index, slide) {
 							sessionStorage.currIndex = index;
@@ -433,9 +434,9 @@ function askLocation() {
 	console.log(location)
 	changeLocation(location, function(result) {
 		//window.mySwipe = ""
-		window.mySwipe.kill()
+		//window.mySwipe.kill()
 		resturants = []
-		document.getElementById("data-container").innerHTML = "";
+		//document.getElementById("data-container").innerHTML = "";
 		var json = JSON.parse(result);
 		console.log("new len:", json.businesses.length);
 		for (i = 0; i < json.businesses.length; i++) {
@@ -451,23 +452,77 @@ function askLocation() {
 			}
 			resturants.push(resturant);
 			//resturants[index] = resturant
-			addData(resturant, i)
+			//addData(resturant, i)
 		}
-
-		//window.mySwipe.restart()
-		/*
-		window.mySwipe = Swipe(document.getElementById('slider'), {
-			continuous: false,
-		}); */
-
-		window.mySwipe = Swipe(document.getElementById('slider'), {
-			continuous: false,
-			startSlide: 0,
-			callback: function(index, elem) {
-				console.log("going to :", index)
-				//sessionStorage.currIdx = index
-			},
-		});
+		//gallery.clear();
+		//gallery.add(resturants)
+		console.log("len of gallery:", )
+		//gallery.slide(51, 0);
+		var currentIndex = 0;
+		var maxIndex = 0;
+		console.log(resturants);
+		gallery = blueimp.Gallery(
+				//document.getElementById('links').getElementsByTagName('a'),
+				//list,
+				resturants,
+				{
+						container: '#blueimp-gallery-carousel',
+						carousel: true,
+						continuous: false,
+						startSlideshow: false,
+						fullScreen: false,
+						toggleControlsOnSlideClick: false,
+						toggleControlsOnSlideClick: false,
+						hidePageScrollbars:false,
+						stretchImages: true,
+						index: sessionStorage.currIndex,
+						onslide: function (index, slide) {
+							sessionStorage.currIndex = index;
+							var liked = resturants[index].liked;
+							// console.log("liked:", liked)
+							toggleHeart(liked);
+							openMap(userLocation, resturants[sessionStorage.currIndex].lat, resturants[sessionStorage.currIndex].long);
+							if ((currentIndex + 1) == index) {
+								sessionStorage.currIndex = index;
+								currentIndex = index;
+								galleryInd = index;
+								console.log('next: ' + index);
+								if (resturants[index].liked == true) {
+									$(".fa-heart").addClass("fa");
+								}
+								else {
+									$(".fa-heart").removeClass("fa");
+								}
+								if (maxIndex < index) {
+									maxIndex++;
+									goNext(index, function(result) {
+										console.log(result);
+										gallery.add(result);
+									});
+								}
+								console.log(index);
+								console.log(userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
+								$("#director").attr("href", userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
+							} else if ((currentIndex - 1) == index) {
+								sessionStorage.currIndex = index;
+								currentIndex = index;
+								galleryInd = index;
+								console.log('prev: ' + index);
+								if (resturants[index].liked == true) {
+									// $("#heartButton").addClass("fa");
+									$(".fa-heart").addClass("fa");
+								}
+								else {
+									// $("#heartButton").removeClass("fa");
+									$(".fa-heart").removeClass("fa");
+								}
+								console.log(index);
+								console.log(userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
+								$("#director").attr("href", userLocation + "&destination=" + resturants[sessionStorage.currIndex].lat + "," + resturants[sessionStorage.currIndex].long +"&travelmode=driving");
+							}
+						},
+				}
+		);
 	});
 }
 
@@ -476,6 +531,10 @@ function changeLocation(where, callback) {
 		console.log(data);
 		callback(data.yelp.body);
 	});
+}
+
+function hello() {
+	console.log("hello")
 }
 
 function addData(resturant, i) {

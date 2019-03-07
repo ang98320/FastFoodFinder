@@ -5,6 +5,7 @@ $(document).ready(function() {
 	});
 	loadSaved();
 	userLocation = sessionStorage.getItem("userLocation");
+	console.log(savedJSONObject)
 	$(".saved-row").click(function() {
 		openModal();
 		var savedIndex = parseInt($(this).attr("id").replace('row', ''));
@@ -176,14 +177,19 @@ function closeModal() {
 	document.getElementById("moreInfoModal").style.display = "none";
 }
 
-function openModal2() {
-	document.getElementById("main-info").style.display = "block";
+function openModal() {
+	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
+	var index = gallery.getIndex();
+	$("#callOut").attr('href', 'tel:' +resturants[index].phone);
+	$("#phoneNumber").html(" " + resturants[index].phone);
+	$("#phoneNumber").prepend('<i class="fas fa-mobile-alt"></i>');
+	$("#additionalImg").attr('src', resturants[index].href);
+	$("#moreName").html(resturants[index].title);
 }
 
-function closeModal2() {
-	//var modal = document.getElementById("moreInfoModal").style.display = "none";
-	document.getElementById("main-info").style.display = "none";
+function remove() {
+	console.log("remove")
 }
 
 function loadSaved() {
@@ -195,7 +201,7 @@ function loadSaved() {
 	var JSONIndex = 0;
 
 	for (i = 0; i < savedJSONObject.saved.length; i++) {
-		console.log("Run" + i + "times");
+		console.log("Run " + i + " times");
 		var appendJSON = "col" + i;
 		//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
 		var rowDiv = document.createElement('div');
@@ -221,21 +227,34 @@ function loadSaved() {
 		l2.className = "saved-row-label";
 		l2.innerHTML = "Added: Today";
 
+		var trash = document.createElement('a');
+		trash.onclick = removeSaved;
+		trash.className = "trashcan";
+		var trashIcon = document.createElement('i');
+		trashIcon.className = "far fa-trash-alt"
+
+		//trash.append(trashIcon)
+
 		colLeft.append(img);
 
 		colRight.append(l1);
 		colRight.append(l2);
+		colRight.append(trash);
 		// colRight.append('<a onclick="remove()" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
 
 		rowDiv.append(colLeft);
 		rowDiv.append(colRight);
+		//rowDiv.append(trash);
+
+		//$(".saved-col-right").append(trash)
 
 		//$(appendJSON).prepend(rowDiv)
 		$("#saved-container").prepend(rowDiv);
 
 		JSONIndex++;
 	}
-	$(".saved-col-right").append('<a onclick="removeSaved(this)" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
+	$(".saved-col-right").append('<a onclick="event.stopPropagation(); removeSaved(this);" \
+	class="trashcan" z-index="9999"> <i class="far fa-trash-alt"></i> </a>');
 }
 
 
@@ -282,12 +301,15 @@ function closeModal() {
 }
 
 function removeSaved(elem) {
+	//console.log(savedJSONObject);
+	//console.log("removeSave: ", elem)
 	//get index, get json object, stringify, remove this string from sessionStorage
 	var removeJSONString = $(elem).parent().parent().attr('id').replace("col", "");
 	// console.log("Delete clicked!");
 	// console.log(removeJSONString);
 	savedJSONObject.saved.splice(removeJSONString, 1);
 	console.log(savedJSONObject);
-	$("#saved-food").empty();
+	//$("#saved-food").empty();
+	$("#saved-container").empty();
 	loadSaved();
 }
