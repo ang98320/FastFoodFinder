@@ -1,0 +1,669 @@
+/*Begin class stuff */
+
+.star-bright, hr.star-dark {
+  margin: 40px auto 30px;
+  padding: 0;
+  max-width: 512px;
+  border: 0;
+  border-top: solid 5px;
+  text-align: center;
+  color: #DE5A51;
+}
+
+.button {
+  color: #000;
+  border: solid 2px #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  /*font-size: 24px;*/
+  font-size: 5vw;
+  /*line-height: 48px;*/
+}
+
+.center {
+	width: 50%;
+}
+
+.fa {
+  /*font-size: 1.5em;*/
+  color: red;
+}
+
+.descText {
+  max-width:960px;
+}
+
+.thirds {
+  display: inline-block;
+  width: 50%;
+  font-family: 'Raleway', sans-serif;
+}
+
+.img {
+	width: 50;
+}
+
+/*
+.test {
+	border-style: solid;
+	border-width: 1px;
+}*/
+
+.pull-out a {
+	padding: 10% 10% 10% 10%;
+	text-decoration: none;
+	font-size: 5vh;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.pullOut a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 5vh;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.pullOut a:hover{
+	color: #FFFFFF;
+}
+
+.sidenav .closeButton {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.button {
+	border-color: transparent;
+}
+
+.moreInfoModal {
+  z-index: 999999;
+	display: none;
+	position:fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #FFF;
+  float: left;
+  clear: none;
+}
+
+.heart {
+  /*color: red;*/
+  /*max-width: */
+}
+
+.saveStyle {
+  border-style: solid;
+  max-width: 100%;
+  max-height: 33%;
+  margin-bottom: 2%;
+}
+
+.gobutton {
+    /*display: inline-block;*/
+    position: fixed;
+    border-radius: 0px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 16px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin-top: 25px;
+    bottom: 0;
+    opacity: 50%;
+}
+/*Begin id stuff*/
+/*
+#menu {
+  width: 65%;
+  height: 100%;
+  background-color: white;
+}
+
+#closeMenu {
+  width: 30%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.5;
+}
+*/
+
+#title {
+	color: black;
+	text-align: center;
+	font-family: "Impact";
+	font-size: 1.5em;
+	position: absolute;
+	top: 10%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+#links {
+  margin-top: 15%;
+  background-color: red;
+}
+
+#foods {
+  margin-top: 0%;
+  background-color: black;
+}
+
+#nameline{
+  margin-top:-50px;
+  width: 50%;
+  color: #000;
+}
+
+#ML {
+  width: 100%;
+}
+
+#background{
+  background-color: #77585800;
+}
+
+#socialBar {
+  z-index: 0;
+  position: relative;
+  padding-top:10px;
+  padding-bottom:-10px;
+  color: #000;
+  text-align:center;
+  font-size:24px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  height: 8%;
+}
+
+#padding{
+  padding-top: 10%;
+}
+
+#moreInfoBar {
+  z-index: 999999;
+  padding-top:10px;
+  margin-bottom: 5%;
+  color: #000;
+  margin: 0 auto;
+  text-align:center;
+  font-size:24px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 7%;
+  background-color: #FFF;
+}
+
+#modalClose {
+  height: 10%;
+}
+
+#extraspace {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+#menu {
+  margin-left: 2%;
+	padding-left: 1%;
+	display: inline-block;
+	float: left;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+
+#filterBar {
+	display:inline-block;
+	width: 70%;
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+}
+
+#nameBar {
+	display:inline-block;
+	position: relative;
+	text-align: center;
+}
+
+#locationBar {
+	display: inline-block;
+	float:right;
+	background: transparent;
+	border-color: transparent;
+  font-size: 
+}
+
+#filter {
+	height: 100%;
+	max-height: 100px;
+	font-size: 1.25em;
+	border-radius: 10px 10px 10px 10px;
+	width: 90%;
+}
+
+#filterSubmit{
+	font-size: 1.25em;
+	background: transparent;
+	border: none;
+}
+
+#firstImage {
+	float: left;
+	font-size: 2em;
+	display: inline-block
+	margin-left: 1%;
+}
+
+#navigateMe {
+	display: inline-block;
+	margin-left: auto;
+	font-size: 2em;
+	text-align: center;
+}
+
+#lastImage {
+	display: inline-block;
+	float: right;
+	font-size: 2em;
+	margin-right: 1%
+}
+
+#navigation{
+	text-align: center;
+	margin-top: 2%;
+	height: 13%;
+}
+
+#mainImg{
+  position: fixed;
+  margin-top: 20%;
+	background: 50% 50% no-repeat;
+	width: auto;
+	height: auto;
+	max-width: 800px;
+	max-height: 800px;
+	margin: auto auto;
+	display: block;
+	cursor: pointer;
+  background-color: black;
+}
+
+#mobility {
+	text-align: center;
+	padding-bottom: 0%;
+	height:8%;
+	position: fixed;
+  width: 100%;
+  bottom: 0;
+	background-color: #FFF;
+}
+
+#mobility button{
+	margin-top: 5%;
+}
+
+#oneLeft {
+	float: left;
+	font-size: 2em;
+	display: inline-block
+	padding-left: 5%;
+  margin-left: 2%;
+}
+
+#heartButton {
+  margin-top: 15%;
+  font-size: 50vw;
+  color: red;
+}
+
+#oneRight {
+	display: inline-block;
+	float: right;
+	font-size: 2em;
+	margin-right: 2%
+}
+
+#save {
+	display: inline-block;
+	margin-left: auto;
+	font-size: 3em;
+  margin-top: 3%;
+}
+
+#pullOutMenu{
+	height: 100%;
+	width: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 999999;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 0px;
+  opacity: 50%;
+}
+
+#userImg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+	border-radius: 50%;
+	width: 80%;
+	background-color: transparent;
+}
+
+#padding {
+	padding-top: 15%;
+}
+
+#foodImg {
+	height:100%;
+}
+
+/*
+#additionalImg{
+	width: 20%;
+	height: 25%;
+	display: inline-block;
+	margin-top: 25%;
+	margin-left: 5%;
+	object-fit: cover;
+	margin-bottom: 5%;
+	border-style: solid;
+} */
+
+#additionalImg{
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	margin-top: 15%;
+	object-fit: cover;
+	margin-bottom: 5%;
+}
+
+
+#moreContact {
+	display: inline-block;
+	overflow: hidden;
+	height: 10%;
+	margin-bottom: 5%;
+	font-family: "Raleway";
+  font-size: 3.5vw;
+  text-align: center;
+  width: 100%;
+}
+
+#moreContact h3 {
+	font-size: 1.2em;
+}
+
+#moreImg{
+	display:inline;
+	overflow: hidden;
+	background-size: cover;
+	width: 10%;
+	height: 10%;
+}
+
+#moreBreaker {
+	text-align: center;
+}
+
+#moreName {
+	display: inline-flex;
+	margin-top: 1%;
+	font-family: "Raleway";
+  font-size: 4.5vw;
+}
+
+#morePictures img {
+	max-width: calc(100% / 3.1);
+	max-height: calc(100% / 3.1);
+	border-style: none;
+	display: inline;
+}
+
+#morePictures th {
+  z-index: 999999;
+	width: 10%;
+	min-width: 10%;
+  border-style: none;
+	display: inline;
+}
+
+#main-filter {
+  position: absolute;
+	width: 80%;
+  height: 100%;
+	text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+#filter-bar {
+	height: 100%;
+	font-size: 250%;
+	border-radius: 10px 10px 10px 10px;
+	width: 80%;
+}
+
+
+#save::after{
+  color: red;
+}
+
+#heartButton {
+  font-size: 1em;
+}
+
+#saved-food {
+  margin-top: 5%;
+}
+
+
+#navigator {
+  font-size: 1.5em;
+}
+
+#callOut {
+  text-decoration:  none;
+  color: black;
+}
+
+/* Begin login screen */
+
+/* long loging button
+.logbutton {
+  	background-color: #80bfff;
+  	color: white;
+  	padding: 14px 20px;
+  	margin: 8px 0;
+  	border: none;
+  	cursor: pointer;
+  	width: 100%;
+  	border-radius: 25px;
+}
+
+.logbutton:hover {
+  	background-color: #4da6ff;
+  	transition-duration: 0.5s;
+}
+*/
+
+.loginbutton {
+  	display: inline-block;
+  	border-radius: 5px;
+  	background-color: #80bfff;
+  	border: none;
+  	color: #FFFFFF;
+  	text-align: center;
+  	font-size: 28px;
+  	padding: 16px;
+  	width: 100%;
+  	transition: all 0.5s;
+  	cursor: pointer;
+  	margin-top: 25px;
+}
+
+.loginbutton span {
+  	cursor: pointer;
+  	display: inline-block;
+  	position: relative;
+  	transition: 0.5s;
+}
+
+.loginbutton span:after {
+  	content: '\00bb';
+  	position: absolute;
+  	opacity: 0;
+  	top: 0;
+  	right: -20px;
+  	transition: 0.5s;
+}
+
+.loginbutton:hover span {
+  	padding-right: 25px;
+}
+
+.loginbutton:hover span:after {
+  	opacity: 1;
+  	right: 0;
+}
+
+#screen {
+	padding: 15px;
+	background: white;
+	top: 25px;
+}
+
+#logintitle {
+	text-align: center;
+}
+
+/* Begin specific type stuff */
+video {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 3em;
+}
+h2 {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.5em;
+}
+
+button {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+input {
+	text-align: center;
+	font-family: 'Raleway';
+}
+th {
+	display: inline;
+	width: 200px;
+	height:200px;
+	zoom: 1;         /* for IE */
+	display*:inline; /* for IE */
+}
+
+body {
+  margin: 0;
+  height: 100%;
+}
+
+
+html {
+	font-family: "Raleway";
+}
+/* Media controls as needed */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 812px) and (orientation: portrait) {
+	#mainImg{
+	width: 100%;
+	max-height: 80%;
+	display: block;
+	margin-top: 15%;
+	margin-bottom: 0%;
+  background-color: black;
+}
+
+	#moreImg {
+		margin-top: 15%;
+	}
+
+	#mobility {
+		padding-bottom: 5%;
+		position: fixed;
+		width: 100%;
+    height: 10%
+		bottom: 0;
+    background-color: white;
+	}
+}
+
+@media only screen and (min-width : 1200px) {
+	#moreInformation {
+		margin-top: 5%;
+	}
+}
+/*
+
+@media only screen and (min-width: 1080px) {
+	#moreInformation {
+		margin-top: 5%;
+	}
+}*/
+/*
+//small phones
+@media only screen and (max-height: 900px) {
+	#padding {
+		padding-top: 20%;
+	}
+
+	#mainImg {
+		max-height: 600px;
+		max-width: 600px;
+}
+*/
+/*
+@media only screen and (min-width: 1080px) {
+	#mobility{
+		height: 5%;
+	}
+}*/

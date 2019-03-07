@@ -1,0 +1,99 @@
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 25px;
+	align-content: center;
+	position: static;
+}
+
+#fb-login-button {
+  position: absolute;
+  right: 0;
+}
+
+/* long button
+.logbutton {
+  	background-color: #80bfff;
+  	color: white;
+  	padding: 14px 20px;
+  	margin: 8px 0;
+  	border: none;
+  	cursor: pointer;
+  	width: 100%;
+  	border-radius: 25px;
+}
+
+.logbutton:hover {
+  	background-color: #4da6ff;
+  	transition-duration: 0.5s;
+}
+*/
+
+
+/*
+.fb-login-button {
+  z-index: 99999;
+  position: absolute;
+}
+*/
+
+.loginbutton {
+  	display: inline-block;
+  	border-radius: 5px;
+  	background-color: #80bfff;
+  	border: none;
+  	color: #FFFFFF;
+  	text-align: center;
+  	font-size: 28px;
+  	padding: 16px;
+  	width: 100%;
+  	transition: all 0.5s;
+  	cursor: pointer;
+  	margin-top: 25px;
+}
+
+.loginbutton span {
+  	cursor: pointer;
+  	display: inline-block;
+  	position: relative;
+  	transition: 0.5s;
+}
+
+.loginbutton span:after {
+  	content: '\00bb';
+  	position: absolute;
+  	opacity: 0;
+  	top: 0;
+  	right: -20px;
+  	transition: 0.5s;
+}
+
+.loginbutton:hover span {
+  	padding-right: 25px;
+}
+
+.loginbutton:hover span:after {
+  	opacity: 1;
+  	right: 0;
+}
+
+#screen {
+	padding: 15px;
+	background: white;
+	top: 25px;
+}
+
+#logintitle {
+	text-align: center;
+}
+
+#loginbackground {
+	background-position: center top;
+	background-image: url('../img/login.jpg');
+}

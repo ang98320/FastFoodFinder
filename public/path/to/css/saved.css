@@ -1,0 +1,422 @@
+.saved-row {
+  display: flex;
+  border-top: 0.02px solid grey;
+}
+
+.saved-row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.saved-col-left {
+  float: left;
+  width: 25%;
+  padding: 5px;
+}
+
+.saved-col-right {
+  float: right;
+  width: 75%;
+  padding: 5px;
+  margin-left: 5%;
+}
+
+.saved-row-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  margin-left: 5%;
+}
+
+.saved-row-label {
+  margin: 0 auto;
+  font-size: 3vh;
+}
+
+.saveStyle {
+  border-style: solid;
+  max-width: 100%;
+  max-height: 33%;
+  margin-bottom: 2%;
+}
+
+.sidenav .closeButton {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.pull-out a {
+	padding: 10% 10% 10% 10%;
+	text-decoration: none;
+	font-size: 200%;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.pullOut a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 5vh;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.pullOut a:hover{
+	color: #FFFFFF;
+}
+
+.moreInfoModal {
+  z-index: 999999;
+  display: none;
+  position:fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #FFF;
+  float: left;
+  clear: none;
+}
+
+.black {
+  color: #000;
+}
+
+.trashcan {
+  float:right;
+  font-size: 3vh;
+}
+
+#title {
+  color: black;
+  text-align: center;
+  /*font-family: "Arial Black";*/
+  font-size: 6vh;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+#main-info {
+  z-index: 999999;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: none;
+}
+
+#saved-food img {
+	/*max-width: calc(100% / 3.02);*/
+	/*max-height: calc(100% / 3.02);*/
+	max-width: 90%;
+	max-height: 33%;
+	/*border-style: none;*/
+	display: inline;
+	margin-bottom: 2%;
+	border-style: solid;
+	margin-left: 3%;
+}
+
+#saved-food th {
+  z-index: 2;
+	width: 10%;
+	min-width: 10%;
+  border-style: none;
+	display: inline;
+}
+
+#saved-label {
+  z-index: 0;
+  position: relative;
+  padding-top:10px;
+  padding-bottom:-10px;
+  color: #000;
+  text-align:center;
+  font-size:24px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  height: 10%;
+  font-family: "Raleway";
+}
+
+#saved-menu-button {
+  position: absolute;
+  width: 10%;
+  /*height: 40%;*/
+  font-size: 6vh;
+  display: flex;
+  align-items: center;
+  /*justify-content: center;*/
+  /*top: 18px;*/
+  left: 9px;
+  /*background-color: blue;*/
+}
+
+
+#userImg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+	border-radius: 50%;
+	width: 80%;
+	background-color: transparent;
+}
+
+#main-location-button {
+  float: right;
+  position: relative;
+  width: 15%;
+  height: 100%;
+  font-size: 300%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cccccc;
+  /*background-color: blue;*/
+}
+
+#main-info-other img {
+  max-width: calc(100% / 3.02);
+  max-height: calc(100% / 3.02);
+  border-style: none;
+  display: inline;
+}
+
+#main-info-other th {
+  z-index: 3;
+  width: 10%;
+  min-width: 10%;
+  border-style: none;
+  display: inline;
+}
+
+#saved-container {
+  z-index: 3;
+  /*position: absolute;*/
+  width: 100%;
+  min-height: 100%;
+}
+
+#saved-header {
+  z-index: 0;
+  position: relative;
+  padding-top:10px;
+  padding-bottom:-10px;
+  color: #000;
+  /*text-align:center;*/
+  font-size:24px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  height: 8%;
+  font-style: "Raleway";
+}
+
+#saved-body {
+  /*position: relative;*/
+  bottom: 0;
+  width: 100%;
+  height: 80%;
+  /*background-color: transparent;*/
+  background-color: #F5F5F5;
+  opacity: 10%;
+  margin-top: 25%;
+  overflow-y: scroll;
+}
+
+#main-body {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  background-color: #F5F5F5;
+}
+
+#main-info-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  background-color: #F5F5F5;
+  overflow: scroll
+}
+
+#main-info-top {
+  width: 100%;
+  height: 30%;
+}
+
+#main-info-bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+}
+
+#main-info-img {
+  position: absolute;
+  max-width: 30%;
+  max-height: 30%;
+  width: auto;
+  height: auto;
+  padding: 8%;
+}
+
+#saved-body-info-text {
+  position: absolute;
+  right: 0;
+  width: 60%;
+  height: 30%;
+  padding-top: 8%;
+}
+
+#pullOutMenu{
+	height: 100%;
+	width: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 999999;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 0px;
+  opacity: 50%;
+}
+
+
+#moreContact {
+	display: inline-block;
+	overflow: hidden;
+	height: 10%;
+	margin-bottom: 5%;
+	font-family: "Raleway";
+  text-align: center;
+  width: 100%;
+}
+
+#moreContact h3 {
+	font-size: 1.2em;
+}
+
+#moreImg{
+	display:inline;
+	overflow: hidden;
+	background-size: cover;
+	width: 10%;
+	height: 10%;
+}
+
+#moreBreaker {
+	text-align: center;
+}
+
+#moreName {
+	display: inline-flex;
+	margin-top: 3%;
+	font-family: "Raleway";
+}
+
+#morePictures img {
+	max-width: calc(100% / 3.1);
+	max-height: calc(100% / 3.1);
+	border-style: none;
+	display: inline;
+}
+
+#morePictures th {
+  z-index: 999999;
+	width: 10%;
+	min-width: 10%;
+  border-style: none;
+	display: inline;
+}
+/*
+#additionalImg{
+	width: 20%;
+	height: 25%;
+	display: inline-block;
+	margin-top: 25%;
+	margin-left: 5%;
+	object-fit: cover;
+	margin-bottom: 5%;
+	border-style: solid;
+} */
+
+#additionalImg{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  margin-top: 15%;
+  object-fit: cover;
+  margin-bottom: 5%;
+}
+
+#menu {
+  margin-left: 2%;
+	padding-left: 1%;
+	display: inline-block;
+	float: left;
+	font-size: 1.5em;
+	cursor: pointer;
+}
+
+#locationBar {
+	display: inline-block;
+	float:right;
+	background: transparent;
+	border-color: transparent;
+	margin-right: 5%;
+	margin-top: 3%;
+}
+
+#moreInfoBar {
+  z-index: 999999;
+  padding-top:10px;
+  margin-bottom: 5%;
+  color: #000;
+  margin: 0 auto;
+  text-align:center;
+  font-size:24px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 7%;
+  background-color: #FFF;
+}
+
+html {
+  font-family: "Raleway";
+}
+
+a {
+  color: black;
+}
+
+/*Media Controls*/
+
+@media only screen and (min-height : 1024px) {
+  #saved-body {
+    margin-top: 15%;
+  }
+  }
+}
