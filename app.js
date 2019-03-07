@@ -151,7 +151,7 @@ app.get('/getlocation/:location', function (req, res) {
 
 //app.get('/main', main.view);
 app.get('/main', function(req, res) {
-  res.render("main.handlebars")
+  res.render("main.handlebars");
 });
 
 
@@ -159,6 +159,10 @@ app.get('/main0', main0.view);
 //app.get('/calls', cors(), calls.info);
 app.get('/calls', calls.info);
 app.get('/saved', saved.view);
+app.get("/path/to/page_A", function(req,res) {
+  res.render("main.handlebars");
+})
+app.get("/main0", main0.view)
 
 app.post('/saveItem', function(req, res) {
   var id = req.body.id;
