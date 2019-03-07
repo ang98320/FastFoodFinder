@@ -162,7 +162,7 @@ app.get('/saved', saved.view);
 app.get("/path/to/page_A", function(req,res) {
   res.render("main.handlebars");
 })
-app.get("/main0", main0.view)
+app.get("/path/to/page_B", main0.view)
 
 app.post('/saveItem', function(req, res) {
   var id = req.body.id;
