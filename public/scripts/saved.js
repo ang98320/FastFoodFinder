@@ -328,7 +328,8 @@ function removeSaved(elem) {
 
 		// JSONIndex++;
 	}
-	$(".saved-col-right").append('<a onclick="removeSaved(this)" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
+	$(".saved-col-right").append('<a onclick="event.stopPropagation(); removeSaved(this);" \
+	class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
 	var savedJSONString = JSON.stringify(savedJSONObject);
 	sessionStorage.setItem('savedFoods', savedJSONString);
 	closeModal();
