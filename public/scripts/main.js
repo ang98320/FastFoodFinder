@@ -209,6 +209,8 @@ function getLocation() {
 	else{
 	  if (navigator.geolocation) {
 	    navigator.geolocation.getCurrentPosition(showPosition, showError);
+	    $("#clickLocation").attr("class", "");
+	    $("#clickLocation").attr("class", "fas fa-map-marker-alt");
 	  } else {
 	    alert("Geolocation is not supported by this browser.");
 	  }
@@ -222,6 +224,8 @@ function showPosition(position) {
 }
 
 function showError(error) {
+	$("#clickLocation").attr("class", "");
+	$("#clickLocation").attr("class", 'fas fa-exclamation-triangle')
   switch(error.code) {
     case error.PERMISSION_DENIED:
       alert("User denied the request for Geolocation.");
@@ -465,4 +469,56 @@ function askLocation() {
 			},
 		});
 	});
+}
+
+function changeLocation(where, callback) {
+	$.get("/getlocation/:location", {location:where} ,function(data) {
+		console.log(data);
+		callback(data.yelp.body);
+	});
+}
+
+function addData(resturant, i) {
+	var body = document.getElementById("data-container")
+	//console.log(body)
+	var container = document.createElement('div')
+	container.className = "data"
+	container.setAttribute('data-index', i)
+	var img = document.createElement('img')
+	img.src = resturant.href
+	img.className = "data-img"
+	img.onDblClick = hello;
+
+	var info = document.createElement('div')
+	info.id = "data-info"
+	var info_save = document.createElement('div')
+	info_save.id = "data-info-save"
+	var info_fields = document.createElement('div')
+	info_fields.id = "data-info-fields"
+
+	var save = document.createElement('button')
+	save.id = "save"
+	save.setAttribute( "onClick", "javascript: save();" );
+	var heart = document.createElement('i')
+	heart.id = "heartButton"
+	heart.className = "far fa-heart heart"
+
+	save.append(heart)
+	info_save.append(save)
+
+	var name = document.createElement('h3')
+	name.innerHTML = resturant.title
+	//name.className = ""
+	var phone = document.createElement('h3')
+	phone.innerHTML = resturant.phone
+
+	info_fields.append(name)
+	info_fields.append(phone)
+
+	info.append(info_save)
+	info.append(info_fields)
+
+	container.append(img)
+	container.append(info)
+	$("#data-container").append(container)
 }

@@ -16,6 +16,10 @@ $(document).ready(function() {
 		$("#handle").html(savedJSONObject.saved[savedIndex].title);
 		$("#navigator").attr('href', userLocation + "&destination=" + savedJSONObject.saved[savedIndex].lat + "," + savedJSONObject.saved[savedIndex].long +"&travelmode=driving");
 	});
+	$(".fa-trash-alt").click(function(event) {
+		removeSaved(this);
+		event.stopPropagation();
+	});
 });
 
 // INIT VARS
@@ -145,28 +149,6 @@ function closeModal() {
 	document.getElementById("moreInfoModal").style.display = "none";
 }
 
-/*
-$(document).ready(function() {
-	//getLocation();
-	loadSaved();
-});
-
-// INIT VARS
-
-var imgArray = [];
-var currLat;
-var currLong;
-var navState = 0;
-var currIndex = 0;
-var savedFood = [];
-
-document.cookie = [];
-//var modal = document.getElementById("moreInfoModal");
-var modalOpener = document.getElementById("mainImg");
-var modalCloser = document.getElementById("modalClose");
-
->>>>>>> d234d3fb595e11a58be9ba2b0669c1907a3b9e31
-
 
 function openNav() {
 	if (navState == 0) {
@@ -213,7 +195,8 @@ function loadSaved() {
 	var JSONIndex = 0;
 
 	for (i = 0; i < savedJSONObject.saved.length; i++) {
-		var appendJSON = ".col" + JSONIndex;
+		console.log("Run" + i + "times");
+		var appendJSON = "col" + i;
 		//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
 		var rowDiv = document.createElement('div');
 		rowDiv.className = "saved-row";
@@ -225,6 +208,7 @@ function loadSaved() {
 
 		var colRight = document.createElement('div');
 		colRight.className = "saved-col-right";
+		colRight.id = appendJSON;
 
 		var img = document.createElement('img');
 		img.className = "saved-row-img";
@@ -251,7 +235,7 @@ function loadSaved() {
 
 		JSONIndex++;
 	}
-	$(".saved-col-right").append('<a onclick="remove()" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
+	$(".saved-col-right").append('<a onclick="removeSaved(this)" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
 }
 
 
@@ -297,7 +281,13 @@ function closeModal() {
 	document.getElementById("moreInfoModal").style.display = "none";
 }
 
-function remove() {
+function removeSaved(elem) {
 	//get index, get json object, stringify, remove this string from sessionStorage
-	var removeJSONString;
+	var removeJSONString = $(elem).parent().parent().attr('id').replace("col", "");
+	// console.log("Delete clicked!");
+	// console.log(removeJSONString);
+	savedJSONObject.saved.splice(removeJSONString, 1);
+	console.log(savedJSONObject);
+	$("#saved-food").empty();
+	loadSaved();
 }

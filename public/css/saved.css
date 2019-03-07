@@ -408,6 +408,10 @@ html {
   font-family: "Raleway";
 }
 
+a {
+  color: black;
+}
+
 /*Media Controls*/
 
 @media only screen and (min-height : 1024px) {
