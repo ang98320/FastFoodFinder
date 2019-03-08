@@ -19,8 +19,8 @@ var cors = require('cors');
 
 var restaurants = require('./response.json');
 
-var main = require('./routes/main');
-var main0 = require('./routes/main0');
+var main = require('./routes/main0');
+var main0 = require('./routes/main');
 var calls = require('./routes/calls');
 var saved = require('./routes/saved');
 var login = require('./routes/login');
