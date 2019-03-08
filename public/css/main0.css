@@ -175,7 +175,7 @@ body {
 .pullOut a {
 	padding: 8px 8px 8px 32px;
 	text-decoration: none;
-	font-size: 25px;
+	font-size: 5vh;
 	color: #818181;
 	display: block;
 	transition: 0.3s;
@@ -583,10 +583,13 @@ body {
 }
 
 
-#navigator {
-  font-size: 1.5em;
+#nav {
+  font-size: 5vh;
 }
 
+#logo {
+	margin-top: 1%;
+}
 /* Begin login screen */
 
 /* long loging button
@@ -649,6 +652,10 @@ th {
 	height:200px;
 	zoom: 1;         /* for IE */
 	display*:inline; /* for IE */
+}
+
+html {
+	font-family: "Raleway";
 }
 /* Media controls as needed */
 
