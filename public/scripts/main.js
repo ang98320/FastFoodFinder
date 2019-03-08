@@ -3,6 +3,9 @@ var gallery;
 
 $(document).ready(function() {
 	initializePage();
+	if (sessionStorage.id == null) {
+		sessionStorage.id = "test_user"
+	}
 	console.log("user id is:", sessionStorage.id)
 	//console.log("currIndex:", sessionStorage.currIndex)
 	if(sessionStorage.hasLat) {
@@ -52,6 +55,7 @@ $(document).ready(function() {
 			}
 			resturants.push(resturant);
 		}
+		//checkIfLiked(resturants)
 		// $("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
 		$("#director").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
 		var currentIndex = 0;
@@ -140,6 +144,12 @@ var saveIndex = 0;
 var googleDirections = "https://www.google.com/maps/dir/?api=1&origin=";
 var userLocation;
 var galleryInd = 0;
+
+function checkIfLiked(resturants) {
+	for (var i = 0; i < resturants.length; i++) {
+		console.log(i)
+	}
+}
 
 $.get("/", function(data) {
   //var yelp = JSON.parse('<%- JSON.stringify(yelp) %>');

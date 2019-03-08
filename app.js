@@ -198,6 +198,7 @@ app.post('/saveItem', function(req, res) {
 
 app.post('/getItems', function(req, res) {
   var id = req.body.id
+  console.log(id)
   var obj;
   var resturants = []
   fs.readFile("data.json", 'utf8', function(err, data) {
@@ -206,12 +207,37 @@ app.post('/getItems', function(req, res) {
     //console.log(obj.table[2].resturant)
     for (var i = 0; i < obj.table.length; i++) {
       var resturant = obj.table[i].resturant
-      if (obj.table[i].id = id) resturants.push(resturant)
+      if (obj.table[i].id == id) resturants.push(resturant)
     }
     //console.log(resturants)
     res.json(resturants)
   });
 });
+
+app.post('/removeItem', function(req, res) {
+  var id = req.body.id
+  var href = req.body.href
+  console.log(id)
+  var obj
+  var resturants = []
+  fs.readFile("data.json", 'utf8', function(err, data) {
+    if (err) throw err;
+    obj = JSON.parse(data);
+    //console.log(obj.table[2].resturant)
+    //console.log("old len:", obj.table.length)
+    for (var i = 0; i < obj.table.length; i++) {
+      var resturant = obj.table[i].resturant
+      if (obj.table[i].id == id && obj.table[i].resturant.href == href) {
+        console.log("match found")
+        //console.log(obj.table[i])
+        obj.table.splice(i, 1)
+      }
+    }
+    //console.log("new len:", obj.table.length)
+    fs.writeFileSync('data.json', JSON.stringify(obj, null, 2));
+    res.json("removed successfully")
+  });
+})
 
 //app.route('/main');
 //app.get('/add', add.addFriend);
