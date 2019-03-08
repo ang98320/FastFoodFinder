@@ -151,7 +151,7 @@ app.get('/getlocation/:location', function (req, res) {
 
 //app.get('/main', main.view);
 app.get('/main', function(req, res) {
-  res.render("main.handlebars");
+  res.render("main0.handlebars");
 });
 
 
