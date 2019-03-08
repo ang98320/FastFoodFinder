@@ -1,3 +1,5 @@
+var resturants = []
+
 $(document).ready(function() {
 	//getLocation();
 	loadFromJSON(function(result) {
@@ -5,7 +7,8 @@ $(document).ready(function() {
 	});
 	//loadSaved();
 	userLocation = sessionStorage.getItem("userLocation");
-	console.log(savedJSONObject)
+	//console.log(savedJSONObject)
+	/*
 	$(".saved-row").click(function() {
 		openModal();
 		var savedIndex = parseInt($(this).attr("id").replace('row', ''));
@@ -20,7 +23,7 @@ $(document).ready(function() {
 	$(".fa-trash-alt").click(function(event) {
 		removeSaved(this);
 		event.stopPropagation();
-	});
+	}); */
 });
 
 // INIT VARS
@@ -60,23 +63,29 @@ function removeFromDB(href) {
 	$.post("/removeItem", {id: id, href: href}, function(req, res) {
 		console.log("req", req)
 		console.log("res", res)
+		resturants = []
 		loadFromJSON();
 	});
 }
 
 function jsonToHTML(req) {
-	console.log(generateTable(req.length));
+	//console.log(generateTable(req.length));
 
-	$("#saved-body").append(generateTable(savedJSONObject.saved.length));
+	$("#saved-body").append(generateTable(req.length));
 
 	for (i = 0; i < req.length; i++) {
-		console.log("Run " + i + " times");
+		resturants.push(req[i])
+		//console.log("Run " + i + " times");
 		var colId = "col" + i;
 		//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
 		var rowDiv = document.createElement('div');
 		rowDiv.className = "saved-row";
 		rowDiv.id = "row" + i;
 		rowDiv.setAttribute("onclick", "openModal()");
+		rowDiv.onclick = function() {
+			console.log("clicked row")
+			openModal(this.id);
+		}
 
 		var colLeft = document.createElement('div');
 		colLeft.className = "saved-col-left";
@@ -142,27 +151,10 @@ function openNav() {
 	}
 }
 
-/*function openModal() {
-	document.getElementById("moreInfoModal").style.display = "block";
-	console.log("openModal");
-}
-*/
-
 function closeModal() {
 	//var modal = document.getElementById("moreInfoModal").style.display = "none";
 	document.getElementById("moreInfoModal").style.display = "none";
 }
-
-function openModal2() {
-	document.getElementById("main-info").style.display = "block";
-	console.log("openModal");
-}
-
-function closeModal2() {
-	//var modal = document.getElementById("moreInfoModal").style.display = "none";
-	document.getElementById("main-info").style.display = "none";
-}
-
 
 
 function generateTable(numObjects) {
@@ -190,23 +182,6 @@ function generateTable(numObjects) {
 	return tableCode;
 }
 
-function openModal() {
-	console.log(thisSavedSession);
-	document.getElementById("moreInfoModal").style.display = "block";
-	var savedIndex = parseInt($(this).attr("class"));
-	console.log($(this).attr("class"));
-	console.log(savedIndex);
-	$("#moreName").html(thisSavedSession.saved[savedIndex].restName);
-	$("#phoneNumber").html(thisSavedSession.saved[savedIndex].phone);
-	console.log("openModal");
-}
-
-function closeModal() {
-	//var modal = document.getElementById("moreInfoModal").style.display = "none";
-	document.getElementById("moreInfoModal").style.display = "none";
-}
-
-
 function openNav() {
 	if (navState == 0) {
 		document.getElementById("pullOutMenu").style.width = "65%";
@@ -222,21 +197,18 @@ function openNav() {
 	}
 }
 
-/*function openModal() {
-	document.getElementById("moreInfoModal").style.display = "block";
-	console.log("openModal");
-}
-*/
-
 function closeModal() {
 	//var modal = document.getElementById("moreInfoModal").style.display = "none";
 	document.getElementById("moreInfoModal").style.display = "none";
 }
 
-function openModal() {
+function openModal(i) {
 	document.getElementById("moreInfoModal").style.display = "block";
 	console.log("openModal");
-	var index = gallery.getIndex();
+	//var index = gallery.getIndex();
+	var index = i.replace('row','')
+	console.log(index)
+	console.log(resturants[index])
 	$("#callOut").attr('href', 'tel:' +resturants[index].phone);
 	$("#phoneNumber").html(" " + resturants[index].phone);
 	$("#phoneNumber").prepend('<i class="fas fa-mobile-alt"></i>');
@@ -337,11 +309,6 @@ function generateTable(numObjects) {
 	}
 	tableCode += "</table>";
 	return tableCode;
-}
-
-function openModal() {
-	document.getElementById("moreInfoModal").style.display = "block";
-	console.log("openModal");
 }
 
 function closeModal() {
