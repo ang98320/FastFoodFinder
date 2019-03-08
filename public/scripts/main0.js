@@ -28,7 +28,7 @@ $(document).ready(function() {
 	getProfileImage();
 	fetchData(function(result) {
 		var json = JSON.parse(result);
-		//console.log(json);
+		console.log(json.businesses[0]);
 		for (i = 0; i < json.businesses.length; i++) {
 			var resturant = {
 				title: json.businesses[i].name,
@@ -38,6 +38,7 @@ $(document).ready(function() {
 				long: json.businesses[i].coordinates.longitude,
 				alias: json.businesses[i].alias,
 				categories: json.businesses[i].categories,
+				closed: json.businesses[i].is_closed,
 				liked: false,
 			}
 			resturants.push(resturant);
@@ -193,6 +194,7 @@ function askLocation() {
 				long: json.businesses[i].coordinates.longitude,
 				alias: json.businesses[i].alias,
 				categories: json.businesses[i].categories,
+				closed: json.businesses[i].is_closed,
 				liked: false,
 			}
 			resturants.push(resturant);
@@ -211,7 +213,7 @@ function askLocation() {
 			startSlide: 0,
 			callback: function(index, elem) {
 				console.log("going to :", index)
-				currIdx = inded;
+				currIdx = index;
 				//sessionStorage.currIdx = index
 			},
 		});
@@ -372,7 +374,17 @@ function addData(resturant, i) {
 	var phone = document.createElement('h3')
 	phone.innerHTML = resturant.phone
 
+	var closed = document.createElement('h3')
+	if (closed == true) {
+		closed.innerHTML = "Closed Now"
+		closed.style.color = "red"
+	} else {
+		closed.innerHTML = "Open Now"
+		closed.style.color = "green"
+	}
+
 	info_fields.append(name)
+	info_fields.append(closed)
 	info_fields.append(phone)
 
 	info.append(info_save)
