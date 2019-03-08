@@ -55,7 +55,7 @@ $(document).ready(function() {
 			}
 			resturants.push(resturant);
 		}
-		//checkIfLiked(resturants)
+		checkIfLiked(resturants)
 		// $("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
 		$("#director").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
 		var currentIndex = 0;
@@ -146,9 +146,20 @@ var userLocation;
 var galleryInd = 0;
 
 function checkIfLiked(resturants) {
-	for (var i = 0; i < resturants.length; i++) {
-		console.log(i)
-	}
+	var id = sessionStorage.id
+	$.post("/getItems", {id: id}, function(req, res) {
+		console.log("req", req)
+		var set = new Set()
+		for (var i = 0; i < resturants.length; i++) {
+			set.add(resturants[i].href)
+		}
+		for (var i = 0; i < req.length; i++) {
+			if (set.has(req[i].href)) {
+				console.log("match found, need to like: ", req[i].href)
+				resturants.find(x => x.href === req[i].href).liked = true;
+			}
+		}
+	});
 }
 
 $.get("/", function(data) {
