@@ -317,62 +317,60 @@ function closeModal() {
 }
 
 function removeSaved(elem) {
-	//console.log(savedJSONObject);
-	//console.log("removeSave: ", elem)
-	//get index, get json object, stringify, remove this string from sessionStorage
-	var removeJSONString = $(elem).parent().parent().attr('id').replace("col", "");
-	// console.log("Delete clicked!");
-	// console.log(removeJSONString);
-	savedJSONObject.saved.splice(removeJSONString, 1);
-	console.log(savedJSONObject);
-	$("#saved-container").empty();
-	// loadSaved();
-	// $("#saved-body").append(generateTable(savedJSONObject.saved.length));
-	// closeModal();
-	for (i = 0; i < savedJSONObject.saved.length; i++) {
-		console.log("Run" + i + "times");
-		var appendJSON = "col" + i;
-		//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
-		var rowDiv = document.createElement('div');
-		rowDiv.className = "saved-row";
-		rowDiv.id = "row" + i;
-		rowDiv.setAttribute("onclick", "openModal()");
+	if (confirm("Are you sure you want to remove this?")) {
+		//get index, get json object, stringify, remove this string from sessionStorage
+		var removeJSONString = $(elem).parent().parent().attr('id').replace("col", "");
+		savedJSONObject.saved.splice(removeJSONString, 1);
+		console.log(savedJSONObject);
+		$("#saved-container").empty();
+		for (i = 0; i < savedJSONObject.saved.length; i++) {
+			console.log("Run" + i + "times");
+			var appendJSON = "col" + i;
+			//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
+			var rowDiv = document.createElement('div');
+			rowDiv.className = "saved-row";
+			rowDiv.id = "row" + i;
+			rowDiv.setAttribute("onclick", "openModal()");
 
-		var colLeft = document.createElement('div');
-		colLeft.className = "saved-col-left";
+			var colLeft = document.createElement('div');
+			colLeft.className = "saved-col-left";
 
-		var colRight = document.createElement('div');
-		colRight.className = "saved-col-right";
-		colRight.id = appendJSON;
+			var colRight = document.createElement('div');
+			colRight.className = "saved-col-right";
+			colRight.id = appendJSON;
 
-		var img = document.createElement('img');
-		img.className = "saved-row-img";
-		img.src = savedJSONObject.saved[i].href;
+			var img = document.createElement('img');
+			img.className = "saved-row-img";
+			img.src = savedJSONObject.saved[i].href;
 
-		var l1 = document.createElement('h3');
-		l1.className = "saved-row-label";
-		l1.innerHTML = savedJSONObject.saved[i].title;
-		var l2 = document.createElement('h4');
-		l2.className = "saved-row-label";
-		l2.innerHTML = "Added: Today";
+			var l1 = document.createElement('h3');
+			l1.className = "saved-row-label";
+			l1.innerHTML = savedJSONObject.saved[i].title;
+			var l2 = document.createElement('h4');
+			l2.className = "saved-row-label";
+			l2.innerHTML = "Added: Today";
 
-		colLeft.append(img);
+			colLeft.append(img);
 
-		colRight.append(l1);
-		colRight.append(l2);
-		// colRight.append('<a onclick="remove()" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
+			colRight.append(l1);
+			colRight.append(l2);
+			// colRight.append('<a onclick="remove()" class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
 
-		rowDiv.append(colLeft);
-		rowDiv.append(colRight);
+			rowDiv.append(colLeft);
+			rowDiv.append(colRight);
 
-		//$(appendJSON).prepend(rowDiv)
-		$("#saved-container").prepend(rowDiv);
+			//$(appendJSON).prepend(rowDiv)
+			$("#saved-container").prepend(rowDiv);
 
-		// JSONIndex++;
+			// JSONIndex++;
+		}
+		$(".saved-col-right").append('<a onclick="event.stopPropagation(); removeSaved(this);" \
+		class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
+		var savedJSONString = JSON.stringify(savedJSONObject);
+		sessionStorage.setItem('savedFoods', savedJSONString);
+		closeModal();
 	}
-	$(".saved-col-right").append('<a onclick="event.stopPropagation(); removeSaved(this);" \
-	class="trashcan"> <i class="far fa-trash-alt"></i> </a>');
-	var savedJSONString = JSON.stringify(savedJSONObject);
-	sessionStorage.setItem('savedFoods', savedJSONString);
-	closeModal();
+	else {
+		return;
+	}
 }
