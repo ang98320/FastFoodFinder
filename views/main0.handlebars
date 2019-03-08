@@ -21,11 +21,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<title> FastEats. Food, faster. </title>
-	<link rel="stylesheet" href="css/main0.css">
+	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/blueimp-gallery.min.css">
 	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="/scripts/main0.js"> </script>
-	<script src="/scripts/swipe.js"> </script>
+	<script src="/scripts/main.js"> </script>
 	{{> facebook}}
 	<script src="/scripts/facebook.js"></script>
 	<meta charset="utf-8">
@@ -47,66 +46,144 @@
 
 
 <body id="background">
+
 	<!--<a name="foods">-->
 		<div id="pushField">
-
+		<div id="links">
+			<!--
+		    <a href="/img/placeholder.jpg" title="Burger" id="firstSlideshow" class="slideshowImg">
+		    </a>
+		    <a href="/img/sushi.jpg" title="Sushi" id="secondSlideshow">
+		    </a>
+		    <a href="/img/ramen.jpg" title="Ramen" id="thirdSlideshow">
+		    </a>-->
+				<a></a>
+		</div>
+		<div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-controls">
+	    <div class="slides" onclick="openModal()"></div>
+	    <a class="prev">‹</a>
+	    <a class="next">›</a>
+	    <!--<a class="play-pause"></a>
+	    <ol class="indicator"></ol>-->
 			<div id="pullOutMenu" class="pullOut">
 				<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
 				<img src="/img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
-				<a href="main0">Main</a>
+				<a href="main">Main</a>
+				<!--<a href="main2.html">Main2</a> -->
+				<!--<a href="profile.html">Profile</a>-->
 				<a href="saved">Saved</a>
 				<a href="/"> Log Out </a>
+				<!--<a href="settings.html">Settings</a> -->
 			</div>
-
-			<div id=content>
-				<div id='slider' class='swipe'>
-				  <div id="data-container" class='swipe-wrap'>
-<!--
-				    <div class="data">
-				      <img class="data-img" src="/img/udon.jpg"></img>
-							<div id="data-info">
-								<div id="data-info-save">
-									<button id="save" onclick="save()">
-										<i id="heartButton" class="far fa-heart heart"></i>
-									</button>
-								</div>
-								<div id="data-info-fields">
-									<h3>Resturant</h3>
-									<h3>(123) 456 7890</h3>
-								</div>
-							</div>
-				    </div>
-				    <div class="data">
-				      <img src="/img/sushi.jpg"></img>
-							<h3>Resturant</h3>
-							<h3>(123) 456 7890</h3>
-				    </div> -->
-				  </div>
-				</div>
-			</div>
-
-			<!--<div><button class="gobutton" style="background-color:#66CD00;"><span>Go</span></button></div>-->
-
-			<div name="menuBars">
-				<div class="container-fluid test" id="socialBar">
+	<a name="menuBars">
+			    <div class="container-fluid test" id="socialBar">
 						<span onclick="openNav()" class="row" id="menu">&#9776;</span>
-								<h1 id="title">Fast Eats</h1>
-								<!--
-								<div class="test" id="filterBar">
-									<form autocomplete="off" action=()>
-										<input class="center" type="text" id="filter" placeholder="Filters">
-									</form>
-								</div> -->
+						<h1 id="title">Fast Eats</h1>
+						<!--
+						<div class="test" id="filterBar">
+							<form autocomplete="off" action=()>
+								<input class="center" type="text" id="filter" placeholder="Filters">
+							</form>
+						</div> -->
 						<div class="test" id="locationBar">
-								<!--<a onclick="askLocation()" class="button" id="navigator">-->
-								<a onclick="askLocation()" class="button" id="nav">
-									<i class="fas fa-map-marker-alt"></i>
+								<a onclick="askLocation()" class="button" id="navigator">
+									<i id="clickLocation" class="fas fa-map-marker-alt"></i>
 								</a>
 						</div>
 				</div>
-			</div>
-			<a id="navigator" onclick="go()"><button class="gobutton" style="background-color:#2696e19e;"><span>Go</span></button></a>
-			<!--<div><button class="gobutton" style="background-color:#66CD00;"><span>Go</span></button></div>-->
+			</a>
+			<a name="mobilitiyBar">
+				<div class="container-fluid test" id="mobility">
+					 <!-- Go back one image -->
+					<!--<button id="oneLeft" onclick="goBack()"> <i class="fas fa-arrow-left fa"></i> </button>-->
+					<!-- Save image to list -->
+					<span id="save" onclick="save()"> <i id="heartButton" class="far fa-heart heart"></i> </span>
+					<!-- Go to next image-->
+					<!--<button id="oneRight" onclick="goNext()"> <i class="fas fa-arrow-right fa"></i> </button>-->
+				</div>
+			</a>
 
+			<div id="moreInfoModal" class="moreInfoModal test">
+
+			<div class="container-fluid test" id="moreInfoBar">
+				<div class="test" id="menu">
+						<a onclick="save()" class="button">
+							<i class="far fa-heart heart"></i>
+						</a>
+				</div>
+					<h6 id="moreName">Resturant Name</h6>
+				<div class="test" id="locationBar">
+						<a onclick="closeModal()" class="button" id="modalClose">
+							<i class="far fa-times-circle"></i>
+						</a>
+				</div>
+			</div>
+
+			<div id="morePicturesScroll">
+				<div class="test" id="moreInformation">
+					<img src="/img/placeholder.jpg" id="additionalImg">
+					<!--<div id="moreImg" class="test">
+
+					</div>-->
+					<div id="moreContact" class="moreInfo">
+						<h3 class="contactClass" id="handle">Name of Food</h3>
+						<a id="callOut" href=""> <h3 class="contactClass" id="phoneNumber">Phone Number Here</h3> </a>
+						<!--<h3 class="contactClass" id="navigate">ETA</h3>-->
+					</div>
+				</div>
+				<!-- <h4 id="moreBreaker"> Similar Items:</h4>
+					<table id="morePictures" style="width: 100%; margin: 0px 0px;">
+					</table> -->
+					<a id="director" href="()"><button class="gobutton" style="background-color:#2696e19e;"><span>Go</span></button></a>
+			</div>
 		</div>
+	</div>
+	<!--</a>-->
+</div>
+
+
+<script src="scripts/blueimp-gallery.min.js"></script>
+<script>
+
+//var list = ["/img/placeholder.jpg", "/img/sushi.jpg", "/img/ramen.jpg"];
+/*
+loadList(function(result) {
+	var list = result;
+	var currentIndex = 0;
+	var maxIndex = 0;
+	var gallery = blueimp.Gallery(
+	    //document.getElementById('links').getElementsByTagName('a'),
+			list,
+	    {
+	        container: '#blueimp-gallery-carousel',
+	        carousel: true,
+					continuous: false,
+					startSlideshow: false,
+					fullScreen: false,
+					toggleControlsOnSlideClick: false,
+					toggleControlsOnSlideClick: false,
+					onslide: function (index, slide) {
+						if ((currentIndex + 1) == index) {
+							currentIndex = index;
+							console.log('next: ' + index);
+							if (maxIndex < index) {
+								maxIndex++;
+								goNext(index, function(result) {
+									console.log(result);
+									gallery.add([{
+										title: 'title',
+										href: result,
+									}]);
+								});
+							}
+						} else if ((currentIndex - 1) == index) {
+							currentIndex = index;
+							console.log('prev: ' + index);
+						}
+					},
+	    }
+	);
+});*/
+</script>
+
 </body>

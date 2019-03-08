@@ -71,7 +71,7 @@ function removeFromDB(href) {
 function jsonToHTML(req) {
 	//console.log(generateTable(req.length));
 
-	$("#saved-body").append(generateTable(req.len));
+	$("#saved-body").append(generateTable(req.length));
 
 	for (i = 0; i < req.length; i++) {
 		resturants.push(req[i])
