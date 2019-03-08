@@ -7,6 +7,11 @@ $(document).ready(function() {
 	console.log("current index: ", sessionStorage.currIdx)
 	//window.mySwipe.slide(sessionStorage.currIdx)
 
+	if (sessionStorage.id == null) {
+		sessionStorage.id = "test_user"
+	}
+	console.log("user id is:", sessionStorage.id)
+
 	if(sessionStorage.hasLat) {
 		currLat = sessionStorage.hasLat;
 		currLong = sessionStorage.hasLong;
@@ -23,7 +28,7 @@ $(document).ready(function() {
 	getProfileImage();
 	fetchData(function(result) {
 		var json = JSON.parse(result);
-		//console.log(json);
+		console.log(json.businesses[0]);
 		for (i = 0; i < json.businesses.length; i++) {
 			var resturant = {
 				title: json.businesses[i].name,
@@ -33,28 +38,37 @@ $(document).ready(function() {
 				long: json.businesses[i].coordinates.longitude,
 				alias: json.businesses[i].alias,
 				categories: json.businesses[i].categories,
+				closed: json.businesses[i].is_closed,
 				liked: false,
 			}
 			resturants.push(resturant);
 			// TODO insert elements here
-			addData(resturant, i)
+			//addData(resturant, i)
 		}
 
-		window.mySwipe = Swipe(document.getElementById('slider'), {
-			continuous: false,
-			/*startSlide: sessionStorage.currIdx,*/
-			callback: function(index, elem) {
-				console.log("going to :", index)
-				//sessionStorage.currIdx = index
-			},
-		});
+		checkIfLiked(function(result) {
+			console.log(result)
+			for (var i = 0; i < resturants.length; i++) {
+				addData(resturants[i], i)
+			}
+			console.log("init gallery")
+			window.mySwipe = Swipe(document.getElementById('slider'), {
+				continuous: false,
+				/*startSlide: sessionStorage.currIdx,*/
+				callback: function(index, elem) {
+					console.log("going to :", index)
+					//sessionStorage.currIdx = index
+					currIdx = index;
+				},
+			});
 
-		//$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
-		//var idx = window.mySwipe.getPos()
-		//$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
-		var currentIndex = 0;
-		var maxIndex = 0;
-		console.log(resturants);
+			//$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
+			//var idx = window.mySwipe.getPos()
+			//$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
+			var currentIndex = 0;
+			var maxIndex = 0;
+			console.log(resturants);
+		});
 	});
 });
 
@@ -96,6 +110,25 @@ $.get("/getnext", function(data) {
 	console.log(data);
 });
 */
+
+function checkIfLiked(callback) {
+	var id = sessionStorage.id
+	$.post("/getItems", {id: id}, function(req, res) {
+		console.log("req", req)
+		console.log("req", res)
+		var set = new Set()
+		for (var i = 0; i < resturants.length; i++) {
+			set.add(resturants[i].href)
+		}
+		for (var i = 0; i < req.length; i++) {
+			if (set.has(req[i].href)) {
+				console.log("match found, need to like: ", req[i].href)
+				resturants.find(x => x.href === req[i].href).liked = true;
+			}
+		}
+		callback("done");
+	});
+}
 
 function go() {
 	console.log("go")
@@ -161,6 +194,7 @@ function askLocation() {
 				long: json.businesses[i].coordinates.longitude,
 				alias: json.businesses[i].alias,
 				categories: json.businesses[i].categories,
+				closed: json.businesses[i].is_closed,
 				liked: false,
 			}
 			resturants.push(resturant);
@@ -179,6 +213,7 @@ function askLocation() {
 			startSlide: 0,
 			callback: function(index, elem) {
 				console.log("going to :", index)
+				currIdx = index;
 				//sessionStorage.currIdx = index
 			},
 		});
@@ -266,6 +301,24 @@ function hello() {
 	console.log("hello")
 }
 
+function saveItem(resturant) {
+	console.log(resturant)
+	var id = sessionStorage.id
+	$.post("/saveItem", {id: id, resturant: resturant}, function callback(err, data) {
+		console.log("success saveItem")
+	});
+}
+
+function removeFromDB(resturant) {
+	var href = resturant.href
+	var id = sessionStorage.id
+	console.log(id, href)
+	$.post("/removeItem", {id: id, href: href}, function(req, res) {
+		console.log("req", req)
+		console.log("res", res)
+	});
+}
+
 function addData(resturant, i) {
 	var body = document.getElementById("data-container")
 	//console.log(body)
@@ -286,10 +339,31 @@ function addData(resturant, i) {
 
 	var save = document.createElement('button')
 	save.id = "save"
-	save.setAttribute( "onClick", "javascript: save();" );
+	save.elementId = i
+	//save.setAttribute( "onClick", "javascript: save(" + i + ");" );
+	save.onclick = function () {
+		//console.log(resturant)
+		if (resturant.liked == false) {
+			resturant.liked = true;
+			console.log("need to save")
+			heart.className = "far fa-heart heart fa"
+			saveItem(resturant)
+		} else {
+			resturant.liked = false;
+			console.log("removing from db")
+			heart.className = "far fa-heart heart"
+			removeFromDB(resturant)
+		}
+	}
 	var heart = document.createElement('i')
 	heart.id = "heartButton"
-	heart.className = "far fa-heart heart"
+	if (resturant.liked == false) {
+		console.log("not liked")
+		heart.className = "far fa-heart heart"
+	} else {
+		console.log("already liked")
+		heart.className = "far fa-heart heart fa"
+	}
 
 	save.append(heart)
 	info_save.append(save)
@@ -300,7 +374,17 @@ function addData(resturant, i) {
 	var phone = document.createElement('h3')
 	phone.innerHTML = resturant.phone
 
+	var closed = document.createElement('h3')
+	if (closed == true) {
+		closed.innerHTML = "Closed Now"
+		closed.style.color = "red"
+	} else {
+		closed.innerHTML = "Open Now"
+		closed.style.color = "green"
+	}
+
 	info_fields.append(name)
+	info_fields.append(closed)
 	info_fields.append(phone)
 
 	info.append(info_save)
@@ -346,49 +430,6 @@ function goBack() {
 	});
 }
 
-function save() {
-	$.get("/calls", function(data) {
-	// $.get("http://localhost:3000/calls", function(data) {
-		stringJSON = JSON.stringify(data.restaurants[currIndex - 3]);
-		savedFood.push(stringJSON);
-		if(savedJSONString.includes(',' + stringJSON)) {
-			// console.log("Checked ,");
-			alert("You already saved this! Removing!");
-			appendedString = ',' + stringJSON;
-			// console.log(appendedString);
-			savedJSONString = savedJSONString.replace(appendedString, '');
-			$("#heartButton").removeClass("fa");
-			return;
-		}
-		if(savedJSONString.includes(stringJSON)) {
-			console.log("Checked empty");
-			alert("You already saved this! Removing!");
-			savedJSONString = savedJSONString.replace(stringJSON, "");
-			$("#heartButton").removeClass("fa");
-			return;
-		}
-		if (savedJSONString.endsWith("]}")) {
-			// console.log("ends with }]");
-			savedJSONString = savedJSONString.replace("]}", "");
-		}
-		if (savedJSONString ===  '{ "saved" : [') {
-			savedJSONString = savedJSONString.concat(stringJSON + "]}");
-		}
-		else {
-			savedJSONString = savedJSONString.concat("," + stringJSON + "]}");
-		}
-		if($("#heartButton").hasClass("fa")) {
-			$("#heartButton").removeClass("fa");
-		}
-		else {
-			$("#heartButton").addClass("fa");
-		}
-		console.log(savedJSONString);
-		sessionStorage.setItem('savedFoods', savedJSONString);
-		saveIndex++;
-	});
-}
-
 function loadSaved() {
 	savedInfo = window.name;
 	console.log(savedInfo);
@@ -401,6 +442,7 @@ function loadSaved() {
 		$(barToPut).append('<img class="instaStyle" src="' + savedInfo[i].img +'" </th>');
 	}
 }
+
 
 
 function appendJSON(string) {
