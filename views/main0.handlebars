@@ -52,10 +52,10 @@
 
 			<div id="pullOutMenu" class="pullOut">
 				<a href="javascript:void(0)" class="closeButton" onclick="openNav()">&times;</a>
-				<img src="/img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg">
+				<img src="/img/defaultUser.jpg" alt="Contact a Dev" title="Image of User" id="userImg"></img>
 				<a href="main">Main</a>
 				<a href="saved">Saved</a>
-				<a href="/"> Log Out </a>
+				<a href="/">Log Out</a>
 			</div>
 
 			<div id=content>
@@ -90,7 +90,7 @@
 			<div name="menuBars">
 				<div class="container-fluid test" id="socialBar">
 						<span onclick="openNav()" class="row" id="menu">&#9776;</span>
-								<img src="/img/fasteats.png" alt="FastEats" width=65% height=75%>
+								<img src="/img/fasteats.png" alt="FastEats" width=45%>
 								<!--
 								<div class="test" id="filterBar">
 									<form autocomplete="off" action=()>
@@ -99,7 +99,7 @@
 								</div> -->
 						<div class="test" id="locationBar">
 								<!--<a onclick="askLocation()" class="button" id="navigator">-->
-								<a onclick="askLocation()" class="button" id="nav">
+								<a onclick="event.stopPropagation();askLocation();" class="button" id="nav">
 									<i class="fas fa-map-marker-alt"></i>
 								</a>
 						</div>
