@@ -167,21 +167,38 @@ app.get("/path/to/page_B", main0.view)
 app.post('/saveItem', function(req, res) {
   var id = req.body.id;
   var resturant = req.body.resturant
+  //console.log(id, resturant.href)
   fs.readFile('data.json', 'utf8', function (err, data){
     if (err){
         console.log(err);
     } else {
     obj = JSON.parse(data); //now it an object
-    obj.table.push({id: id, resturant: resturant}); //add some data
-    var json = JSON.stringify(obj, null, 4); //convert it back to json
-    fs.writeFile('data.json', json, 'utf8', function (err, data) {
-      console.log("Successfully written to json")
-    });
+    var insert = true;
+    var lenData = obj.table.length
+    for (var i = 0; i < lenData; i++) {
+      var dataID = obj.table[i].id
+      var dataHref = obj.table[i].resturant.href
+      if (dataID == id && dataHref == resturant.href) {
+        insert = false;
+      }
+      //console.log(dataID, dataHref)
+    }
+    if (insert) {
+      console.log("inserting")
+      obj.table.push({id: id, resturant: resturant}); //add some data
+      var json = JSON.stringify(obj, null, 4); //convert it back to json
+      fs.writeFile('data.json', json, 'utf8', function (err, data) {
+        console.log("Successfully written to json")
+      });
+    } else {
+      console.log("already exists in db")
+    }
 }});
 });
 
 app.post('/getItems', function(req, res) {
   var id = req.body.id
+  console.log(id)
   var obj;
   var resturants = []
   fs.readFile("data.json", 'utf8', function(err, data) {
@@ -190,12 +207,37 @@ app.post('/getItems', function(req, res) {
     //console.log(obj.table[2].resturant)
     for (var i = 0; i < obj.table.length; i++) {
       var resturant = obj.table[i].resturant
-      if (obj.table[i].id = id) resturants.push(resturant)
+      if (obj.table[i].id == id) resturants.push(resturant)
     }
     //console.log(resturants)
     res.json(resturants)
   });
 });
+
+app.post('/removeItem', function(req, res) {
+  var id = req.body.id
+  var href = req.body.href
+  console.log(id)
+  var obj
+  var resturants = []
+  fs.readFile("data.json", 'utf8', function(err, data) {
+    if (err) throw err;
+    obj = JSON.parse(data);
+    //console.log(obj.table[2].resturant)
+    //console.log("old len:", obj.table.length)
+    for (var i = 0; i < obj.table.length; i++) {
+      var resturant = obj.table[i].resturant
+      if (obj.table[i].id == id && obj.table[i].resturant.href == href) {
+        console.log("match found")
+        //console.log(obj.table[i])
+        obj.table.splice(i, 1)
+      }
+    }
+    //console.log("new len:", obj.table.length)
+    fs.writeFileSync('data.json', JSON.stringify(obj, null, 2));
+    res.json("removed successfully")
+  });
+})
 
 //app.route('/main');
 //app.get('/add', add.addFriend);

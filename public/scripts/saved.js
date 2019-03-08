@@ -3,7 +3,7 @@ $(document).ready(function() {
 	loadFromJSON(function(result) {
 		console.log(result)
 	});
-	loadSaved();
+	//loadSaved();
 	userLocation = sessionStorage.getItem("userLocation");
 	console.log(savedJSONObject)
 	$(".saved-row").click(function() {
@@ -47,9 +47,84 @@ function loadFromJSON() {
 	var id = sessionStorage.id
 	console.log("id:", id)
 	$.post("/getItems", {id: id}, function(req, res) {
-		console.log(req)
-		console.log(res)
+		console.log("req", req)
+		jsonToHTML(req)
+		//console.log("res", res)
 	});
+}
+
+function removeFromDB(href) {
+	$("#saved-container").empty();
+	var id = sessionStorage.id
+	console.log(id, href)
+	$.post("/removeItem", {id: id, href: href}, function(req, res) {
+		console.log("req", req)
+		console.log("res", res)
+		loadFromJSON();
+	});
+}
+
+function jsonToHTML(req) {
+	console.log(generateTable(req.length));
+
+	$("#saved-body").append(generateTable(savedJSONObject.saved.length));
+
+	for (i = 0; i < req.length; i++) {
+		console.log("Run " + i + " times");
+		var colId = "col" + i;
+		//$(appendJSON).append('<a onclick="openModal()" id="pic' + JSONIndex + '"> <img src="' + savedJSONObject.saved[JSONIndex].img + '"> </a>');
+		var rowDiv = document.createElement('div');
+		rowDiv.className = "saved-row";
+		rowDiv.id = "row" + i;
+		rowDiv.setAttribute("onclick", "openModal()");
+
+		var colLeft = document.createElement('div');
+		colLeft.className = "saved-col-left";
+
+		var colRight = document.createElement('div');
+		colRight.className = "saved-col-right";
+		colRight.id = colId;
+
+		var img = document.createElement('img');
+		img.className = "saved-row-img";
+		img.src = req[i].href;
+
+		var l1 = document.createElement('h3');
+		l1.className = "saved-row-label";
+		l1.innerHTML = req[i].title;
+		var l2 = document.createElement('h4');
+		l2.className = "saved-row-label";
+		l2.innerHTML = "Added: Today";
+
+		var trash = document.createElement('a');
+		trash.id = req[i].href
+		trash.onclick = function (e) {
+			e.stopPropagation();
+			removeFromDB(this.id);
+		}
+		trash.className = "trashcan";
+		var trashIcon = document.createElement('i');
+		trashIcon.className = "far fa-trash-alt"
+
+		trash.append(trashIcon)
+
+		colLeft.append(img);
+
+		colRight.append(l1);
+		colRight.append(l2);
+		colRight.append(trash);
+
+		rowDiv.append(colLeft);
+		rowDiv.append(colRight);
+		rowDiv.append(trash);
+
+		//$(".saved-col-right").append(trash)
+
+		//$(appendJSON).prepend(rowDiv)
+		$("#saved-container").prepend(rowDiv);
+	}
+	//$(".saved-col-right").append('<a onclick="event.stopPropagation(); removeFromDB(this);" \
+	//class="trashcan" z-index="9999"> <i class="far fa-trash-alt"></i> </a>');
 }
 
 function openNav() {
