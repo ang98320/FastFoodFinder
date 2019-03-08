@@ -167,16 +167,32 @@ app.get("/path/to/page_B", main0.view)
 app.post('/saveItem', function(req, res) {
   var id = req.body.id;
   var resturant = req.body.resturant
+  //console.log(id, resturant.href)
   fs.readFile('data.json', 'utf8', function (err, data){
     if (err){
         console.log(err);
     } else {
     obj = JSON.parse(data); //now it an object
-    obj.table.push({id: id, resturant: resturant}); //add some data
-    var json = JSON.stringify(obj, null, 4); //convert it back to json
-    fs.writeFile('data.json', json, 'utf8', function (err, data) {
-      console.log("Successfully written to json")
-    });
+    var insert = true;
+    var lenData = obj.table.length
+    for (var i = 0; i < lenData; i++) {
+      var dataID = obj.table[i].id
+      var dataHref = obj.table[i].resturant.href
+      if (dataID == id && dataHref == resturant.href) {
+        insert = false;
+      }
+      //console.log(dataID, dataHref)
+    }
+    if (insert) {
+      console.log("inserting")
+      obj.table.push({id: id, resturant: resturant}); //add some data
+      var json = JSON.stringify(obj, null, 4); //convert it back to json
+      fs.writeFile('data.json', json, 'utf8', function (err, data) {
+        console.log("Successfully written to json")
+      });
+    } else {
+      console.log("already exists in db")
+    }
 }});
 });
 
