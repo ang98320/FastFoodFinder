@@ -1,4 +1,5 @@
 var resturants = []
+var url;
 
 $(document).ready(function() {
 	//getLocation();
@@ -214,6 +215,8 @@ function openModal(i) {
 	$("#phoneNumber").prepend('<i class="fas fa-mobile-alt"></i>');
 	$("#additionalImg").attr('src', resturants[index].href);
 	$("#moreName").html(resturants[index].title);
+	userLocation = sessionStorage.userLocation
+	url = userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving"
 }
 
 function remove() {
@@ -373,4 +376,18 @@ function removeSaved(elem) {
 	else {
 		return;
 	}
+}
+
+function go() {
+	console.log("go")
+	//var idx = window.mySwipe.getPos()
+	//console.log(resturants[idx].lat)
+	//console.log(resturants[idx].long)
+	//var url = "http://www.google.com/maps/place/" + resturants[idx].lat + "," + resturants[idx].long
+	//window.open(url, '_blank', 'location=yes');
+	//console.log(userLocation)
+	//url = userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving"
+	//$("#navigator"+idx).attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
+	var win = window.open(url)
+	win.focus();
 }

@@ -1,3 +1,65 @@
+body {
+  margin: 0;
+  height: 100%;
+  background-color: white;
+}
+
+.gobutton {
+  	/*display: inline-block;*/
+  	border-radius: 0px;
+  	border: none;
+  	color: #FFFFFF;
+  	text-align: center;
+  	font-size: 28px;
+  	/*padding: 2px;*/
+    padding: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+  	width: 100%;
+  	transition: all 0.5s;
+  	cursor: pointer;
+  	/*margin-top: 25px;*/
+    bottom: 0;
+    opacity: 50%;
+    background-color:#2696e19e;
+    border-radius: 10%;
+}
+
+.gobutton span {
+  	cursor: pointer;
+  	display: inline-block;
+  	position: relative;
+  	transition: 0.5s;
+    opacity: 50%;
+    color: black;
+}
+
+.gobutton span:after {
+  	content: '\00bb';
+  	position: absolute;
+  	opacity: 0;
+  	top: 0;
+  	right: -20px;
+  	transition: 0.5s;
+    opacity: 50%;
+}
+
+.gobutton:hover span {
+  	padding-right: 25px;
+    opacity: 50%;
+}
+
+.gobutton:hover span:after {
+  	opacity: 1;
+  	right: 0;
+    opacity: 50%;
+}
+
+.trashcan {
+  padding-top: 2%;
+  padding-right: 2%;
+}
+
 .saved-row {
   display: flex;
   border-top: 0.02px solid grey;
@@ -98,14 +160,23 @@
 
 #title {
   color: black;
+  height: 100%;
   text-align: center;
   /*font-family: "Arial Black";*/
-  font-size: 5vh;
+  font-size: 6vh;
   position: absolute;
-  top: 25%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
+}
+
+#menu {
+  margin-left: 2%;
+	padding-left: 1%;
+	display: inline-block;
+	float: left;
+	font-size: 1.5em;
+	cursor: pointer;
 }
 
 #main-info {
@@ -156,14 +227,15 @@
 
 #saved-menu-button {
   position: absolute;
-  width: 10%;
   /*height: 40%;*/
-  font-size: 6vh;
+  height: 100%;
+  font-size: 4vh;
   display: flex;
   align-items: center;
+  /*background-color: blue;*/
+  margin-left: 2%;
   /*justify-content: center;*/
   /*top: 18px;*/
-  left: 9px;
   /*background-color: blue;*/
 }
 
@@ -215,7 +287,7 @@
 #saved-header {
   z-index: 0;
   position: relative;
-  padding-top:10px;
+  /*padding-top:10px;*/
   padding-bottom:-10px;
   color: #000;
   /*text-align:center;*/
@@ -231,13 +303,14 @@
 
 #saved-body {
   /*position: relative;*/
+  position: absolute;
   bottom: 0;
   width: 100%;
-  height: 80%;
+  height: 92%;
   /*background-color: transparent;*/
-  background-color: #F5F5F5;
+  background-color: #FCFCFC;
   opacity: 10%;
-  margin-top: 25%;
+  position:
   overflow-y: scroll;
 }
 
@@ -368,15 +441,6 @@
   margin-top: 15%;
   object-fit: cover;
   margin-bottom: 5%;
-}
-
-#menu {
-  margin-left: 2%;
-	padding-left: 1%;
-	display: inline-block;
-	float: left;
-	font-size: 1.5em;
-	cursor: pointer;
 }
 
 #locationBar {

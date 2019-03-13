@@ -287,78 +287,24 @@
         {
             "id": "test_user",
             "resturant": {
-                "title": "Crossroads Deli",
-                "href": "https://s3-media2.fl.yelpcdn.com/bphoto/DkaG08fjTvJ0OxNjkEnLDA/o.jpg",
-                "phone": "+18584580921",
-                "lat": "32.8726055298119",
-                "long": "-117.202275789935",
-                "alias": "crossroads-deli-san-diego-3",
+                "title": "Pastalini",
+                "href": "https://s3-media1.fl.yelpcdn.com/bphoto/2CJZlVLO2Gr2QbRpswXMAg/o.jpg",
+                "phone": "+18586959779",
+                "lat": "32.88149",
+                "long": "-117.15846",
+                "alias": "pastalini-san-diego",
                 "categories": [
                     {
-                        "alias": "delis",
-                        "title": "Delis"
+                        "alias": "pizza",
+                        "title": "Pizza"
                     },
                     {
-                        "alias": "sandwiches",
-                        "title": "Sandwiches"
+                        "alias": "italian",
+                        "title": "Italian"
                     },
                     {
-                        "alias": "cafes",
-                        "title": "Cafes"
-                    }
-                ],
-                "closed": "false",
-                "liked": "true"
-            }
-        },
-        {
-            "id": "test_user",
-            "resturant": {
-                "title": "Chicago Fire Grill",
-                "href": "https://s3-media1.fl.yelpcdn.com/bphoto/f31DPAu5UbGUnUawukpgzQ/o.jpg",
-                "phone": "+18586220224",
-                "lat": "32.8677687998958",
-                "long": "-117.206104003634",
-                "alias": "chicago-fire-grill-san-diego-2",
-                "categories": [
-                    {
-                        "alias": "salad",
-                        "title": "Salad"
-                    },
-                    {
-                        "alias": "burgers",
-                        "title": "Burgers"
-                    },
-                    {
-                        "alias": "sandwiches",
-                        "title": "Sandwiches"
-                    }
-                ],
-                "closed": "false",
-                "liked": "true"
-            }
-        },
-        {
-            "id": "test_user",
-            "resturant": {
-                "title": "Crab Hut",
-                "href": "https://s3-media1.fl.yelpcdn.com/bphoto/jlvbNNxKY1JKItanpY0qqg/o.jpg",
-                "phone": "+18588605225",
-                "lat": "32.914630505126",
-                "long": "-117.145804051706",
-                "alias": "crab-hut-san-diego-6",
-                "categories": [
-                    {
-                        "alias": "cajun",
-                        "title": "Cajun/Creole"
-                    },
-                    {
-                        "alias": "seafood",
-                        "title": "Seafood"
-                    },
-                    {
-                        "alias": "cocktailbars",
-                        "title": "Cocktail Bars"
+                        "alias": "pastashops",
+                        "title": "Pasta Shops"
                     }
                 ],
                 "closed": "false",

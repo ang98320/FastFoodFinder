@@ -4,7 +4,7 @@ var gallery;
 $(document).ready(function() {
 	initializePage();
 	console.log("ready")
-	console.log("current index: ", sessionStorage.currIdx)
+	//console.log("current index: ", sessionStorage.currIdx)
 	//window.mySwipe.slide(sessionStorage.currIdx)
 
 	if (sessionStorage.id == null) {
@@ -30,6 +30,8 @@ $(document).ready(function() {
 	googleDirections = googleDirections + currLat + "," + currLong + "&";
 	userLocation = googleDirections;
 	console.log("userlocation:", userLocation);
+
+	sessionStorage.userLocation = userLocation
 
 	currIndex == -1;
 	//goNext();
@@ -150,7 +152,6 @@ function go() {
 	//$("#navigator"+idx).attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
 	var win = window.open(url)
 	win.focus();
-
 }
 
 function openNav() {
@@ -158,14 +159,14 @@ function openNav() {
 		console.log("openNav");
 		document.getElementById("pullOutMenu").style.width = "65%";
 		//document.getElementById("pushField").style.marginLeft = "65%";
-		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		//document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
 		navState++;
 	}
 	else {
 		console.log("closeNav");
 		document.getElementById("pullOutMenu").style.width = "0";
 		document.getElementById("pushField").style.marginLeft = "0";
-		document.body.style.backgroundColor = "white";
+		//document.body.style.backgroundColor = "white";
 		navState--;
 	}
 }
