@@ -12,6 +12,7 @@ $(document).ready(function() {
 	}
 	console.log("user id is:", sessionStorage.id)
 
+/*
 	if(sessionStorage.hasLat) {
 		currLat = sessionStorage.hasLat;
 		currLong = sessionStorage.hasLong;
@@ -23,6 +24,13 @@ $(document).ready(function() {
 		getLocation();
 		console.log("getting location")
 	}
+*/
+	currLat = sessionStorage.hasLat;
+	currLong = sessionStorage.hasLong;
+	googleDirections = googleDirections + currLat + "," + currLong + "&";
+	userLocation = googleDirections;
+	console.log("userlocation:", userLocation);
+
 	currIndex == -1;
 	//goNext();
 	getProfileImage();
@@ -138,7 +146,10 @@ function go() {
 	//var url = "http://www.google.com/maps/place/" + resturants[idx].lat + "," + resturants[idx].long
 	//window.open(url, '_blank', 'location=yes');
 	console.log(userLocation)
-	$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
+	url = userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving"
+	//$("#navigator"+idx).attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
+	var win = window.open(url)
+	win.focus();
 
 }
 
@@ -328,14 +339,29 @@ function addData(resturant, i) {
 	var img = document.createElement('img')
 	img.src = resturant.href
 	img.className = "data-img"
-	img.onDblClick = hello;
+	//img.onDblClick = hello;
 
 	var info = document.createElement('div')
 	info.id = "data-info"
+	var info_go = document.createElement('div')
+	info_go.id = "data-info-go"
 	var info_save = document.createElement('div')
 	info_save.id = "data-info-save"
 	var info_fields = document.createElement('div')
 	info_fields.id = "data-info-fields"
+
+
+	var go = document.createElement('a')
+	var go_button = document.createElement('button')
+	var span_go = document.createElement('span')
+	span_go.innerHTML = "Go";
+	go_button.className = "gobutton";
+	go.id = "navigator"+i;
+	go.setAttribute("onclick", "go()");
+
+	go_button.append(span_go)
+	go.append(go_button)
+	info_go.append(go)
 
 	var save = document.createElement('button')
 	save.id = "save"
@@ -387,8 +413,10 @@ function addData(resturant, i) {
 	info_fields.append(closed)
 	info_fields.append(phone)
 
-	info.append(info_save)
 	info.append(info_fields)
+	info.append(info_go)
+	info.append(info_save)
+	//info.append(info_fields)
 
 	container.append(img)
 	container.append(info)

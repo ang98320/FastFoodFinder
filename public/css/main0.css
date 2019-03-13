@@ -34,18 +34,43 @@ body {
 
 .data img {
   width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  overflow: hidden;
   top: 0;
 }
 
 #data-info {
   background-color: blue;
+  z-index: 999999;
+}
+
+#data-info-go {
+  z-index: 9999;
+  float:left;
+  text-align: right;
+  width: 46%;
+  background-color: #F8F8F8;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 1%;
+  /*background-color: purple;*/
 }
 
 #data-info-save {
   float: left;
-  padding-top: 5%;
-  padding-left: 5%;
-  width: 25%;
+  /* padding-top: 5%;
+  padding-left: 5%; */
+  right: 0;
+  width: 46%;
+  text-align: center;
+  background-color: #F8F8F8;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 1%;
+  /*width: 25%; */
   /*background-color: purple;*/
 }
 
@@ -53,24 +78,29 @@ body {
   float:left;
   text-align: left;
   right: 0;
-  width: 68%;
+  width: 96%;
+  background-color: #F8F8F8;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-radius: 2%;
   /*background-color: green;*/
 }
 
-/*
 #data-img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 400px;
+  overflow: hidden;
 }
-*/
+
 .data h3 {
-  margin-left: 1%;
+  margin-left: 3%;
   font-family: "Helvetica";
 }
 
 
 .gobutton {
   	/*display: inline-block;*/
-    position: fixed;
   	border-radius: 0px;
   	border: none;
   	color: #FFFFFF;
@@ -80,9 +110,10 @@ body {
   	width: 100%;
   	transition: all 0.5s;
   	cursor: pointer;
-  	margin-top: 25px;
+  	/*margin-top: 25px;*/
     bottom: 0;
     opacity: 50%;
+    background-color:#2696e19e;
 }
 
 .gobutton span {
@@ -91,6 +122,7 @@ body {
   	position: relative;
   	transition: 0.5s;
     opacity: 50%;
+    color: black;
 }
 
 .gobutton span:after {
@@ -240,6 +272,75 @@ body {
 }
 */
 
+/***************************** Menu *******************************************/
+
+#socialBar {
+  z-index: 0;
+  position: relative;
+  padding-top:0px;
+  padding-bottom:0px;
+  color: #000;
+  text-align:center;
+  font-size:24px;
+  cursor: pointer;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  height: 7%;
+}
+
+#menu-container {
+  float:left;
+  text-align: center;
+  height: 100%;
+  width: 12%;
+  background-color: transparent;
+}
+
+#menu {
+	display: inline-block;
+  height: 100%;
+	/*cursor: pointer;*/
+}
+
+#logo-container {
+  float:left;
+  height: 100%;
+  width: 75%;
+  text-align: center;
+  background-color: transparent;
+}
+
+#logo {
+  margin-top: 2%;
+  display: inline-block;
+  height: 80%;
+  background-color: transparent;
+}
+
+#locationBar {
+  width: 12%;
+	display: inline-block;
+	float:left;
+  text-align: left;
+	background: transparent;
+	border-color: transparent;
+  background-color: transparent;
+}
+
+#location-button {
+  color: #000;
+  border: solid 2px #FFF;
+  border-radius: 50%;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 28px;
+  /*line-height: 48px;*/
+}
+
 #title {
 	color: black;
 	text-align: center;
@@ -276,22 +377,6 @@ body {
   background-color: #77585800;
 }
 
-#socialBar {
-  z-index: 0;
-  position: relative;
-  padding-top:10px;
-  padding-bottom:-10px;
-  color: #000;
-  text-align:center;
-  font-size:24px;
-  cursor: pointer;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: white;
-  height: 6%;
-}
-
 #padding{
   padding-top: 10%;
 }
@@ -321,15 +406,6 @@ body {
   padding-bottom: 40px;
 }
 
-#menu {
-  margin-left: 2%;
-	padding-left: 1%;
-	display: inline-block;
-	float: left;
-	font-size: 1em;
-	cursor: pointer;
-}
-
 #filterBar {
 	display:inline-block;
 	width: 70%;
@@ -342,14 +418,6 @@ body {
 	display:inline-block;
 	position: relative;
 	text-align: center;
-}
-
-#locationBar {
-	display: inline-block;
-	float:right;
-	background: transparent;
-	border-color: transparent;
-  font-size:
 }
 
 #filter {
@@ -446,7 +514,6 @@ body {
 	display: inline-block;
 	margin-left: auto;
 	font-size: 3em;
-  margin-top: 3%;
 }
 
 #pullOutMenu{
@@ -586,10 +653,6 @@ body {
 
 #nav {
   font-size: 5vh;
-}
-
-#logo {
-	margin-top: 1%;
 }
 /* Begin login screen */
 
