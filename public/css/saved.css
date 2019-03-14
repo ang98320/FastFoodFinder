@@ -23,6 +23,7 @@ body {
     opacity: 50%;
     background-color:#2696e19e;
     border-radius: 10%;
+    font-family: "Raleway";
 }
 
 .gobutton span {
@@ -441,6 +442,7 @@ body {
   margin-top: 15%;
   object-fit: cover;
   margin-bottom: 5%;
+  max-height: 50vh;
 }
 
 #locationBar {
@@ -472,6 +474,7 @@ body {
   font-size: 5vh;
   background: #2696e19e;
   border-style: none;
+  font-family: "Raleway";
 }
 
 #moreInfo span {
@@ -503,6 +506,7 @@ body {
     right: 0;
     opacity: 50%;
 }
+
 
 html {
   font-family: "Raleway";

@@ -3,39 +3,20 @@ var gallery;
 
 $(document).ready(function() {
 	initializePage();
-	console.log("ready")
-	//console.log("current index: ", sessionStorage.currIdx)
-	//window.mySwipe.slide(sessionStorage.currIdx)
-
+	console.log("ready");
 	if (sessionStorage.id == null) {
 		sessionStorage.id = "test_user"
 	}
 	console.log("user id is:", sessionStorage.id)
-
-/*
-	if(sessionStorage.hasLat) {
-		currLat = sessionStorage.hasLat;
-		currLong = sessionStorage.hasLong;
-		googleDirections = googleDirections + currLat + "," + currLong + "&";
-		userLocation = googleDirections;
-		console.log(userLocation);
-	}
-	else {
-		getLocation();
-		console.log("getting location")
-	}
-*/
 	currLat = sessionStorage.hasLat;
 	currLong = sessionStorage.hasLong;
 	googleDirections = googleDirections + currLat + "," + currLong + "&";
 	userLocation = googleDirections;
 	console.log("userlocation:", userLocation);
-
 	sessionStorage.userLocation = userLocation
-
 	currIndex == -1;
-	//goNext();
 	getProfileImage();
+	$("#userImg").attr('href', sessionStorage.fb_img);
 	fetchData(function(result) {
 		var json = JSON.parse(result);
 		console.log(json.businesses[0]);
@@ -74,14 +55,11 @@ $(document).ready(function() {
 					currIdx = index;
 				},
 			});
-
-			//$("#navigator").attr("href", userLocation + "&destination=" + resturants[0].lat + "," + resturants[0].long +"&travelmode=driving");
-			//var idx = window.mySwipe.getPos()
-			//$("#navigator").attr("href", userLocation + "&destination=" + resturants[idx].lat + "," + resturants[idx].long +"&travelmode=driving");
 			var currentIndex = 0;
 			var maxIndex = 0;
 			console.log(resturants);
 		});
+
 	});
 });
 
@@ -191,7 +169,7 @@ function closeModal() {
 //https://www.w3schools.com/html/html5_geolocation.asp geolocation info
 
 function askLocation() {
-  var location = prompt("Please enter a location (or Current Location):");
+  var location = prompt("Please enter a search term:");
 	console.log(location)
 	changeLocation(location, function(result) {
 		//window.mySwipe = ""
@@ -380,42 +358,62 @@ function addData(resturant, i) {
 			saveItem(resturant)
 		} else {
 			resturant.liked = false;
-			console.log("removing from db")
-			heart.className = "far fa-heart heart"
-			removeFromDB(resturant)
+			console.log("removing from db");
+			heart.className = "far fa-heart heart";
+			removeFromDB(resturant);
 		}
 	}
-	var heart = document.createElement('i')
-	heart.id = "heartButton"
+	var heart = document.createElement('i');
+	heart.id = "heartButton";
 	if (resturant.liked == false) {
-		console.log("not liked")
-		heart.className = "far fa-heart heart"
+		console.log("not liked");
+		heart.className = "far fa-heart heart";
 	} else {
-		console.log("already liked")
-		heart.className = "far fa-heart heart fa"
+		console.log("already liked");
+		heart.className = "far fa-heart heart fa";
 	}
 
 	save.append(heart)
 	info_save.append(save)
 
-	var name = document.createElement('h3')
-	name.innerHTML = resturant.title
+	var name = document.createElement('h3');
+	name.innerHTML = resturant.title;
 	//name.className = ""
-	var phone = document.createElement('h3')
-	phone.innerHTML = resturant.phone
+	var phone = document.createElement('h3');
+	phone.innerHTML += ('<i class="fas fa-mobile-alt"></i>');
+	phone.innerHTML = resturant.phone;
 
-	var closed = document.createElement('h3')
+	var phoneCallOut = document.createElement('a');
+	phoneCallOut.href = "tel:" + resturant.phone;
+	phone.innerHTML += phone;
+
+	console.log(phoneCallOut)
+
+	var closed = document.createElement('h3');
 	if (closed == true) {
-		closed.innerHTML = "Closed Now"
-		closed.style.color = "red"
+		closed.innerHTML = "Closed Now";
+		closed.style.color = "red";
 	} else {
-		closed.innerHTML = "Open Now"
-		closed.style.color = "green"
+		closed.innerHTML = "Open Now";
+		closed.style.color = "green";
 	}
 
-	info_fields.append(name)
-	info_fields.append(closed)
-	info_fields.append(phone)
+	var loc = document.createElement('h3');
+	loc.innerHTML +=  resturant.location.address1 + ", " + resturant.location.city;
+
+	var transact = document.createElement('h3');
+	transact.innerHTML = "No delivery currently available from this location.";
+	if (resturant.transactions.indexOf("delivery") != -1) {
+		transact.innerHTML = "Delivery is available from this location!";
+	}
+
+
+	info_fields.append(name);
+	info_fields.append(closed);
+	info_fields.append(phoneCallOut);
+	info_fields.append(loc);
+	info_fields.append(transact);
+	// $("#phoneNumber").prepend('<i class="fas fa-mobile-alt"></i>');
 
 	info.append(info_fields)
 	info.append(info_go)

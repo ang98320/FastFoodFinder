@@ -217,7 +217,7 @@ function openModal(i) {
 	console.log(foodTypes);
 	foodTypes = foodTypes.slice(0,-1);
 	var location = resturants[index].location.address1 + ", " + resturants[index].location.city;
-	$("#phoneNumber").attr('href', 'tel:' +resturants[index].phone);
+	$("#phoneWrapper").attr('href', 'tel:' +resturants[index].phone);
 	$("#phoneNumber").html(" " + resturants[index].phone);
 	$("#foodType").html(foodTypes);
 	$("#location").html(location);
