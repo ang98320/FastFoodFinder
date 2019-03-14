@@ -49,6 +49,9 @@ $(document).ready(function() {
 				alias: json.businesses[i].alias,
 				categories: json.businesses[i].categories,
 				closed: json.businesses[i].is_closed,
+				location: json.businesses[i].location,
+				info: json.businesses[i].url,
+				transactions: json.businesses[i].transactions,
 				liked: false,
 			}
 			resturants.push(resturant);

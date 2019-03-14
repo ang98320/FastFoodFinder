@@ -41,7 +41,7 @@ body {
 }
 
 #data-info {
-  background-color: blue;
+  /*background-color: blue;*/
   z-index: 999999;
 }
 
@@ -70,13 +70,14 @@ body {
   margin-left: 2%;
   margin-right: 2%;
   border-radius: 1%;
+  background-color: transparent;
   /*width: 25%; */
   /*background-color: purple;*/
 }
 
 #data-info-fields {
-  float:left;
-  text-align: left;
+  /*float:left;*/
+  text-align: center;
   right: 0;
   width: 96%;
   background-color: #FCFCFC;
@@ -84,6 +85,7 @@ body {
   margin-left: 2%;
   margin-right: 2%;
   border-radius: 2%;
+  background-color: transparent;
   /*background-color: green;*/
 }
 
@@ -114,6 +116,8 @@ body {
     bottom: 0;
     opacity: 50%;
     background-color:#2696e19e;
+    font-family: "Raleway";
+
 }
 
 .gobutton span {

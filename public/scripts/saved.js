@@ -210,13 +210,26 @@ function openModal(i) {
 	var index = i.replace('row','')
 	console.log(index)
 	console.log(resturants[index])
-	$("#callOut").attr('href', 'tel:' +resturants[index].phone);
+	var foodTypes = "";
+	resturants[index].categories.forEach(function(element) {
+		foodTypes.concat(element.title + ",");
+	});
+	console.log(foodTypes);
+	foodTypes = foodTypes.slice(0,-1);
+	var location = resturants[index].location.address1 + ", " + resturants[index].location.city;
+	$("#phoneNumber").attr('href', 'tel:' +resturants[index].phone);
 	$("#phoneNumber").html(" " + resturants[index].phone);
+	$("#foodType").html(foodTypes);
+	$("#location").html(location);
 	$("#phoneNumber").prepend('<i class="fas fa-mobile-alt"></i>');
 	$("#additionalImg").attr('src', resturants[index].href);
 	$("#moreName").html(resturants[index].title);
-	userLocation = sessionStorage.userLocation
-	url = userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving"
+	userLocation = sessionStorage.userLocation;
+	url = userLocation + "&destination=" + resturants[index].lat + "," + resturants[index].long +"&travelmode=driving";
+	if (resturants[index].transactions.indexOf("delivery") != -1) {
+		$("#transactions").html("Delivery available from this location!");
+	}
+	$("#moreInfo").attr('onclick', "window.open('" + resturants[index].info + "', '_blank')");
 }
 
 function remove() {

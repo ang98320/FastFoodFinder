@@ -468,6 +468,42 @@ body {
   background-color: #FFF;
 }
 
+#moreInfo {
+  font-size: 5vh;
+  background: #2696e19e;
+  border-style: none;
+}
+
+#moreInfo span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    opacity: 50%;
+    color: black;
+}
+
+#moreInfo span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    opacity: 50%;
+}
+
+#moreInfo:hover span {
+    padding-right: 25px;
+    opacity: 50%;
+}
+
+#moreInfo:hover span:after {
+    opacity: 1;
+    right: 0;
+    opacity: 50%;
+}
+
 html {
   font-family: "Raleway";
 }
