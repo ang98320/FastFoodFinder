@@ -38,8 +38,8 @@ var savedFood = [];
 
 document.cookie = [];
 
-var savedInfo = sessionStorage.getItem("savedFoods");
-var savedJSONObject = JSON.parse(savedInfo);
+// var savedInfo = sessionStorage.getItem("savedFoods");
+// var savedJSONObject = JSON.parse(savedInfo);
 //var modal = document.getElementById("moreInfoModal");
 var modalOpener = document.getElementById("mainImg");
 var modalCloser = document.getElementById("modalClose");
