@@ -188,6 +188,9 @@ function askLocation() {
 				alias: json.businesses[i].alias,
 				categories: json.businesses[i].categories,
 				closed: json.businesses[i].is_closed,
+				location: json.businesses[i].location,
+				info: json.businesses[i].url,
+				transactions: json.businesses[i].transactions,
 				liked: false,
 			}
 			resturants.push(resturant);
@@ -387,7 +390,7 @@ function addData(resturant, i) {
 	phoneCallOut.href = "tel:" + resturant.phone;
 	phone.innerHTML += phone;
 
-	console.log(phoneCallOut)
+	// console.log(phoneCallOut);
 
 	var closed = document.createElement('h3');
 	if (closed == true) {
