@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	sessionStorage.clear();
 	if(sessionStorage.hasLat) {
 		currLat = sessionStorage.hasLat;
 		currLong = sessionStorage.hasLong;
