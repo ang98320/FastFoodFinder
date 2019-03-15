@@ -6,6 +6,9 @@ $(document).ready(function() {
 	if (sessionStorage.fb_img != null) {
 		document.getElementById("userImg").src = sessionStorage.fb_img;
 	}
+	else {
+		document.getElementById("userImg").src = "/img/defaultUser.jpg";
+	}
 	console.log("ready");
 	if (sessionStorage.id == null) {
 		sessionStorage.id = "test_user"
