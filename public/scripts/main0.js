@@ -3,6 +3,7 @@ var gallery;
 
 $(document).ready(function() {
 	initializePage();
+	document.getElementById("userImg").src = sessionStorage.fb_img
 	console.log("ready");
 	if (sessionStorage.id == null) {
 		sessionStorage.id = "test_user"
