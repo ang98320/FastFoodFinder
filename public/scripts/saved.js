@@ -3,6 +3,12 @@ var url;
 
 $(document).ready(function() {
 	//getLocation();
+	if (sessionStorage.fb_img != null) {
+		document.getElementById("userImg").src = sessionStorage.fb_img;
+	}
+	else {
+		document.getElementById("userImg").src = "/img/defaultUser.jpg";
+	}
 	loadFromJSON(function(result) {
 		console.log(result)
 	});
