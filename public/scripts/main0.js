@@ -3,7 +3,9 @@ var gallery;
 
 $(document).ready(function() {
 	initializePage();
-	document.getElementById("userImg").src = sessionStorage.fb_img
+	if (sessionStorage.fb_img != null) {
+		document.getElementById("userImg").src = sessionStorage.fb_img;
+	}
 	console.log("ready");
 	if (sessionStorage.id == null) {
 		sessionStorage.id = "test_user"
