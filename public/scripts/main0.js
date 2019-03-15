@@ -18,8 +18,8 @@ $(document).ready(function() {
 	console.log("userlocation:", userLocation);
 	sessionStorage.userLocation = userLocation
 	currIndex == -1;
-	getProfileImage();
-	$("#userImg").attr('href', sessionStorage.fb_img);
+	// getProfileImage();
+	// $("#userImg").attr('href', sessionStorage.fb_img);
 	fetchData(function(result) {
 		var json = JSON.parse(result);
 		console.log(json.businesses[0]);
